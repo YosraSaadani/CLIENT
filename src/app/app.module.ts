@@ -5,6 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './Components/patient/home/home.component';
 import { DoctorsListComponent } from './Components/patient/doctors-list/doctors-list.component';
+import { LayoutModule } from './layout/layout.module';
+import { AboutusComponent } from './Components/patient/aboutus/aboutus.component';
+import { ContactComponent } from './Components/patient/contact/contact.component';
 
 
 @NgModule({
@@ -12,10 +15,13 @@ import { DoctorsListComponent } from './Components/patient/doctors-list/doctors-
     AppComponent,
     HomeComponent,
     DoctorsListComponent,
+    AboutusComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

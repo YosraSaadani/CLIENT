@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Doctor } from 'src/app/Entities/doctor';
 import { DoctorService } from 'src/app/services/doctor.service';
 
+
+
 @Component({
   selector: 'app-doctors-list',
   templateUrl: './doctors-list.component.html',

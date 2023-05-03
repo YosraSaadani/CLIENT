@@ -1,4 +1,4 @@
-export class Calendrier 
+ class Calendrier 
 {
     
 }

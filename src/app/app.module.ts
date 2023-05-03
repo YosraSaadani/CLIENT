@@ -8,6 +8,7 @@ import { DoctorsListComponent } from './Components/patient/doctors-list/doctors-
 import { LayoutModule } from './layout/layout.module';
 import { AboutusComponent } from './Components/patient/aboutus/aboutus.component';
 import { ContactComponent } from './Components/patient/contact/contact.component';
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ContactComponent } from './Components/patient/contact/contact.component
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LayoutModule
+    LayoutModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

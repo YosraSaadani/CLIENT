@@ -14,8 +14,8 @@
                     <option value="2">Department 2</option>
                     <option value="3">Department 3</option>
                 </select>
-                <input type="text" class="form-control border-primary w-50" placeholder="Keyword">
-                <button class="btn btn-dark border-0 w-25">Search</button>
+                <input type="text" class="form-control border-primary w-50" placeholder="Keyword" #name>
+                <button class="btn btn-dark border-0 w-25" (click)="search(name.value)" >Search</button>
             </div>
         </div>
     </div>

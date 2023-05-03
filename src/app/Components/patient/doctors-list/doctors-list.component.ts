@@ -13,9 +13,16 @@ export class DoctorsListComponent implements OnInit {
   doctorsList!: Doctor[];
   constructor(private doctorService: DoctorService) {}
 
+  search(name: string)
+  {
+    this.doctorService.getDoctorByName(name).subscribe(data=>this.doctorsList=data);
+  }
+
+
   ngOnInit(): void {
     this.doctorService
       .getDoctors()
       .subscribe((data) => (this.doctorsList = data));
+      
   }
 }

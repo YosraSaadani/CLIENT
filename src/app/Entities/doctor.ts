@@ -9,9 +9,9 @@ export class Doctor extends Person {
     role: string,
     email: string,
     password: string,
-    private location: string,
-    private rating: number,
-    private specialty: string
+    public location: string,
+    public rating: number,
+    public specialty: string
   ) {
     super(firstName, lastName, birthDate, gender, role, email, password);
     this.location = location;

@@ -9,7 +9,8 @@ import { LayoutModule } from './layout/layout.module';
 import { AboutusComponent } from './Components/patient/aboutus/aboutus.component';
 import { ContactComponent } from './Components/patient/contact/contact.component';
 import {HttpClientModule} from "@angular/common/http";
-import { LoginPatientModule } from './Components/patient/login-patient/login-patient.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -24,8 +25,9 @@ import { LoginPatientModule } from './Components/patient/login-patient/login-pat
     BrowserModule,
     AppRoutingModule,
     LayoutModule,
-    LoginPatientModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

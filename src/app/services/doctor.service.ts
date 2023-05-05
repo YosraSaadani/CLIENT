@@ -15,11 +15,11 @@ export class DoctorService {
   getDoctorById(id:number):Observable<Doctor>
  
   {
- return this.http.get<Doctor>(URL+""+id);
+ return this.http.get<Doctor>(url+id);
   }
  
   getDoctorsBySpeciality(specialty: string): Observable<Doctor[]> {
-    return this.http.get<Doctor[]>(url + 'getBySpeciality/' + specialty);
+    return this.http.get<Doctor[]>(url +'getBySpeciality/'+ specialty);
   }
 
   getDoctorByName(name: string): Observable<Doctor[]> {

@@ -2,18 +2,12 @@ import { Person } from './person';
 
 export class Doctor extends Person {
   constructor(
-    firstName: string,
-    lastName: string,
-    birthDate: Date,
-    gender: string,
-    role: string,
-    email: string,
-    password: string,
-    public location: string,
+    public person:Person,
     public rating: number,
-    public specialty: string
+    public specialty: string,
+    public location:string
   ) {
-    super(firstName, lastName, birthDate, gender, role, email, password);
+    super(person.firstName, person.lastName, person.birthDate, person.gender, person.role, person.email, person.password);
     this.location = location;
     this.rating = rating;
     this.specialty = specialty;

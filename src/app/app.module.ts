@@ -11,6 +11,7 @@ import { ContactComponent } from './Components/patient/contact/contact.component
 import {HttpClientModule} from "@angular/common/http";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { SelectedDoctorComponent } from './Components/patient/selected-doctor/selected-doctor.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { FormsModule } from '@angular/forms';
     DoctorsListComponent,
     AboutusComponent,
     ContactComponent,
+    SelectedDoctorComponent,
   ],
   imports: [
     BrowserModule,

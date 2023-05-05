@@ -12,6 +12,9 @@ import {HttpClientModule} from "@angular/common/http";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { SelectedDoctorComponent } from './Components/patient/selected-doctor/selected-doctor.component';
+import { AdminPatientsListComponent } from './Components/admin/admin-patients-list/admin-patients-list.component';
+import { AdminDoctorsListComponent } from './Components/admin/admin-doctors-list/admin-doctors-list.component';
+import { DashboardComponent } from './Components/admin/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -22,6 +25,10 @@ import { SelectedDoctorComponent } from './Components/patient/selected-doctor/se
     AboutusComponent,
     ContactComponent,
     SelectedDoctorComponent,
+    AdminPatientsListComponent,
+    AdminDoctorsListComponent,
+    DashboardComponent
+
   ],
   imports: [
     BrowserModule,

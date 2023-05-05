@@ -6,7 +6,10 @@ import { DoctorsListComponent } from './Components/patient/doctors-list/doctors-
 import { AboutusComponent } from './Components/patient/aboutus/aboutus.component';
 import { ContactComponent } from './Components/patient/contact/contact.component';
 import { DoctorComponent } from './layout/doctor/doctor.component';
-
+import { AdminComponent } from './layout/admin/admin.component';
+import { AdminDoctorsListComponent } from './Components/admin/admin-doctors-list/admin-doctors-list.component';
+import { AdminPatientsListComponent } from './Components/admin/admin-patients-list/admin-patients-list.component';
+import { DashboardComponent } from './Components/admin/dashboard/dashboard.component';
 const routes: Routes = [
   {
     path: 'patient',
@@ -26,6 +29,16 @@ const routes: Routes = [
     component: DoctorComponent,
     title: 'Doctor',
   },
+  {
+    path:'admin',
+    component: AdminComponent,
+    title:'Admin',
+    children:[
+      {path:'doctorsList',component:AdminDoctorsListComponent,title :'Doctors List'},
+      {path:'patientsList',component:AdminPatientsListComponent,title : 'Patients List'},
+      {path:'dahsbaord',component:DashboardComponent,title:'DashBoard'}
+    ]
+  }
 ];
 
 @NgModule({

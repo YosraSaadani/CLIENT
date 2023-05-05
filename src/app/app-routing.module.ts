@@ -6,6 +6,7 @@ import { DoctorsListComponent } from './Components/patient/doctors-list/doctors-
 import { AboutusComponent } from './Components/patient/aboutus/aboutus.component';
 import { ContactComponent } from './Components/patient/contact/contact.component';
 import { DoctorComponent } from './layout/doctor/doctor.component';
+import { SelectedDoctorComponent } from './Components/patient/selected-doctor/selected-doctor.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
       { path: 'list', component: DoctorsListComponent, title: 'Doctors List' },
       { path: 'aboutus', component: AboutusComponent, title: 'About us' },
       { path: 'contact', component: ContactComponent, title: 'Contact us' },
+      {path:'list/:id',component:SelectedDoctorComponent,title:'Selected Doctor'},
       { path: '', pathMatch: 'full', redirectTo: 'home' },
     ],
   },

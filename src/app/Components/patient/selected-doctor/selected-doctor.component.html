@@ -1,99 +1,99 @@
 <div class="container" >
     <div class="row">
-       
+       <!--Partie 1-->
         <div class="col-md-5">
             <div class="row">
                 <div class="col-12 bg-white p-0 px-3 py-3 mb-3">
-                    <div class="d-flex flex-column align-items-center">
-                        <img class="photo"
-                            src="https://images.unsplash.com/photo-1541647376583-8934aaf3448a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-                            alt="">
-                        <p class="fw-bold h4 mt-3">John Doe</p>
-                        <p class="text-muted">Full Stack Developer</p>
-                        <p class="text-muted mb-3">Soma,San Francisco, CA</p>
-                        <div class="d-flex ">
-                            <div class="btn btn-primary follow me-2">Follow</div>
+                    <div class="d-flex flex-row align-items-center">
+                        <img class="photo" [src]="currentDoctor.person.image"
+                              alt="">
+                              <div style="margin-left: 20px;">
+                        <p class="fw-bold h6 mt-0" style="font-size: 20px;">Dr. {{currentDoctor.person.firstName | titlecase}}  {{currentDoctor.person.lastName | titlecase}}</p>
+                        <p class="text-muted" style="font-size: 13px; margin-top: 10px; margin-bottom: 10px;">{{currentDoctor.specialty}} </p>
+                        <div class="d-flex " style="margin-left: 0px;">
+                            <div class="btn btn-primary follow me-2">call</div>
                             <div class="btn btn-outline-primary message">Message</div>
                         </div>
                     </div>
+                    <p   style="font-size: 20px; font-weight: bold; margin-left: 100px;">{{currentDoctor.price}} DT</p>
+
+                        <!-- <p class="text-muted mb-3">{{currentDoctor.description}}</p> -->
+                        
+                    </div>
                 </div>
+
+
+
+                <!--Partie 2-->
+
+
                 <div class="col-12 bg-white p-0 px-2 pb-3 mb-3">
-                    <div class="d-flex justify-content-between border-bottom py-2 px-3">
-                        <p><span class="fas fa-globe me-2"></span>Website</p>
-                        <a href="#">https://bootdey.com</a>
+                    <div class="d-flex flex-row justify-content-between  py-1 px-3"> 
+                        <p style="margin-left: 35px;" class="detailNom">Patients</p><p style="margin-left: 8px;" class="detailNom">Experiences</p><p style="margin-right: 35px;" class="detailNom">Ratings</p>
                     </div>
-                    <div class="d-flex justify-content-between border-bottom py-2 px-3">
-                        <p><span class="fab fa-github-alt me-2"></span>Github</p>
-                        <a href="">bootdey</a>
+                    <div class="d-flex  flex-row justify-content-between  py-2 px-12" >
+                        <p class="boxInfo">+400</p><p class="boxInfo" >+5 year</p><p class="boxInfo">{{currentDoctor.rating}} </p>
                     </div>
-                    <div class="d-flex justify-content-between border-bottom py-2 px-3">
-                        <p><span class="fab fa-twitter me-2"></span>Twitter</p>
-                        <a href="">@bootdey</a>
+                    <p class="calenderbox">Schedule</p>
+                    <div class="d-flex justify-content-between  py-2 px-3" style="margin-left: 0px !important; padding-left: 0px !important;">
+                        <p class="boxInfo" style="height: 60px; width: 90px; background-color: rgb(96, 163, 234); color: white !important;">26 <br> March</p>
+                        <p class="boxInfo" style="height: 60px; width: 90px;">27 <br> <span style="color:rgb(155, 155, 155)">March</span></p>
+                        <p class="boxInfo" style="height: 60px; width: 90px;">28 <br> <span style="color:rgb(155, 155, 155)">March</span> </p>
+                        <p class="boxInfo" style="height: 60px; width: 90px;">30<br> <span style="color:rgb(155, 155, 155)">March</span> </p>
+                        <p class="boxInfo" style="height: 60px; width: 90px;">31 <br> <span style="color:rgb(155, 155, 155)">March</span> </p>
+
                     </div>
-                    <div class="d-flex justify-content-between border-bottom py-2 px-3">
-                        <p><span class="fab fa-instagram me-2"></span>Instagram</p>
-                        <a href="">bootdey</a>
+                        <p class="calenderbox">Time</p>
+
+                    <div class="d-flex justify-content-between  py-2 px-3" style="margin-left: 0px !important; padding-left: 0px !important;">
+                        <p class="boxInfo" style="height: 60px; width: 90px;" >9:00</p>
+                        <p class="boxInfo" style="height: 60px; width: 90px;">10:00 </p>
+                        <p class="boxInfo" style="height: 60px; width: 90px;">11:00 </p>
+                        <p class="boxInfo" style="height: 60px; width: 90px; background-color: rgb(96, 163, 234); color:white">12:00 </p>
+                        <p class="boxInfo" style="height: 60px; width: 90px;background-color: white;">15:00 </p>
+
                     </div>
                     <div class="d-flex justify-content-between py-2 px-3">
-                        <p><span class="fab fa-facebook-f me-2"></span>facebook</p>
-                        <a href="">bootdey</a>
+                        
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-7 ps-md-4">
+
+
+        
+        <div class="col-md-7 ps-md-5">
             <div class="row">
-                <div class="col-12 bg-white px-3 mb-3 pb-3">
-                    <div class="d-flex align-items-center justify-content-between border-bottom">
-                        <p class="py-2">Full Name</p>
-                        <p class="py-2 text-muted">Kenneth valdez</p>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-between border-bottom">
-                        <p class="py-2">Email</p>
-                        <p class="py-2 text-muted">fip@jukmuh.al</p>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-between border-bottom">
-                        <p class="py-2">Phone</p>
-                        <p class="py-2 text-muted">(239) 816-9029</p>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-between border-bottom">
-                        <p class="py-2">Mobile</p>
-                        <p class="py-2 text-muted">(320) 380-4539</p>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-between">
-                        <p class="py-2">Address</p>
-                        <p class="py-2 text-muted"> Soma,San Francisco,CA</p>
-                    </div>
+                <!--Partie 3-->
+
+                <div class="col-12 bg-white px-3 mb-15 pb-2">
+                    <p class="calenderbox">Book an appointement</p>
+
+                    <div class="d-flex flex-row justify-content-between  py-3 px-3"> 
+                    </div> 
+                    <div class="d-flex flex-row justify-content-between  py-3 px-3"> 
+                    </div>   <div class="d-flex flex-row justify-content-between  py-3 px-3"> 
+                    </div>   <div class="d-flex flex-row justify-content-between  py-3 px-3"> 
+                    </div>   <div class="d-flex flex-row justify-content-between  py-3 px-3"> 
+                    </div>   <div class="d-flex flex-row justify-content-between  py-3 px-3"> 
+                    </div>  
                 </div>
-                <div class="col-12 bg-white px-3 pb-2">
-                    <h6 class="d-flex align-items-center mb-3 fw-bold py-3"><i
-                            class="text-info me-2">assignment</i>Project
-                        Status</h6>
-                    <small>Web Design</small>
-                    <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 60%"
-                            aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+
+                <!--Partie 4-->
+                <div class="col-12 bg-white px-3 mb-15 pb-2">
+                    <p class="calenderbox">About doctor</p>
+
+                    <div style="color:rgb(186, 186, 186); width: 87%; margin-left: 20px; margin-top: 10px;">
+                        {{currentDoctor.description}}
                     </div>
-                    <small>One Page</small>
-                    <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 72%"
-                            aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div>
+                    <p class="calenderbox">Location</p>
+                    <div style="color:rgb(186, 186, 186); width: 87%; margin-left: 20px; margin-top: 10px;">
+                        {{currentDoctor.location}}
+                    </div>     
+                  
                     </div>
-                    <small>Mobile Template</small>
-                    <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 50%"
-                            aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <small>Backend API</small>
-                    <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 90%"
-                            aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <small>Website Markup</small>
-                    <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 80%"
-                            aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
+                          
                 </div>
             </div>
         </div>

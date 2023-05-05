@@ -15,7 +15,7 @@ export class DoctorService {
   getDoctorById(id:number):Observable<Doctor>
  
   {
- return this.http.get<Doctor>(URL+"/"+id);
+ return this.http.get<Doctor>(URL+""+id);
   }
  
   getDoctorsBySpeciality(specialty: string): Observable<Doctor[]> {

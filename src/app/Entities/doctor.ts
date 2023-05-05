@@ -6,11 +6,13 @@ export class Doctor extends Person {
     public person:Person,
     public rating: number,
     public specialty: string,
-    public location:string
+    public location:string,
+    public price:number
   ) {
-    super(person.firstName, person.lastName, person.birthDate, person.gender, person.role, person.email, person.password);
+    super(person.firstName, person.lastName, person.birthDate,person.image, person.gender, person.role, person.email, person.password);
     this.location = location;
     this.rating = rating;
     this.specialty = specialty;
+    this.price=price;
   }
 }

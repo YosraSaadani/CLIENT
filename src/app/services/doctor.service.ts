@@ -17,7 +17,7 @@ export class DoctorService {
   }
 
   getDoctorByName(name: string): Observable<Doctor[]> {
-    return this.http.get<Doctor[]>(url + 'getByName/' + name);
+    return this.http.get<Doctor[]>(url + 'getByFirstName/' + name);
   }
   
 }

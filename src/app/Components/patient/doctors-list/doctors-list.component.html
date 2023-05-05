@@ -29,14 +29,14 @@
         <div class="row g-5">
             
             <div class="col-lg-6 team-item" *ngFor="let d of doctorsList">
-                <a >
+                <a [routerLink]="['../../patient/list',d?._id]">
                 <div class="row g-0 bg-light rounded overflow-hidden">
                     <div class="col-12 col-sm-5 h-100">
                         <img class="img-fluid h-100" src="../../../../assets/img/team-1.jpg" style="object-fit: cover;">
                     </div>
                     <div class="col-12 col-sm-7 h-100 d-flex flex-column">
                         <div class="mt-auto p-4">
-                            <h3>{{d.person.firstName}} {{d.person.lastName}}</h3>
+                            <h3>{{d.person.firstName | titlecase}} {{d.person.lastName | titlecase}}</h3>
                             <h6 class="fw-normal fst-italic text-primary mb-4">{{d.specialty}}</h6>
                             <div class="d-flex justify-content-between align-items-center">
                                 
@@ -51,6 +51,7 @@
                 </div>
                 </a>
             </div>
+            
             
             <div class="col-lg-6 team-item">
                 <div class="row g-0 bg-light rounded overflow-hidden">

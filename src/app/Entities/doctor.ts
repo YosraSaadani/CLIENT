@@ -2,6 +2,7 @@ import { Person } from './person';
 
 export class Doctor extends Person {
   constructor(
+    public _id:string,
     public person:Person,
     public rating: number,
     public specialty: string,

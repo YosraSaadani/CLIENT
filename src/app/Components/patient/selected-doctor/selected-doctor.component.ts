@@ -12,7 +12,7 @@ import { DoctorService } from 'src/app/services/doctor.service';
   styleUrls: ['./selected-doctor.component.scss']
 })
 export class SelectedDoctorComponent implements OnInit {
-id!:number;
+id!:string;
 dates!: string[];
 currentDoctor!:Doctor;
 calenders!:Calendrier[]
@@ -33,6 +33,7 @@ calenders!:Calendrier[]
       const formattedDate = formatDate(date, 'dd MMM', 'en-US');
       dates.push(formattedDate);
     }
+    console.log(dates);
     return dates;
   }
 

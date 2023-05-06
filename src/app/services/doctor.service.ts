@@ -9,10 +9,10 @@ const url = 'http://localhost:5000/api/doctor/';
 export class DoctorService {
   constructor(private http: HttpClient) {}
   getDoctors(): Observable<Doctor[]> {
-    return this.http.get<Doctor[]>(url);
+    return this.http.get<Doctor[]>(url+"all");
   }
 
-  getDoctorById(id:number):Observable<Doctor>
+  getDoctorById(id:string):Observable<Doctor>
  
   {
  return this.http.get<Doctor>(url+id);

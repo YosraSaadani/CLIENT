@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-admin-patients-list',
@@ -7,8 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminPatientsListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private adminService:AdminService) { }
+  patients=[];
 
+  getPatients()
+  {
+    this.adminService.getDoctors().subscribe(res=>{
+      //this.patients=res;
+    })
+  }
+
+  deletePatientById(id:string)
+  {
+    this.adminService.deleteDoctorById(id).subscribe(res=>{
+      console.log(res);
+    })
+    this.getPatients();
+  }
   ngOnInit(): void {
   }
 

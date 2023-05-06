@@ -10,7 +10,7 @@ import { PatientService } from 'src/app/services/patient.service';
 export class RegisterComponent implements OnInit {
 
   registerForm!:FormGroup;
-  constructor(private fb:FormBuilder,private servicePatient:PatientService) { }
+  constructor(private fb:FormBuilder) { }
 
   ngOnInit(): void {
     this.registerForm = this.fb.nonNullable.group({
@@ -23,14 +23,13 @@ export class RegisterComponent implements OnInit {
       bloodType:[''],
       allergies:[''],
       password:['']
-    });
-  }
+      
 
-  register(){
-    this.servicePatient.registerPatient(this.registerForm.value).subscribe(
       
-      
-    );
+
+
+
+    });
   }
 
 }

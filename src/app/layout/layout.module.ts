@@ -5,8 +5,6 @@ import { PatientComponent } from './patient/patient.component';
 import { DoctorComponent } from './doctor/doctor.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { RouterModule } from '@angular/router';
-import { LogindoctorComponent } from './logindoctor/logindoctor.component';
-import { RegisterdoctorComponent } from './registerdoctor/registerdoctor.component';
 
 
 
@@ -14,9 +12,7 @@ import { RegisterdoctorComponent } from './registerdoctor/registerdoctor.compone
   declarations: [
     AdminComponent,
     PatientComponent,
-    DoctorComponent,
-    LogindoctorComponent,
-    RegisterdoctorComponent
+    DoctorComponent
   ],
   imports: [
     CommonModule,

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { PatientService } from 'src/app/services/patient.service';
 
 @Component({
   selector: 'app-register',
@@ -7,9 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  registerForm!:FormGroup;
+  constructor(private fb:FormBuilder,private servicePatient:PatientService) { }
 
   ngOnInit(): void {
+    this.registerForm = this.fb.nonNullable.group({
+
+      firstName:[''],
+      lastName:[''],
+      birthDate:[''],
+      gender:[''],
+      email:[''],
+      bloodType:[''],
+      allergies:[''],
+      password:['']
+    });
+  }
+
+  register(){
+    this.servicePatient.registerPatient(this.registerForm.value).subscribe(
+      
+      
+    );
   }
 
 }

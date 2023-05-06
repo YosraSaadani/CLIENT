@@ -12,6 +12,9 @@ import { AdminPatientsListComponent } from './Components/admin/admin-patients-li
 import { DashboardComponent } from './Components/admin/dashboard/dashboard.component';
 import { SelectedDoctorComponent } from './Components/patient/selected-doctor/selected-doctor.component';
 import { LoginComponent } from './Components/patient/login-patient/login/login.component';
+import { LogindoctorComponent } from './layout/logindoctor/logindoctor.component';
+import { RegisterComponent } from './Components/patient/login-patient/register/register.component';
+import { DoctorDashComponent } from './Components/doctor/doctor-dash/doctor-dash.component';
 
 const routes: Routes = [
   {
@@ -23,28 +26,53 @@ const routes: Routes = [
       { path: 'list', component: DoctorsListComponent, title: 'Doctors List' },
       { path: 'aboutus', component: AboutusComponent, title: 'About us' },
       { path: 'contact', component: ContactComponent, title: 'Contact us' },
-      {path:'list/:id',component:SelectedDoctorComponent,title:'Selected Doctor'},
+      {
+        path: 'list/:id',
+        component: SelectedDoctorComponent,
+        title: 'Selected Doctor',
+      },
       { path: '', pathMatch: 'full', redirectTo: 'home' },
     ],
   },
+  { path: 'login', component: LoginComponent, title: 'Login' },
+  { path: 'register', component: RegisterComponent, title: 'Register' },
   { path: '', pathMatch: 'full', redirectTo: 'patient' },
-  
-  {path:'login',component:LoginComponent,title:'Login'},
+
   {
     path: 'doctor',
     component: DoctorComponent,
     title: 'Doctor',
+    children: [
+      {
+        path: '',
+        component: DoctorDashComponent,
+        title: 'Doctor Dashboard',
+      },
+    ],
   },
   {
-    path:'admin',
+    path: 'logindoctor',
+    component: LogindoctorComponent,
+    title: 'Login Doctor',
+  },
+  {
+    path: 'admin',
     component: AdminComponent,
-    title:'Admin',
-    children:[
-      {path:'doctorsList',component:AdminDoctorsListComponent,title :'Doctors List'},
-      {path:'patientsList',component:AdminPatientsListComponent,title : 'Patients List'},
-      {path:'dahsbaord',component:DashboardComponent,title:'DashBoard'}
-    ]
-  }
+    title: 'Admin',
+    children: [
+      {
+        path: 'doctorsList',
+        component: AdminDoctorsListComponent,
+        title: 'Doctors List',
+      },
+      {
+        path: 'patientsList',
+        component: AdminPatientsListComponent,
+        title: 'Patients List',
+      },
+      { path: 'dahsbaord', component: DashboardComponent, title: 'DashBoard' },
+    ],
+  },
 ];
 
 @NgModule({

@@ -1,13 +1,9 @@
-
-  
-
-
 <body>
   <!--  Body Wrapper -->
-  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+  <div class="page-wrapper opaci" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
     <!-- Sidebar Start -->
-    <aside class="left-sidebar">
+    <aside style="background-color: #ECF9F9;" class="left-sidebar" >
       <!-- Sidebar scroll-->
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
@@ -19,34 +15,35 @@
           </div>
         </div>
         <!-- Sidebar navigation-->
+        <div style="position:relative;right: 20px;">
         <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
           <ul id="sidebarnav">
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">Home</span>
             </li>
-            <li class="sidebar-item hovs" >
-              <span class="sidebar-link" routerLink="dahsbaord" routerLinkActive="actif" aria-expanded="true">
+            <li class="sidebar-item hovs"  >
+              <span class="sidebar-link" style="color:#000000;font-weight: 400;" routerLink="dahsbaord" routerLinkActive="actif" aria-expanded="true">
                 <span>
                   <i class="ti ti-layout-dashboard"></i>
                 </span>
-                <span class="hide-menu">Dashboard</span>
+                <span class="hide-menu" >Dashboard</span>
             </span>
             </li>
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">UI COMPONENTS</span>
             </li>
-            <li class="sidebar-item">
-              <span class="sidebar-link hovvv" routerLink="doctorsList" aria-expanded="false">
+            <li class="sidebar-item hovs">
+              <span class="sidebar-link" style="color:#000000;font-weight: 400;" routerLinkActive="actif" routerLink="doctorsList" aria-expanded="false">
                 <span>
                   <i class="ti ti-article"></i>
                 </span>
                 <span class="hide-menu">Doctors List</span>
               </span>
             </li>
-            <li class="sidebar-item">
-              <span class="sidebar-link" routerLink="patientsList" aria-expanded="false">
+            <li class="sidebar-item hovs">
+              <span class="sidebar-link" routerLink="patientsList" routerLinkActive="actif" style="color:#000000;font-weight: 400;" aria-expanded="false">
                 <span>
                   <i class="ti ti-alert-circle"></i>
                 </span>
@@ -54,7 +51,7 @@
             </span>
             </li>
             <li class="sidebar-item">
-              <span class="sidebar-link" href="./ui-card.html" aria-expanded="false">
+              <span class="sidebar-link hovs" style="color:#000000;font-weight: 400;" href="./ui-card.html" aria-expanded="false">
                 <span>
                   <i class="ti ti-cards"></i>
                 </span>
@@ -62,7 +59,7 @@
             </span>
             </li>
             <li class="sidebar-item">
-              <span class="sidebar-link" href="./ui-forms.html" aria-expanded="false">
+              <span class="sidebar-link hovvv" style="color:#000000;font-weight: 400;" href="./ui-forms.html" aria-expanded="false">
                 <span>
                   <i class="ti ti-file-description"></i>
                 </span>
@@ -74,7 +71,7 @@
               <span class="hide-menu">AUTH</span>
             </li>
             <li class="sidebar-item">
-              <span class="sidebar-link" href="./authentication-login.html" aria-expanded="false">
+              <span class="sidebar-link" style="color:#000000;font-weight: 400;" href="./authentication-login.html" aria-expanded="false">
                 <span>
                   <i class="ti ti-login"></i>
                 </span>
@@ -82,7 +79,7 @@
             </span>
             </li>
             <li class="sidebar-item">
-              <span class="sidebar-link" href="./authentication-register.html" aria-expanded="false">
+              <span class="sidebar-link" style="color:#000000;font-weight: 400;" href="./authentication-register.html" aria-expanded="false">
                 <span>
                   <i class="ti ti-user-plus"></i>
                 </span>
@@ -94,7 +91,7 @@
               <span class="hide-menu">EXTRA</span>
             </li>
             <li class="sidebar-item">
-              <span class="sidebar-link" href="./sample-page.html" aria-expanded="false">
+              <span style="color:#000000;font-weight: 400;" class="sidebar-link" href="./sample-page.html" aria-expanded="false">
                 <span>
                   <i class="ti ti-aperture"></i>
                 </span>
@@ -104,6 +101,7 @@
           </ul>
           
         </nav>
+        </div>
         <!-- End Sidebar navigation -->
       </div>
       <!-- End Sidebar scroll-->
@@ -157,7 +155,7 @@
         </nav>
       </header>
       <!--  Header End -->
-      <div class="container-fluid">
+      <div class="container-fluid" >
         <div class="py-6 px-6 text-center">
             <router-outlet></router-outlet>
             <br>
@@ -166,5 +164,4 @@
       </div>
     </div>
   </div>
-  
 </body>

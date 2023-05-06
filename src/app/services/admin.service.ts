@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Doctor } from '../Entities/doctor';
 import { Patient } from '../Entities/patient';
 
-const url = 'http://localhost:5000/api/doctor/';
+const url = 'http://localhost:5000/api/doctor/all';
 const url2 = 'http://localhost:5000/api/patient/';
 @Injectable({
   providedIn: 'root'

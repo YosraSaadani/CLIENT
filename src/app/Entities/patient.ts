@@ -16,7 +16,7 @@ export class Patient extends Person
         this.allergies = allergies;
         this.bloodTtype = bloodTtype;
         this.height = height;
-        this.weight=weight;
-        this.amount=amount;
+        this.weight = weight;
+        this.amount = amount;
     }
 }

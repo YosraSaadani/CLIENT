@@ -1,29 +1,29 @@
  <!-- Recent Sales Start -->
- <div class="container-fluid pt-4 px-4">
-    <div class="bg-light text-center rounded p-4">
+ <div class="container-fluid pt-4 px-4 opaci">
+    <div class="text-center rounded p-4" style="background-color: #F7F7F7;box-shadow:0 4px 8px 0 rgba(95, 92, 92, 0.2), 0 6px 20px 0 rgba(95, 92, 92, 0.2);">
         <div class="d-flex align-items-center justify-content-between mb-4">
             <h6 class="mb-0">Doctors List</h6>
         </div>
-        <div class="table-responsive">
-            <table class="table text-start align-middle table-bordered table-hover mb-0">
+        <div class="table-responsive bor" style="border-radius: 10px;">
+            <table class="table table-bordered table-hover mb-0" >
                 <thead>
-                    <tr class="text-dark">
-                        <th scope="col">id</th>
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">Birth Date</th>
-                        <th scope="col">Gender</th>
+                    <tr >
+                        <th scope="col" class="colo">id</th>
+                        <th scope="col" class="colo">First Name</th>
+                        <th scope="col" class="colo">Last Name</th>
+                        <th scope="col" class="colo">Birth Date</th>
+                        <th scope="col" class="colo">Gender</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let p of patients;index as i" class="text-dark" >
+                    <tr *ngFor="let p of patients;index as i"  >
                         <td>{{i+1}}</td>
                         <td>{{p.person.firstName}}</td>
                         <td>{{p.person.lastName}}</td>
-                        <td>{{p.person.birthDate}}</td>
+                        <td>{{p.person.birthDate | date:'dd/MM/yyyy'}}</td>
                         <td>{{p.person.gender}}</td>
-                        <td><a class="btn btn-sm btn-primary" (click)="deletePatientById(p._id)" >Delete</a></td>
+                        <td><a style="color:white" class="btn btn-sm btn-primary" (click)="deletePatientById(p._id)" >Delete</a></td>
                     </tr>
                 </tbody>
             </table>

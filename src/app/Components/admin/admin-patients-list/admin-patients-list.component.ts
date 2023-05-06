@@ -29,6 +29,7 @@ export class AdminPatientsListComponent implements OnInit {
     this.getPatients();
   }
   ngOnInit(): void {
+    this.getPatients();
   }
 
 }

@@ -8,7 +8,7 @@ import { DoctorsListComponent } from './Components/patient/doctors-list/doctors-
 import { LayoutModule } from './layout/layout.module';
 import { AboutusComponent } from './Components/patient/aboutus/aboutus.component';
 import { ContactComponent } from './Components/patient/contact/contact.component';
-import {HttpClientModule} from "@angular/common/http";
+import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { SelectedDoctorComponent } from './Components/patient/selected-doctor/selected-doctor.component';
@@ -16,7 +16,7 @@ import { AdminPatientsListComponent } from './Components/admin/admin-patients-li
 import { AdminDoctorsListComponent } from './Components/admin/admin-doctors-list/admin-doctors-list.component';
 import { DashboardComponent } from './Components/admin/dashboard/dashboard.component';
 
-
+import { DoctorDashComponent } from './Components/doctor/doctor-dash/doctor-dash.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +28,8 @@ import { DashboardComponent } from './Components/admin/dashboard/dashboard.compo
     SelectedDoctorComponent,
     AdminPatientsListComponent,
     AdminDoctorsListComponent,
-    DashboardComponent
-
+    DashboardComponent,
+    DoctorDashComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,9 +37,9 @@ import { DashboardComponent } from './Components/admin/dashboard/dashboard.compo
     LayoutModule,
     HttpClientModule,
     NgbModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

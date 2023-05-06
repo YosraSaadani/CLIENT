@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { PatientService } from 'src/app/services/patient.service';
 
 @Component({
   selector: 'app-login',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
-  constructor() { }
+  loginForm!:FormGroup;
+  constructor(private fb:FormBuilder,
+    private servicePatient:PatientService) { }
 
   ngOnInit(): void {
+    this.loginForm=this.fb.nonNullable.group({
+      email:[''],
+      password:['']
+    });
   }
-
+  login(){
+    this.servicePatient.registerPatient(this.loginForm.value).subscribe();
+  }
 }

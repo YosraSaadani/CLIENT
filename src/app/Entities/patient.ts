@@ -1,2 +1,2 @@
- class Patient {
+export class Patient {
 }

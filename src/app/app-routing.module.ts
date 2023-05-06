@@ -14,6 +14,7 @@ import { SelectedDoctorComponent } from './Components/patient/selected-doctor/se
 import { LoginComponent } from './Components/patient/login-patient/login/login.component';
 import { LogindoctorComponent } from './layout/logindoctor/logindoctor.component';
 import { RegisterComponent } from './Components/patient/login-patient/register/register.component';
+import { DoctorDashComponent } from './Components/doctor/doctor-dash/doctor-dash.component';
 
 const routes: Routes = [
   {
@@ -37,11 +38,17 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent, title: 'Register' },
   { path: '', pathMatch: 'full', redirectTo: 'patient' },
 
-  
   {
     path: 'doctor',
     component: DoctorComponent,
     title: 'Doctor',
+    children: [
+      {
+        path: '',
+        component: DoctorDashComponent,
+        title: 'Doctor Dashboard',
+      },
+    ],
   },
   {
     path: 'logindoctor',

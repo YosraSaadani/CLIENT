@@ -1,1 +1,101 @@
-<p>selected-doctor works!</p>
+<div class="container" >
+    <div class="row">
+       <!--Partie 1-->
+        <div class="col-md-5">
+            <div class="row">
+                <div class="col-12 bg-white p-0 px-3 py-3 mb-3">
+                    <div class="d-flex flex-row align-items-center">
+                        <img class="photo" [src]="currentDoctor.person.image"
+                              alt="">
+                              <div style="margin-left: 20px;">
+                        <p class="fw-bold h6 mt-0" style="font-size: 20px;">Dr. {{currentDoctor.person.firstName | titlecase}}  {{currentDoctor.person.lastName | titlecase}}</p>
+                        <p class="text-muted" style="font-size: 13px; margin-top: 10px; margin-bottom: 10px;">{{currentDoctor.specialty}} </p>
+                        <div class="d-flex " style="margin-left: 0px;">
+                            <div class="btn btn-primary follow me-2">call</div>
+                            <div class="btn btn-outline-primary message">Message</div>
+                        </div>
+                    </div>
+                    <p   style="font-size: 20px; font-weight: bold; margin-left: 100px;">{{currentDoctor.price}} DT</p>
+
+                        <!-- <p class="text-muted mb-3">{{currentDoctor.description}}</p> -->
+                        
+                    </div>
+                </div>
+
+
+
+                <!--Partie 2-->
+
+
+                <div class="col-12 bg-white p-0 px-2 pb-3 mb-3">
+                    <div class="d-flex flex-row justify-content-between  py-1 px-3"> 
+                        <p style="margin-left: 35px;" class="detailNom">Patients</p><p style="margin-left: 8px;" class="detailNom">Experiences</p><p style="margin-right: 35px;" class="detailNom">Ratings</p>
+                    </div>
+                    <div class="d-flex  flex-row justify-content-between  py-2 px-12" >
+                        <p class="boxInfo">+400</p><p class="boxInfo" >+5 year</p><p class="boxInfo">{{currentDoctor.rating}} </p>
+                    </div>
+                    <p class="calenderbox">Schedule</p>
+                    <div class="d-flex justify-content-between  py-2 px-3" style="margin-left: 0px !important; padding-left: 0px !important;">
+                        <p class="boxInfo" style="height: 60px; width: 90px; background-color: rgb(96, 163, 234); color: white !important;">26 <br> March</p>
+                        <p class="boxInfo" style="height: 60px; width: 90px;">27 <br> <span style="color:rgb(155, 155, 155)">March</span></p>
+                        <p class="boxInfo" style="height: 60px; width: 90px;">28 <br> <span style="color:rgb(155, 155, 155)">March</span> </p>
+                        <p class="boxInfo" style="height: 60px; width: 90px;">30<br> <span style="color:rgb(155, 155, 155)">March</span> </p>
+                        <p class="boxInfo" style="height: 60px; width: 90px;">31 <br> <span style="color:rgb(155, 155, 155)">March</span> </p>
+
+                    </div>
+                        <p class="calenderbox">Time</p>
+
+                    <div class="d-flex justify-content-between  py-2 px-3" style="margin-left: 0px !important; padding-left: 0px !important;">
+                        <p class="boxInfo" style="height: 60px; width: 90px;" >9:00</p>
+                        <p class="boxInfo" style="height: 60px; width: 90px;">10:00 </p>
+                        <p class="boxInfo" style="height: 60px; width: 90px;">11:00 </p>
+                        <p class="boxInfo" style="height: 60px; width: 90px; background-color: rgb(96, 163, 234); color:white">12:00 </p>
+                        <p class="boxInfo" style="height: 60px; width: 90px;background-color: white;">15:00 </p>
+
+                    </div>
+                    <div class="d-flex justify-content-between py-2 px-3">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        
+        <div class="col-md-7 ps-md-5">
+            <div class="row">
+                <!--Partie 3-->
+
+                <div class="col-12 bg-white px-3 mb-15 pb-2">
+                    <p class="calenderbox">Book an appointement</p>
+
+                    <div class="d-flex flex-row justify-content-between  py-3 px-3"> 
+                    </div> 
+                    <div class="d-flex flex-row justify-content-between  py-3 px-3"> 
+                    </div>   <div class="d-flex flex-row justify-content-between  py-3 px-3"> 
+                    </div>   <div class="d-flex flex-row justify-content-between  py-3 px-3"> 
+                    </div>   <div class="d-flex flex-row justify-content-between  py-3 px-3"> 
+                    </div>   <div class="d-flex flex-row justify-content-between  py-3 px-3"> 
+                    </div>  
+                </div>
+
+                <!--Partie 4-->
+                <div class="col-12 bg-white px-3 mb-15 pb-2">
+                    <p class="calenderbox">About doctor</p>
+
+                    <div style="color:rgb(186, 186, 186); width: 87%; margin-left: 20px; margin-top: 10px;">
+                        {{currentDoctor.description}}
+                    </div>
+                    <div>
+                    <p class="calenderbox">Location</p>
+                    <div style="color:rgb(186, 186, 186); width: 87%; margin-left: 20px; margin-top: 10px;">
+                        {{currentDoctor.location}}
+                    </div>     
+                  
+                    </div>
+                          
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

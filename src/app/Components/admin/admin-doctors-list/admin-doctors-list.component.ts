@@ -20,6 +20,12 @@ export class AdminDoctorsListComponent implements OnInit {
     })
   }
 
+  deleteDoctorById(id:string)
+  {
+    this.adminService.deleteDcotorById(id).subscribe(res=>{
+      console.log(res);
+    })
+  }
 
   ngOnInit(): void {
     this.getDoctors()

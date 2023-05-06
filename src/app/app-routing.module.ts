@@ -10,6 +10,8 @@ import { AdminComponent } from './layout/admin/admin.component';
 import { AdminDoctorsListComponent } from './Components/admin/admin-doctors-list/admin-doctors-list.component';
 import { AdminPatientsListComponent } from './Components/admin/admin-patients-list/admin-patients-list.component';
 import { DashboardComponent } from './Components/admin/dashboard/dashboard.component';
+import { SelectedDoctorComponent } from './Components/patient/selected-doctor/selected-doctor.component';
+
 const routes: Routes = [
   {
     path: 'patient',
@@ -20,6 +22,7 @@ const routes: Routes = [
       { path: 'list', component: DoctorsListComponent, title: 'Doctors List' },
       { path: 'aboutus', component: AboutusComponent, title: 'About us' },
       { path: 'contact', component: ContactComponent, title: 'Contact us' },
+      {path:'list/:id',component:SelectedDoctorComponent,title:'Selected Doctor'},
       { path: '', pathMatch: 'full', redirectTo: 'home' },
     ],
   },

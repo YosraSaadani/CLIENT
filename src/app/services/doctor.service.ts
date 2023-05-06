@@ -12,12 +12,18 @@ export class DoctorService {
     return this.http.get<Doctor[]>(url);
   }
 
+  getDoctorById(id:number):Observable<Doctor>
+ 
+  {
+ return this.http.get<Doctor>(url+id);
+  }
+ 
   getDoctorsBySpeciality(specialty: string): Observable<Doctor[]> {
-    return this.http.get<Doctor[]>(url + 'getBySpeciality/' + specialty);
+    return this.http.get<Doctor[]>(url +'getBySpeciality/'+ specialty);
   }
 
   getDoctorByName(name: string): Observable<Doctor[]> {
-    return this.http.get<Doctor[]>(url + 'getByName/' + name);
+    return this.http.get<Doctor[]>(url + 'getByFirstName/' + name);
   }
   
 }

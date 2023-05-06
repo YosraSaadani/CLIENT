@@ -2,10 +2,11 @@
 <div class="container-fluid pt-5">
     <div class="container">
         <div class="text-center mx-auto mb-5" style="max-width: 500px;">
-            <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">Find A Doctor</h5>
+            <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5" >Find A Doctor</h5>
             <h1 class="display-4 mb-4">Find A Healthcare Professionals</h1>
            
         </div>
+        <!--Search-->
         <div class="mx-auto" style="width: 100%; max-width: 600px;">
             <div class="input-group">
                 <select class="form-select border-primary w-25" style="height: 60px;">
@@ -29,14 +30,14 @@
         <div class="row g-5">
             
             <div class="col-lg-6 team-item" *ngFor="let d of doctorsList">
-                <a >
+                <a [routerLink]="['../../patient/list',d?._id]">
                 <div class="row g-0 bg-light rounded overflow-hidden">
-                    <div class="col-12 col-sm-5 h-100">
+                    <div class="col-6 col-sm-5 h-100">
                         <img class="img-fluid h-100" src="../../../../assets/img/team-1.jpg" style="object-fit: cover;">
                     </div>
-                    <div class="col-12 col-sm-7 h-100 d-flex flex-column">
-                        <div class="mt-auto p-4">
-                            <h3>{{d.person.firstName}} {{d.person.lastName}}</h3>
+                    <div class="col-3 col-sm-7 h-100 d-flex flex-column">
+                        <div class="mt-auto p-4 " >
+                            <h3 style="font-family: Comfortaa; font-weight: bold;">{{d.person.firstName | titlecase}} {{d.person.lastName | titlecase}}</h3>
                             <h6 class="fw-normal fst-italic text-primary mb-4">{{d.specialty}}</h6>
                             <div class="d-flex justify-content-between align-items-center">
                                 
@@ -51,6 +52,7 @@
                 </div>
                 </a>
             </div>
+            
             
             <div class="col-lg-6 team-item">
                 <div class="row g-0 bg-light rounded overflow-hidden">

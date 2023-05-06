@@ -13,6 +13,7 @@ import { DashboardComponent } from './Components/admin/dashboard/dashboard.compo
 import { SelectedDoctorComponent } from './Components/patient/selected-doctor/selected-doctor.component';
 import { LoginComponent } from './Components/patient/login-patient/login/login.component';
 import { LogindoctorComponent } from './layout/logindoctor/logindoctor.component';
+import { RegisterComponent } from './Components/patient/login-patient/register/register.component';
 
 const routes: Routes = [
   {
@@ -32,9 +33,11 @@ const routes: Routes = [
       { path: '', pathMatch: 'full', redirectTo: 'home' },
     ],
   },
+  { path: 'login', component: LoginComponent, title: 'Login' },
+  { path: 'register', component: RegisterComponent, title: 'Register' },
   { path: '', pathMatch: 'full', redirectTo: 'patient' },
 
-  { path: 'login', component: LoginComponent, title: 'Login' },
+  
   {
     path: 'doctor',
     component: DoctorComponent,

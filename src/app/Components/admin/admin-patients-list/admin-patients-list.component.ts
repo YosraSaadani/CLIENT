@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Patient } from 'src/app/Entities/patient';
 import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
@@ -9,18 +10,20 @@ import { AdminService } from 'src/app/services/admin.service';
 export class AdminPatientsListComponent implements OnInit {
 
   constructor(private adminService:AdminService) { }
-  patients=[];
+  patients:Patient[];
 
   getPatients()
   {
-    this.adminService.getDoctors().subscribe(res=>{
-      //this.patients=res;
+    this.adminService.getPatients().subscribe(res=>{
+      this.patients=res;
+      console.log(res);
+      
     })
   }
 
   deletePatientById(id:string)
   {
-    this.adminService.deleteDoctorById(id).subscribe(res=>{
+    this.adminService.deletePatientById(id).subscribe(res=>{
       console.log(res);
     })
     this.getPatients();

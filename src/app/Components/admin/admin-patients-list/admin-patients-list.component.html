@@ -11,25 +11,19 @@
                         <th scope="col">id</th>
                         <th scope="col">First Name</th>
                         <th scope="col">Last Name</th>
-                        <th scope="col">Speciality</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Rating</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Price</th>
-                        <td scope="col">Action</td>
+                        <th scope="col">Birth Date</th>
+                        <th scope="col">Gender</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let p of patients;index as i" class="text-dark" >
                         <td>{{i+1}}</td>
-                        <!--<td>{{p.person.firstName}}</td>
+                        <td>{{p.person.firstName}}</td>
                         <td>{{p.person.lastName}}</td>
-                        <td>{{p.specialty}}</td>
-                        <td>{{p.location}}</td>
-                        <td>{{p.rating}}</td>
-                        <td>{{p.person.email}}</td>
-                        <td>{{p.price}} Dinar</td>
-                        <td><a class="btn btn-sm btn-primary" (click)="deletePatientById(p._id)" >Delete</a></td>-->
+                        <td>{{p.person.birthDate}}</td>
+                        <td>{{p.person.gender}}</td>
+                        <td><a class="btn btn-sm btn-primary" (click)="deletePatientById(p._id)" >Delete</a></td>
                     </tr>
                 </tbody>
             </table>

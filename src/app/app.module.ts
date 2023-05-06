@@ -10,7 +10,7 @@ import { AboutusComponent } from './Components/patient/aboutus/aboutus.component
 import { ContactComponent } from './Components/patient/contact/contact.component';
 import {HttpClientModule} from "@angular/common/http";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SelectedDoctorComponent } from './Components/patient/selected-doctor/selected-doctor.component';
 import { AdminPatientsListComponent } from './Components/admin/admin-patients-list/admin-patients-list.component';
 import { AdminDoctorsListComponent } from './Components/admin/admin-doctors-list/admin-doctors-list.component';
@@ -37,7 +37,8 @@ import { DashboardComponent } from './Components/admin/dashboard/dashboard.compo
     LayoutModule,
     HttpClientModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

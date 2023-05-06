@@ -22,7 +22,7 @@
               ">
             <div class="card-body p-5 shadow-5 text-center">
               <h2 class="fw-bold mb-5">Sign up now</h2>
-              <form>
+              <form  [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                 <!-- 2 column grid layout with text inputs for the first and last names -->
                 <div class="row">
                   <div class="col-md-6 mb-4">
@@ -43,14 +43,14 @@
                  <div class="row">
                     <div class="col-md-6 mb-4">
                       <div class="form-outline">
-                        <input type="number" id="form3Example1" class="form-control" formControlName="height" />
-                        <label class="form-label" for="form3Example1">Height</label>
+                        <input type="number" id="form3Example3" class="form-control" formControlName="height" />
+                        <label class="form-label" for="form3Example3">Height</label>
                       </div>
                     </div>
                     <div class="col-md-6 mb-4">
                       <div class="form-outline">
-                        <input type="number" id="form3Example2" class="form-control" formControlName="weight" />
-                        <label class="form-label" for="form3Example2">Weight</label>
+                        <input type="number" id="form3Example4" class="form-control" formControlName="weight" />
+                        <label class="form-label" for="form3Example4">Weight</label>
                       </div>
                     </div>
                   </div>
@@ -60,17 +60,17 @@
                 <div class="row">
                     <div class="col-md-6 mb-4">
                       <div class="form-outline">
-                        <input type="text" id="form3Example1" class="form-control" formControlName="birthDate" />
-                        <label class="form-label" for="form3Example1">Birth Date</label>
+                        <input type="text" id="form3Example5" class="form-control" formControlName="birthDate" />
+                        <label class="form-label" for="form3Example5">Birth Date</label>
                       </div>
                     </div>
                     <div class="col-md-6 mb-4">
                       <div class="form-outline">
-                        <select formControlName="gender" id="form3Example1" class="form-control">
+                        <select formControlName="gender" id="form3Example6" class="form-control">
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                         </select>
-                        <label class="form-label" for="form3Example2">Gender</label>
+                        <label class="form-label" for="form3Example6">Gender</label>
                       </div>
                     </div>
                   </div>
@@ -78,8 +78,8 @@
   
                 <!-- Email input -->
                 <div class="form-outline mb-4">
-                  <input type="email" id="form3Example3" class="form-control" formControlName="email" />
-                  <label class="form-label" for="form3Example3">Email address</label>
+                  <input type="email" id="form3Example7" class="form-control" formControlName="email" />
+                  <label class="form-label" for="form3Example7">Email address</label>
                 </div>
 
                 
@@ -89,8 +89,8 @@
   
                 <!-- Password input -->
                 <div class="form-outline mb-4">
-                  <input type="password" id="form3Example4" class="form-control" />
-                  <label class="form-label" for="form3Example4">Password</label>
+                  <input type="password" id="form3Example8" class="form-control" />
+                  <label class="form-label" for="form3Example8">Password</label>
                 </div>
   
                

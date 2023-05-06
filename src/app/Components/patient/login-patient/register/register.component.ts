@@ -8,9 +8,20 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  registerForm!:FormGroup;
-  constructor(private fb:FormBuilder) { }
+  public registerForm!:FormGroup;
+  constructor(private fb:FormBuilder) {
 
+   }
+
+   
+    
+   
+
+   onSubmit()
+   {
+
+   }
+   
   ngOnInit(): void {
     this.registerForm = this.fb.nonNullable.group({
 
@@ -22,13 +33,9 @@ export class RegisterComponent implements OnInit {
       role:[''],
       email:[''],
       password:['']
-      
-
-      
-
-
-
     });
-  }
+   
+    console.log(this.registerForm)
+}
 
 }

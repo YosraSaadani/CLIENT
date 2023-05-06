@@ -17,6 +17,7 @@ import { AdminDoctorsListComponent } from './Components/admin/admin-doctors-list
 import { DashboardComponent } from './Components/admin/dashboard/dashboard.component';
 
 import { DoctorDashComponent } from './Components/doctor/doctor-dash/doctor-dash.component';
+import { LoginPatientModule } from './Components/patient/login-patient/login-patient.module';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { DoctorDashComponent } from './Components/doctor/doctor-dash/doctor-dash
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
+    LoginPatientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

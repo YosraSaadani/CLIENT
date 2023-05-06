@@ -18,6 +18,11 @@ export class DoctorsListComponent implements OnInit {
     this.doctorService.getDoctorByName(name).subscribe(data=>this.doctorsList=data);
   }
 
+  searchBySpec(name: string)
+  {
+    this.doctorService.getDoctorsBySpeciality(name).subscribe(data=>this.doctorsList=data);
+  }
+
 
   ngOnInit(): void {
     this.doctorService

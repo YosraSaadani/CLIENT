@@ -36,11 +36,13 @@
                     </div>
                     <p class="calenderbox">Schedule</p>
                     <div class="d-flex justify-content-between  py-2 px-3" style="margin-left: 0px !important; padding-left: 0px !important;">
-                        <p class="boxInfo" style="height: 60px; width: 90px; background-color: rgb(96, 163, 234); color: white !important;">26 <br> March</p>
+                        <p class="boxInfo" style="height: 60px; width: 90px; background-color: rgb(96, 163, 234); color: white !important;" 
+                        *ngFor="let d of dates">{{d}} </p>
+                        <!-- <p class="boxInfo" style="height: 60px; width: 90px; background-color: rgb(96, 163, 234); color: white !important;">26 <br> March</p>
                         <p class="boxInfo" style="height: 60px; width: 90px;">27 <br> <span style="color:rgb(155, 155, 155)">March</span></p>
                         <p class="boxInfo" style="height: 60px; width: 90px;">28 <br> <span style="color:rgb(155, 155, 155)">March</span> </p>
                         <p class="boxInfo" style="height: 60px; width: 90px;">30<br> <span style="color:rgb(155, 155, 155)">March</span> </p>
-                        <p class="boxInfo" style="height: 60px; width: 90px;">31 <br> <span style="color:rgb(155, 155, 155)">March</span> </p>
+                        <p class="boxInfo" style="height: 60px; width: 90px;">31 <br> <span style="color:rgb(155, 155, 155)">March</span> </p> -->
 
                     </div>
                         <p class="calenderbox">Time</p>

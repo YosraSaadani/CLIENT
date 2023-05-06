@@ -17,6 +17,7 @@ import { AdminDoctorsListComponent } from './Components/admin/admin-doctors-list
 import { DashboardComponent } from './Components/admin/dashboard/dashboard.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

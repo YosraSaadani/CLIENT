@@ -22,9 +22,10 @@ export class AdminDoctorsListComponent implements OnInit {
 
   deleteDoctorById(id:string)
   {
-    this.adminService.deleteDcotorById(id).subscribe(res=>{
+    this.adminService.deleteDoctorById(id).subscribe(res=>{
       console.log(res);
     })
+    this.getDoctors();
   }
 
   ngOnInit(): void {

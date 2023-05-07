@@ -18,4 +18,8 @@ export class PatientService {
   loginPatient(patient:any):Observable<any> {
     return this.http.post<any>(url+'login',patient);
   }
+
+  getPatientById(id:string):Observable<Patient> {
+    return this.http.get<Patient>(url+id);
+  }
 }

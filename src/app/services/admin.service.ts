@@ -32,4 +32,9 @@ export class AdminService {
     return this.http.delete<Patient>(url2+id);
   }
 
+  weatherapi()
+  {
+    return this.http.get("http://api.weatherapi.com/v1/current.json?key=113cd87d435b4d4c98e125558230705&q=Tunis");
+  }
+
 }

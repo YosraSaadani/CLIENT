@@ -76,7 +76,10 @@ const routes: Routes = [
         component: AdminPatientsListComponent,
         title: 'Patients List',
       },
-      { path: 'dahsbaord', component: DashboardComponent, title: 'DashBoard' },
+      { path: 'dashboard', 
+      component: DashboardComponent,
+       title: 'DashBoard' },
+       { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
     ],
   },
 ];

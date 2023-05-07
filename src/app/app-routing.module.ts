@@ -15,6 +15,7 @@ import { LoginComponent } from './Components/patient/login-patient/login/login.c
 import { LogindoctorComponent } from './layout/logindoctor/logindoctor.component';
 import { RegisterComponent } from './Components/patient/login-patient/register/register.component';
 import { DoctorDashComponent } from './Components/doctor/doctor-dash/doctor-dash.component';
+import { AdminLoginComponent } from './Components/admin/admin-login/admin-login.component';
 
 const routes: Routes = [
   {
@@ -54,6 +55,11 @@ const routes: Routes = [
     path: 'logindoctor',
     component: LogindoctorComponent,
     title: 'Login Doctor',
+  },
+  {
+    path:'loginadmin',
+    component:AdminLoginComponent,
+    title :'Login Admin'
   },
   {
     path: 'admin',

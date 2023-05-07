@@ -1,11 +1,11 @@
 
- <div class="container-fluid pt-4 px-4">
-    <div class="bg-light text-center rounded p-4">
+ <div class="container-fluid pt-4 px-4 opaci">
+    <div class="bg-light text-center rounded p-4" style="background-color: #F7F7F7;box-shadow:0 4px 8px 0 rgba(95, 92, 92, 0.2), 0 6px 20px 0 rgba(95, 92, 92, 0.2);">
         <div class="d-flex align-items-center justify-content-between mb-4">
             <h6 class="mb-0">Doctors List</h6>
         </div>
-        <div class="table-responsive">
-            <table class="table text-start align-middle table-bordered table-hover mb-0" >
+        <div class="table-responsive rounded">
+            <table class="table table-bordered table-hover mb-0" >
                 <thead>
                     <tr class="text-dark">
                         <th scope="col">id</th>
@@ -29,7 +29,7 @@
                         <td>{{d.rating}}</td>
                         <td>{{d.person.email}}</td>
                         <td>{{d.price}} Dinar</td>
-                        <td><a class="btn btn-sm btn-primary" (click)="deleteDoctorById(d._id)" >Delete</a></td>
+                        <td><a class="btn btn-sm btn-primary" style="color:white !important" (click)="deleteDoctorById(d._id)" >Delete</a></td>
                     </tr>
                 </tbody>
             </table>

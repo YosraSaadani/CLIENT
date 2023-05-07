@@ -1,80 +1,63 @@
-
-  
-
-
 <body>
   <!--  Body Wrapper -->
-  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+  <div class="page-wrapper opaci" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
     <!-- Sidebar Start -->
-    <aside class="left-sidebar">
+    <aside class="left-sidebar" >
       <!-- Sidebar scroll-->
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
-          <a href="./index.html" class="text-nowrap logo-img">
-            <img src="assets/admindashb/images/logos/dark-logo.svg" width="180" alt="" />
+          <a href="./index.html" class="text-nowrap logo-img" style="font-size: 30px;margin-left: 35px;font-weight:bold;text-decoration: none;color:black">
+            CARECOVE 
           </a>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-8"></i>
           </div>
         </div>
         <!-- Sidebar navigation-->
+        <div style="position:relative;right: 20px;">
         <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
           <ul id="sidebarnav">
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">Home</span>
             </li>
-            <li class="sidebar-item s">
-              <span class="sidebar-link" routerLink="dahsbaord" aria-expanded="false">
+            <li class="sidebar-item hovs"  >
+              <span class="sidebar-link" style="color:#000000;font-weight: 400;" routerLink="dahsbaord" routerLinkActive="actif" aria-expanded="true">
                 <span>
                   <i class="ti ti-layout-dashboard"></i>
                 </span>
-                <span class="hide-menu">Dashboard</span>
+                <span class="hide-menu" >Dashboard</span>
             </span>
             </li>
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">UI COMPONENTS</span>
             </li>
-            <li class="sidebar-item">
-              <span class="sidebar-link hovvv" routerLink="doctorsList" aria-expanded="false">
+            <li class="sidebar-item hovs">
+              <span class="sidebar-link" style="color:#000000;font-weight: 400;" routerLinkActive="actif" routerLink="doctorsList" aria-expanded="false">
                 <span>
                   <i class="ti ti-article"></i>
                 </span>
                 <span class="hide-menu">Doctors List</span>
               </span>
             </li>
-            <li class="sidebar-item">
-              <span class="sidebar-link" routerLink="patientsList" aria-expanded="false">
+            <li class="sidebar-item hovs">
+              <span class="sidebar-link" routerLink="patientsList" routerLinkActive="actif" style="color:#000000;font-weight: 400;" aria-expanded="false">
                 <span>
                   <i class="ti ti-alert-circle"></i>
                 </span>
                 <span class="hide-menu">Patients List</span>
             </span>
             </li>
-            <li class="sidebar-item">
-              <span class="sidebar-link" href="./ui-card.html" aria-expanded="false">
-                <span>
-                  <i class="ti ti-cards"></i>
-                </span>
-                <span class="hide-menu">Card</span>
-            </span>
-            </li>
-            <li class="sidebar-item">
-              <span class="sidebar-link" href="./ui-forms.html" aria-expanded="false">
-                <span>
-                  <i class="ti ti-file-description"></i>
-                </span>
-                <span class="hide-menu">Forms</span>
-            </span>
-            </li>
+            
+          
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">AUTH</span>
             </li>
             <li class="sidebar-item">
-              <span class="sidebar-link" href="./authentication-login.html" aria-expanded="false">
+              <span class="sidebar-link" style="color:#000000;font-weight: 400;" href="./authentication-login.html" aria-expanded="false">
                 <span>
                   <i class="ti ti-login"></i>
                 </span>
@@ -82,7 +65,7 @@
             </span>
             </li>
             <li class="sidebar-item">
-              <span class="sidebar-link" href="./authentication-register.html" aria-expanded="false">
+              <span class="sidebar-link" style="color:#000000;font-weight: 400;" href="./authentication-register.html" aria-expanded="false">
                 <span>
                   <i class="ti ti-user-plus"></i>
                 </span>
@@ -94,7 +77,7 @@
               <span class="hide-menu">EXTRA</span>
             </li>
             <li class="sidebar-item">
-              <span class="sidebar-link" href="./sample-page.html" aria-expanded="false">
+              <span style="color:#000000;font-weight: 400;" class="sidebar-link" href="./sample-page.html" aria-expanded="false">
                 <span>
                   <i class="ti ti-aperture"></i>
                 </span>
@@ -104,6 +87,7 @@
           </ul>
           
         </nav>
+        </div>
         <!-- End Sidebar navigation -->
       </div>
       <!-- End Sidebar scroll-->
@@ -121,16 +105,19 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link nav-icon-hover" href="javascript:void(0)">
+              <a class="nav-link" href="javascript:void(0)">
                 <i class="ti ti-bell-ringing"></i>
                 <div class="notification bg-primary rounded-circle"></div>
               </a>
+            </li>
+            <li class="nav-item" style="margin-left:380px !important">
+              <span class="nav-link" style="font-size: 15px !important;font-weight: 600 !important;"> <img [src]="weather?.current?.condition.icon" /> {{weather?.current?.temp_c}}C {{weather?.current?.condition.text}} </span>
             </li>
           </ul>
           <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
               <li class="nav-item dropdown">
-                <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
+                <a class="nav-link" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
                   aria-expanded="false">
                   <img src="assets/admindashb/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
                 </a>
@@ -157,14 +144,13 @@
         </nav>
       </header>
       <!--  Header End -->
-      <div class="container-fluid">
+      <div class="container-fluid" >
         <div class="py-6 px-6 text-center">
             <router-outlet></router-outlet>
             <br>
-          <p class="mb-0 fs-4">Design and Developed by <a href="https://adminmart.com/" target="_blank" class="pe-1 text-primary text-decoration-underline">AdminMart.com</a> Distributed by <a href="https://themewagon.com">ThemeWagon</a></p>
+          <p style="font-weight: bold;" class="mb-0 fs-4">Designed and Developed by <a href="https://adminmart.com/" target="_blank" class="pe-1 text-primary text-decoration-underline">CARECOVE</a> Distributed by <a href="https://themewagon.com">US</a></p>
         </div>
       </div>
     </div>
   </div>
-  
 </body>

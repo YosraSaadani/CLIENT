@@ -2,7 +2,7 @@
     background: #2DCFFE;
     color: white !important;
     border-radius: 5px;
-    transition: .1s;
+    transition: .2s;
     cursor: pointer;
 }
 .actif{
@@ -18,5 +18,11 @@
 }
 .opaci{animation: ani 0.7s;}
 
+.sidebar-link:hover{
+    background-color: #2DCFFE !important;
+    color:white !important;
+    font-weight: bold !important;
+    transition: .2s;
+}
 
 

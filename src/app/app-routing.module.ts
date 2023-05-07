@@ -57,8 +57,13 @@ const routes: Routes = [
     title: 'Login Doctor',
   },
   {
+    path:'loginadmin',
+    component:AdminLoginComponent,
+    title :'Login Admin'
+  },
+  {
     path: 'admin',
-    component: AdminLoginComponent,
+    component: AdminComponent,
     title: 'Admin',
     children: [
       {

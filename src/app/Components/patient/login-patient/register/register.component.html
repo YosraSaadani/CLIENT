@@ -22,7 +22,7 @@
               ">
             <div class="card-body p-5 shadow-5 text-center">
               <h2 class="fw-bold mb-5">Sign up now</h2>
-              <form [formGroup]="registerForm">
+              <form [formGroup]="registerForm" (ngSubmit)="register()">
                 <!-- 2 column grid layout with text inputs for the first and last names -->
                 <div class="row">
                   <div class="col-md-6 mb-4">
@@ -39,29 +39,13 @@
                   </div>
                 </div>
 
-                 <!-- height and weight -->
-                 <div class="row">
-                    <div class="col-md-6 mb-4">
-                      <div class="form-outline">
-                        <input type="number" id="form3Example1" class="form-control" formControlName="height" />
-                        <label class="form-label" for="form3Example1">Height</label>
-                      </div>
-                    </div>
-                    <div class="col-md-6 mb-4">
-                      <div class="form-outline">
-                        <input type="number" id="form3Example2" class="form-control" formControlName="weight" />
-                        <label class="form-label" for="form3Example2">Weight</label>
-                      </div>
-                    </div>
-                  </div>
-
 
                   <!-- birthdate  and gender input -->
                 <div class="row">
                     <div class="col-md-6 mb-4">
                       <div class="form-outline">
-                        <input type="text" id="form3Example1" class="form-control" formControlName="birthDate" />
-                        <label class="form-label" for="form3Example1">Birth Date</label>
+                        <input type="date" id="form3Example1" class="form-control" formControlName="birthDate" />
+                        <label class="form-label" for="form3Example1">Birthdate</label>
                       </div>
                     </div>
                     <div class="col-md-6 mb-4">
@@ -74,24 +58,68 @@
                       </div>
                     </div>
                   </div>
-                
-  
-                <!-- Email input -->
-                <div class="form-outline mb-4">
-                  <input type="email" id="form3Example3" class="form-control" formControlName="email" />
+
+
+                  <!-- height and weight -->
+                 <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input type="number" id="form3Example1" class="form-control" min="0" formControlName="height" />
+                      <label class="form-label" for="form3Example1">Height (cm)</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input type="number" id="form3Example2" min="0" class="form-control" formControlName="weight" />
+                      <label class="form-label" for="form3Example2">Weight</label>
+                    </div>
+                  </div>
+                </div>
+
+
+                 <!-- allergies  and bloodtype input -->
+                 <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input type="text" id="form3Example1" class="form-control" formControlName="allergies" />
+                      <label class="form-label" for="form3Example1">Allergies</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <select formControlName="bloodType" id="form3Example6" class="form-control">
+                          <option value="A+">A+</option>
+                          <option value="B+">B+</option>
+                          <option value="AB+">AB+</option>
+                          <option value="O+">O+</option>
+                          <option value="A-">A-</option>
+                          <option value="B-">B-</option>
+                          <option value="AB-">AB-</option>
+                          <option value="O-">O-</option>
+                      </select>
+                      <label class="form-label" for="form3Example6">Blood Type</label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- email and password  input -->
+              <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input type="email" id="form3Example3" class="form-control" formControlName="email" />
                   <label class="form-label" for="form3Example3">Email address</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input type="password" id="form3Example4" class="form-control" formControlName="password" />
+                  <label class="form-label" for="form3Example4">Password</label>
+                    </div>
+                  </div>
                 </div>
-
-                
-
-
                 
   
-                <!-- Password input -->
-                <div class="form-outline mb-4">
-                  <input type="password" id="form3Example4" class="form-control" />
-                  <label class="form-label" for="form3Example4">Password</label>
-                </div>
+                
   
                
   
@@ -103,7 +131,7 @@
                 <!-- Register buttons -->
                 <div class="text-center">
                   Already have an account?
-                  <a routerLink="login" href="/login" >Sign in</a>
+                  <a routerLink="/login" style="text-decoration: underline;color:blue;cursor: pointer;"  >Sign in</a>
                   
                 </div>
               </form>

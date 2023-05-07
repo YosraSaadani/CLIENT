@@ -19,7 +19,7 @@ import { AdminLoginComponent } from './Components/admin/admin-login/admin-login.
 
 const routes: Routes = [
   {
-    path: 'patient',
+    path: '',
     component: PatientComponent,
     title: 'Patient',
     children: [
@@ -37,7 +37,7 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent, title: 'Login' },
   { path: 'register', component: RegisterComponent, title: 'Register' },
-  { path: '', pathMatch: 'full', redirectTo: 'patient' },
+  
 
   {
     path: 'doctor',
@@ -76,7 +76,10 @@ const routes: Routes = [
         component: AdminPatientsListComponent,
         title: 'Patients List',
       },
-      { path: 'dahsbaord', component: DashboardComponent, title: 'DashBoard' },
+      { path: 'dashboard', 
+      component: DashboardComponent,
+       title: 'DashBoard' },
+       { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
     ],
   },
 ];

@@ -30,7 +30,7 @@
         <div class="row g-5">
             
             <div class="col-lg-6 team-item" *ngFor="let d of doctorsList">
-                <a [routerLink]="['../../patient/list',d?._id]">
+                <a [routerLink]="['/list',d?._id]">
                 <div class="row g-0 bg-light rounded overflow-hidden">
                     <div class="col-6 col-sm-5 h-100">
                         <img class="img-fluid h-100" src="../../../../assets/img/team-1.jpg" style="object-fit: cover;">

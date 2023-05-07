@@ -37,7 +37,7 @@
 <div class="container-fluid sticky-top bg-white shadow-sm">
     <div class="container">
         <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
-            <a href="" class="navbar-brand">
+            <a routerLink="/home" class="navbar-brand">
                 <h1 class="m-0 text-uppercase text-primary"><i class="fa fa-clinic-medical me-2"></i>Carecove</h1>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -48,19 +48,80 @@
                     <a href="" class="nav-item nav-link active">Home</a>
                     <a routerLink="aboutus" class="nav-item nav-link">About</a>
                     <a href="" class="nav-item nav-link">Service</a>
-                    <a href="" class="nav-item nav-link">Pricing</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                        <div class="dropdown-menu m-0">
-                            <a href="" class="dropdown-item">Blog Grid</a>
-                            <a href="" class="dropdown-item">Blog Detail</a>
-                            <a href="" class="dropdown-item">The Team</a>
-                            <a href="" class="dropdown-item">Testimonial</a>
-                            <a href="" class="dropdown-item">Appointment</a>
-                            <a href="" class="dropdown-item">Search</a>
-                        </div>
-                    </div>
+
+
                     <a routerLink="contact" class="nav-item nav-link">Contact</a>
+                    <div class="navbar-collapse justify-content-end px-0" id="navbarNav" *ngIf="showPatientLogo">
+                        <ul class="navbar-nav flex-row align-items-center ms-auto">
+                            <!-- Place this tag where you want the button to render. -->
+                
+                            <!-- User -->
+                            <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                              <a
+                                class="nav-link dropdown-toggle hide-arrow"
+                                href="javascript:void(0);"
+                                data-bs-toggle="dropdown"
+                              >
+                                <div class="avatar avatar-online">
+                                  <img
+                                    [src]="patient.person.image"
+                                    alt
+                                    class="w-px-40 h-auto rounded-circle"
+                                  />
+                                </div>
+                              </a>
+                
+                              <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                  <a class="dropdown-item" >
+                                    <div class="d-flex">
+                                      <div class="flex-shrink-0 me-3">
+                                        <div class="avatar avatar-online">
+                                          <img
+                                          [src]="patient.person.image"
+                                            alt
+                                            class="w-px-40 h-auto rounded-circle"
+                                          />
+                                        </div>
+                                      </div>
+                                      <div class="flex-grow-1">
+                                        <span class="fw-semibold d-block">
+                                            {{patient.person.firstName +' '+patient.person.lastName}}</span>
+                                        <small class="text-muted">Amount : {{patient.amount}} DT</small>
+                                      </div>
+                                    </div>
+                                  </a>
+                                </li>
+                                <li>
+                                  <div class="dropdown-divider"></div>
+                                </li>
+                                <li>
+                                  <a class="dropdown-item" href="#">
+                                    <i class="bx bx-user me-2"></i>
+                                    <span class="align-middle">My Profile</span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a class="dropdown-item" href="#">
+                                    <i class="bx bx-cog me-2"></i>
+                                    <span class="align-middle">Change password</span>
+                                  </a>
+                                </li>
+                                
+                                <li>
+                                  <div class="dropdown-divider"></div>
+                                </li>
+                                <li (click)="disconnect()">
+                                  <a class="dropdown-item">
+                                    <i class="bx bx-power-off me-2"></i>
+                                    <span class="align-middle">Log Out</span>
+                                  </a>
+                                </li>
+                              </ul>
+                              </li></ul>
+                              
+                      </div>
+                      <a routerLink="/login" class=" nav-link " *ngIf="showSignin">Sign in</a>
                 </div>
             </div>
         </nav>

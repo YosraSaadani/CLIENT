@@ -36,28 +36,27 @@
                     </div>
                     <p class="calenderbox">Schedule</p>
                     
-                    <div class="d-flex justify-content-between py-2 px-3" style="margin-left: 0px !important; padding-left: 0px !important;">
-                        <p class="boxInfo" 
-                          [ngStyle]="{'background-color': isDateAvailable(c) ? 'white' : 'rgb(224, 224, 224)','color':isDateAvailable(c) ? 'balck' : 'rgb(179, 178, 178)'}" 
-                          style="height: 60px; width: 90px; cursor: pointer;" 
-                          *ngFor="let c of calenders" 
-                          (click)="showTime(c)">
-                          {{c.date | date:"dd"}} <br> {{c.date | date:'MMMM'}}  
-                        </p>
-                      </div>
-                
+                    <div class="d-flex justify-content-between  py-2 px-3" style="margin-left: 0px !important; padding-left: 0px !important;">
+                        <p class="boxInfo av" style="height: 60px; width: 90px; cursor: pointer;" 
+                        (click)="onBoxClick($event)"
+                        [ngStyle]="{'background-color': (!isDateAvailable(c)) ? 'rgb(224, 224, 224)' : '','color':(!isDateAvailable(c)) ? 'rgb(179, 178, 178)' : ''}"
+
+                        *ngFor="let c of calenders" (click)="showTime(c)">
+                        <ng-container ></ng-container>
+
+                        {{c.date | date:"dd"}} <br> {{c.date | date:'MMMM'}}  </p>
+
                         <!-- <p class="boxInfo" style="height: 60px; width: 90px; background-color: rgb(96, 163, 234); color: white !important;">26 <br> March</p>
                         <p class="boxInfo" style="height: 60px; width: 90px;">27 <br> <span style="color:rgb(155, 155, 155)">March</span></p>
                         <p class="boxInfo" style="height: 60px; width: 90px;">28 <br> <span style="color:rgb(155, 155, 155)">March</span> </p>
                         <p class="boxInfo" style="height: 60px; width: 90px;">30<br> <span style="color:rgb(155, 155, 155)">March</span> </p>
                         <p class="boxInfo" style="height: 60px; width: 90px;">31 <br> <span style="color:rgb(155, 155, 155)">March</span> </p> -->
 
-
                     </div>
                     <div *ngIf="testTime">
                         <p class="calenderbox">Time</p>
 
-                    <div style="margin-left: 0px !important; padding-left: 0px !important;  
+                    <div  style="margin-left: 0px !important; padding-left: 0px !important; 
                     padding-top: 2rem;
                     margin: 0 2rem;
                     display: grid;
@@ -84,7 +83,7 @@
         </div>
 
 
-        <div class="row"  >
+        
         <div class="col-md-7 ps-md-5">
             <div class="row">
                 <!--Partie 3-->
@@ -121,6 +120,4 @@
             </div>
         </div>
     </div>
-    </div>
-
-    
+</div>

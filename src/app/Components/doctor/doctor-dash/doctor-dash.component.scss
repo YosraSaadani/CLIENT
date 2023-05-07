@@ -5,3 +5,27 @@
 .card {
   font-family: var(--bs-body-font-family);
 }
+.carousel-img {
+  height: 23rem !important;
+  opacity: 0.8;
+}
+.carousel-item {
+  border-radius: 0 0 0.1rem 0.1rem;
+}
+.button-primary {
+  background-color: #696cff !important;
+  border-color: #696cff !important;
+}
+.avatar {
+  border-radius: 50% !important;
+}
+.timee {
+  background-color: rgba(255, 200, 210, 0.601);
+  color: rgba(250, 92, 119, 0.904);
+  font-weight: 500;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
+}
+.dateee {
+  color: rgba(250, 92, 119, 0.904) !important;
+}

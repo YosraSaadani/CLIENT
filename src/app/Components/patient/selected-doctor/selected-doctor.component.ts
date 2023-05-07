@@ -23,6 +23,7 @@ calenders!:Calendrier[]
     this.id=this.activatedRoute.snapshot.params['id'];
     this.DoctorService.getDoctorById(this.id).subscribe(data=>{this.currentDoctor=data;console.log(this.currentDoctor)});
     this.dates = this.generateDates();
+    this.serviceCalendrier.getCalenderByDoctorId(this.id).subscribe(data=>this.calenders=data);
   }
 
   generateDates(): string[] {

@@ -28,4 +28,13 @@ export class AppointmentService {
       headers: reqHeader,
     });
   }
+  getSortedAppointments(): Observable<any[]> {
+    var reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
+    });
+    return this.http.get<Appointment[]>(`${URL}/doctor/getAllMyRV`, {
+      headers: reqHeader,
+    });
+  }
 }

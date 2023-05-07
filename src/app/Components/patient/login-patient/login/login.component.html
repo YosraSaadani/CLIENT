@@ -22,7 +22,7 @@
               ">
             <div class="card-body p-5 shadow-5 text-center">
               <h2 class="fw-bold mb-5">Sign in</h2>
-              <form  (ngSubmit)="login()">
+              <form [formGroup]="loginForm" (ngSubmit)="login()">
                 <!-- 2 column grid layout with text inputs for the first and last names -->
                 
   
@@ -48,7 +48,7 @@
                 <!-- Register buttons -->
                 <div class="text-center">
                   Dont have an account?
-                  <a routerLink="/register" href="/register">Sign up</a>
+                  <a routerLink="/register" style="text-decoration: underline;color:blue;cursor: pointer;">Sign up</a>
                   
                 </div>
               </form>

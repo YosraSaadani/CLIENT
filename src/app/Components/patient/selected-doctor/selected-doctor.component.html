@@ -5,17 +5,17 @@
             <div class="row">
                 <div class="col-12 bg-white p-0 px-3 py-3 mb-3">
                     <div class="d-flex flex-row align-items-center">
-                        <img class="photo" [src]="currentDoctor.person.image"
+                        <img class="photo" [src]="currentDoctorPerson?.image"
                               alt="">
                               <div style="margin-left: 20px;">
-                        <p class="fw-bold h6 mt-0" style="font-size: 20px;">Dr. {{currentDoctor.person.firstName | titlecase}}  {{currentDoctor.person.lastName | titlecase}}</p>
-                        <p class="text-muted" style="font-size: 13px; margin-top: 10px; margin-bottom: 10px;">{{currentDoctor.specialty}} </p>
+                        <p class="fw-bold h6 mt-0" style="font-size: 20px;">Dr. {{currentDoctorPerson?.firstName | titlecase}}  {{currentDoctorPerson?.lastName | titlecase}}</p>
+                        <p class="text-muted" style="font-size: 13px; margin-top: 10px; margin-bottom: 10px;">{{currentDoctor?.specialty}} </p>
                         <div class="d-flex " style="margin-left: 0px;">
                             <div class="btn btn-primary follow me-2">call</div>
                             <div class="btn btn-outline-primary message">Message</div>
                         </div>
                     </div>
-                    <p   style="font-size: 20px; font-weight: bold; margin-left: 100px;">{{currentDoctor.price}} DT</p>
+                    <p   style="font-size: 20px; font-weight: bold; margin-left: 100px;">{{currentDoctor?.price}} DT</p>
 
                         <!-- <p class="text-muted mb-3">{{currentDoctor.description}}</p> -->
                         
@@ -32,12 +32,20 @@
                         <p style="margin-left: 35px;" class="detailNom">Patients</p><p style="margin-left: 8px;" class="detailNom">Experiences</p><p style="margin-right: 35px;" class="detailNom">Ratings</p>
                     </div>
                     <div class="d-flex  flex-row justify-content-between  py-2 px-12" >
-                        <p class="boxInfo">+400</p><p class="boxInfo" >+5 year</p><p class="boxInfo">{{currentDoctor.rating}} </p>
+                        <p class="boxInfo">+400</p><p class="boxInfo" >+5 year</p><p class="boxInfo">{{currentDoctor?.rating}} </p>
                     </div>
                     <p class="calenderbox">Schedule</p>
+                    
                     <div class="d-flex justify-content-between  py-2 px-3" style="margin-left: 0px !important; padding-left: 0px !important;">
-                        <p class="boxInfo" style="height: 60px; width: 90px; background-color: rgb(96, 163, 234); color: white !important;" 
-                        *ngFor="let d of dates">{{d}} </p>
+                        <p class="boxInfo av" style="height: 60px; width: 90px; cursor: pointer;" 
+                        (click)="onBoxClick($event)"
+                        [ngStyle]="{'background-color': (!isDateAvailable(c)) ? 'rgb(224, 224, 224)' : '','color':(!isDateAvailable(c)) ? 'rgb(179, 178, 178)' : ''}"
+
+                        *ngFor="let c of calenders" (click)="showTime(c)">
+                        <ng-container ></ng-container>
+
+                        {{c.date | date:"dd"}} <br> {{c.date | date:'MMMM'}}  </p>
+
                         <!-- <p class="boxInfo" style="height: 60px; width: 90px; background-color: rgb(96, 163, 234); color: white !important;">26 <br> March</p>
                         <p class="boxInfo" style="height: 60px; width: 90px;">27 <br> <span style="color:rgb(155, 155, 155)">March</span></p>
                         <p class="boxInfo" style="height: 60px; width: 90px;">28 <br> <span style="color:rgb(155, 155, 155)">March</span> </p>
@@ -45,15 +53,27 @@
                         <p class="boxInfo" style="height: 60px; width: 90px;">31 <br> <span style="color:rgb(155, 155, 155)">March</span> </p> -->
 
                     </div>
+                    <div *ngIf="testTime">
                         <p class="calenderbox">Time</p>
 
-                    <div class="d-flex justify-content-between  py-2 px-3" style="margin-left: 0px !important; padding-left: 0px !important;">
-                        <p class="boxInfo" style="height: 60px; width: 90px;" >9:00</p>
-                        <p class="boxInfo" style="height: 60px; width: 90px;">10:00 </p>
-                        <p class="boxInfo" style="height: 60px; width: 90px;">11:00 </p>
-                        <p class="boxInfo" style="height: 60px; width: 90px; background-color: rgb(96, 163, 234); color:white">12:00 </p>
-                        <p class="boxInfo" style="height: 60px; width: 90px;background-color: white;">15:00 </p>
-
+                    <div  style="margin-left: 0px !important; padding-left: 0px !important; 
+                    padding-top: 2rem;
+                    margin: 0 2rem;
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 35px; ">
+                        <div *ngFor="let c of calender.availability">
+                            <span class="boxInfo" style="padding-right:33.3px; padding-left: 33.3px; cursor: pointer; height: 60px;" 
+                            [style.pointer-events]="!c.isAvailable ? 'none' : null"                
+                            [ngClass]="{'av':c.isAvailable ,'notAv':!c.isAvailable, 'selectedC': selectedBox === box }"
+                            (click)="onBoxClick($event)"
+                            #box>
+                            {{c.time}}:00
+                          </span>
+                        </div>
+                        
+                        
+                    </div>
                     </div>
                     <div class="d-flex justify-content-between py-2 px-3">
                         
@@ -86,12 +106,12 @@
                     <p class="calenderbox">About doctor</p>
 
                     <div style="color:rgb(186, 186, 186); width: 87%; margin-left: 20px; margin-top: 10px;">
-                        {{currentDoctor.description}}
+                        {{currentDoctor?.description}}
                     </div>
                     <div>
                     <p class="calenderbox">Location</p>
                     <div style="color:rgb(186, 186, 186); width: 87%; margin-left: 20px; margin-top: 10px;">
-                        {{currentDoctor.location}}
+                        {{currentDoctor?.location}}
                     </div>     
                   
                     </div>

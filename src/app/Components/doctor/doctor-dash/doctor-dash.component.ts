@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ErrorHandler, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Appointment } from 'src/app/Entities/appointment';
 import { Doctor } from 'src/app/Entities/doctor';
@@ -13,6 +13,7 @@ import { AuthService } from 'src/app/services/AuthService/auth.service';
 export class DoctorDashComponent implements OnInit {
   Doct!: Doctor;
   RVs!: Appointment[];
+  RVsToday: Appointment[] = [];
   constructor(
     private router: Router,
     private auth: AuthService,
@@ -26,5 +27,14 @@ export class DoctorDashComponent implements OnInit {
     this.rvs.getAppointmentsThisMonth().subscribe((data) => {
       this.RVs = data;
     });
+    this.rvs.getAppointmentsToday().subscribe(
+      (data) => {
+        this.RVsToday = data;
+        console.log(this.RVsToday);
+      },
+      (error: ErrorHandler) => {
+        console.log(error);
+      }
+    );
   }
 }

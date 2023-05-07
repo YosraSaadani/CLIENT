@@ -19,4 +19,13 @@ export class AppointmentService {
       headers: reqHeader,
     });
   }
+  getAppointmentsToday(): Observable<Appointment[]> {
+    var reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
+    });
+    return this.http.get<Appointment[]>(`${URL}/doctor/getMyRVToday`, {
+      headers: reqHeader,
+    });
+  }
 }

@@ -4,6 +4,7 @@ import { Appointment } from 'src/app/Entities/appointment';
 import { Doctor } from 'src/app/Entities/doctor';
 import { AppointmentService } from 'src/app/services/AppointmentService/appointment.service';
 import { AuthService } from 'src/app/services/AuthService/auth.service';
+import { DoctorService } from 'src/app/services/doctor.service';
 
 @Component({
   selector: 'app-doctor-dash',
@@ -14,10 +15,13 @@ export class DoctorDashComponent implements OnInit {
   Doct!: Doctor;
   RVs!: Appointment[];
   RVsToday: Appointment[] = [];
+  articles: any[] = [];
+  AllApoi: any[] = [];
   constructor(
     private router: Router,
     private auth: AuthService,
-    private rvs: AppointmentService
+    private rvs: AppointmentService,
+    private doccS: DoctorService
   ) {}
 
   ngOnInit(): void {
@@ -36,5 +40,12 @@ export class DoctorDashComponent implements OnInit {
         console.log(error);
       }
     );
+    this.doccS.getMedicalNews().subscribe((data) => {
+      this.articles = data.articles.slice(0, 10);
+    });
+    this.rvs.getSortedAppointments().subscribe((data) => {
+      this.AllApoi = data.slice(0, 4);
+      console.log(this.AllApoi);
+    });
   }
 }

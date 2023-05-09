@@ -1,24 +1,31 @@
 <div class="container" >
-    <div class="row">
+<div class="row" >
+    <div class="d-flex flex-row align-items-center">
+        <img class="photo" [src]="currentDoctorPerson?.image" width="250px" height="250px"
+              alt="">
+              <div style="margin-left: 20px;">
+        <p class="fw-bold h6 mt-0" style="font-size: 23px;">Dr. {{currentDoctorPerson?.firstName | titlecase}}  {{currentDoctorPerson?.lastName | titlecase}}</p>
+        <p class="text-muted" style="font-size: 15px; margin-top: 10px; margin-bottom: 10px;">{{currentDoctor?.specialty}} </p>
+        <div class="d-flex " style="margin-left: 0px;">
+            <i class="bi bi-telephone-fill " style="color:rgb(0, 140, 255) ; font-size:25px; margin-right: 16px;"></i>
+
+            <i class="bi bi-chat-dots-fill" style="color:rgb(21, 217, 21) ; font-size:26px;"></i>        </div>
+    </div>
+    <p   style="font-size: 25px; font-weight: bold; margin-left: 65%; margin-top: 5%;">{{currentDoctor?.price}} DT</p>
+
+        
+    </div>
+</div>
+    <div class="row" style="margin-top: 40px;">
        <!--Partie 1-->
         <div class="col-md-5">
             <div class="row">
                 <div class="col-12 bg-white p-0 px-3 py-3 mb-3">
-                    <div class="d-flex flex-row align-items-center">
-                        <img class="photo" [src]="currentDoctorPerson?.image"
-                              alt="">
-                              <div style="margin-left: 20px;">
-                        <p class="fw-bold h6 mt-0" style="font-size: 20px;">Dr. {{currentDoctorPerson?.firstName | titlecase}}  {{currentDoctorPerson?.lastName | titlecase}}</p>
-                        <p class="text-muted" style="font-size: 13px; margin-top: 10px; margin-bottom: 10px;">{{currentDoctor?.specialty}} </p>
-                        <div class="d-flex " style="margin-left: 0px;">
-                            <div class="btn btn-primary follow me-2">call</div>
-                            <div class="btn btn-outline-primary message">Message</div>
-                        </div>
+                    <div class="d-flex flex-row justify-content-between  py-1 px-3"> 
+                        <p style="margin-left: 35px;" class="detailNom">Patients</p><p style="margin-left: 8px;" class="detailNom">Experiences</p><p style="margin-right: 35px;" class="detailNom">Ratings</p>
                     </div>
-                    <p   style="font-size: 20px; font-weight: bold; margin-left: 100px;">{{currentDoctor?.price}} DT</p>
-
-                        <!-- <p class="text-muted mb-3">{{currentDoctor.description}}</p> -->
-                        
+                    <div class="d-flex  flex-row justify-content-between  py-2 px-12" >
+                        <p class="boxInfo">+400</p><p class="boxInfo" >+5 year</p><p class="boxInfo">{{currentDoctor?.rating}} </p>
                     </div>
                 </div>
 
@@ -28,17 +35,12 @@
 
 
                 <div class="col-12 bg-white p-0 px-2 pb-3 mb-3">
-                    <div class="d-flex flex-row justify-content-between  py-1 px-3"> 
-                        <p style="margin-left: 35px;" class="detailNom">Patients</p><p style="margin-left: 8px;" class="detailNom">Experiences</p><p style="margin-right: 35px;" class="detailNom">Ratings</p>
-                    </div>
-                    <div class="d-flex  flex-row justify-content-between  py-2 px-12" >
-                        <p class="boxInfo">+400</p><p class="boxInfo" >+5 year</p><p class="boxInfo">{{currentDoctor?.rating}} </p>
-                    </div>
+                   
                     <p class="calenderbox">Schedule</p>
                     
                     <div class="d-flex justify-content-between  py-2 px-3" style="margin-left: 0px !important; padding-left: 0px !important;">
                         <p class="boxInfo av" style="height: 60px; width: 90px; cursor: pointer;" 
-                        (click)="onBoxClick($event)"
+                        (click)="change($event)"
                         [ngStyle]="{'background-color': (!isDateAvailable(c)) ? 'rgb(224, 224, 224)' : '','color':(!isDateAvailable(c)) ? 'rgb(179, 178, 178)' : ''}"
 
                         *ngFor="let c of calenders" (click)="showTime(c)">
@@ -53,7 +55,7 @@
                         <p class="boxInfo" style="height: 60px; width: 90px;">31 <br> <span style="color:rgb(155, 155, 155)">March</span> </p> -->
 
                     </div>
-                    <div *ngIf="testTime">
+                    <div *ngIf="testTime" class="sched">
                         <p class="calenderbox">Time</p>
 
                     <div  style="margin-left: 0px !important; padding-left: 0px !important; 
@@ -89,31 +91,26 @@
                 <!--Partie 3-->
 
                 <div class="col-12 bg-white px-3 mb-15 pb-2">
-                    <p class="calenderbox">Book an appointement</p>
-
-                    <div class="d-flex flex-row justify-content-between  py-3 px-3"> 
-                    </div> 
-                    <div class="d-flex flex-row justify-content-between  py-3 px-3"> 
-                    </div>   <div class="d-flex flex-row justify-content-between  py-3 px-3"> 
-                    </div>   <div class="d-flex flex-row justify-content-between  py-3 px-3"> 
-                    </div>   <div class="d-flex flex-row justify-content-between  py-3 px-3"> 
-                    </div>   <div class="d-flex flex-row justify-content-between  py-3 px-3"> 
-                    </div>  
-                </div>
-
-                <!--Partie 4-->
-                <div class="col-12 bg-white px-3 mb-15 pb-2">
                     <p class="calenderbox">About doctor</p>
 
-                    <div style="color:rgb(186, 186, 186); width: 87%; margin-left: 20px; margin-top: 10px;">
-                        {{currentDoctor?.description}}
+                    <div style="color:rgb(186, 186, 186); width: 87%; margin-left: 20px; margin-top: 10px; line-height: 30px;">
+                        {{currentDoctor?.description | titlecase}}
                     </div>
+                </div>
+ <br>
+ <br>
+                <!--Partie 4-->
+                <div class="col-12 bg-white px-3 mb-15 pb-2">
+                   
                     <div>
-                    <p class="calenderbox">Location</p>
+                         <p class="calenderbox">Location</p>
                     <div style="color:rgb(186, 186, 186); width: 87%; margin-left: 20px; margin-top: 10px;">
-                        {{currentDoctor?.location}}
+                      <i class="bi bi-geo-alt">   {{currentDoctor?.location}}  </i>
                     </div>     
-                  
+                    <iframe class="position-relative w-100 h-100" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
+                    frameborder="0" style="border:0; width:500px; height: 500px;" allowfullscreen="" aria-hidden="false"
+                    tabindex="0"></iframe>
                     </div>
                           
                 </div>

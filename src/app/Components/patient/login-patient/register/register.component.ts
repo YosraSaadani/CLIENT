@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -53,6 +54,7 @@ export class RegisterComponent implements OnInit {
     "height":this.registerForm.value['height'],"weight":this.registerForm.value['weight'],"amount":200}
     this.servicePatient.registerPatient(body).subscribe(data=>localStorage.setItem('patientToken',data.token));
     this.router.navigate(['/home']);
+
    }) ;
   }
 

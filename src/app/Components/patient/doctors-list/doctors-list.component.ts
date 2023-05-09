@@ -20,6 +20,13 @@ export class DoctorsListComponent implements OnInit {
 
   searchBySpec(name: string)
   {
+    if(name=='All')
+    {
+      this.doctorService
+      .getDoctors()
+      .subscribe((data) => (this.doctorsList = data));
+    }
+    else
     this.doctorService.getDoctorsBySpeciality(name).subscribe(data=>this.doctorsList=data);
   }
 

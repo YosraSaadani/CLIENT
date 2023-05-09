@@ -47,7 +47,7 @@ testAvailability:boolean=true;
   showTime(c:Calendrier)
   {
     this.calender=c;
-    this.testTime=!this.testTime;
+    this.testTime=true;
   }
   onBoxClick(event: Event) {
     const element = event.target as HTMLElement;

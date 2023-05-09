@@ -95,3 +95,15 @@ img {
 {
     background-color: rgb(96, 163, 234); color: white !important;
 }
+
+.sel{
+    background-color: rgb(96, 163, 234); color: white !important;
+
+}
+
+@keyframes ani {
+    from{opacity: 0;}
+    to{opacity: 1;}
+    
+}
+.sched{animation: ani 0.5s;}

@@ -58,8 +58,10 @@ idCurrentPatient:string='';
      this.appointment.doctor=this.id;
      this.appointment.Patient=this.idCurrentPatient;
      console.log(this.appointment)
-     this.appointmentService.createAppointment(this.appointment).subscribe(data=>console.log(data));
-
+     if(this.appointment.heureRV!=undefined)
+    { this.appointmentService.createAppointment(this.appointment).subscribe(data=>console.log(data));
+    }
+    else {console.log('not disp')}
   }
   isDateAvailable(date: Calendrier): boolean {
     for (const slot of date.availability) {

@@ -3,7 +3,7 @@ export class Appointment {
     public _id: string,
     public dateRV: Date,
     public doctor: string,
-    public patient: string,
+    public Patient: string,
     public heureRV: Number
   ) {}
 }

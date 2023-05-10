@@ -8,7 +8,8 @@ export class Doctor extends Person {
     public specialty: string,
     public location:string,
     public price:number,
-    public description:string
+    public description:string,
+    public experience:string
   ) {
     super(person.firstName, person.lastName, person.birthDate,person.image, person.gender, person.role, person.email, person.password);
     this.location = location;
@@ -16,5 +17,6 @@ export class Doctor extends Person {
     this.specialty = specialty;
     this.price=price;
     this.description=description;
+    this.experience=experience
   }
 }

@@ -19,6 +19,8 @@ import { DashboardComponent } from './Components/admin/dashboard/dashboard.compo
 import { DoctorDashComponent } from './Components/doctor/doctor-dash/doctor-dash.component';
 import { LoginPatientModule } from './Components/patient/login-patient/login-patient.module';
 import { AdminLoginComponent } from './Components/admin/admin-login/admin-login.component';
+import { ChangePasswordComponent } from './Components/patient/change-password/change-password.component';
+import { ProfileComponent } from './Components/patient/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { AdminLoginComponent } from './Components/admin/admin-login/admin-login.
     DashboardComponent,
     DoctorDashComponent,
     AdminLoginComponent,
+    ChangePasswordComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

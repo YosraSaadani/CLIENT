@@ -16,6 +16,8 @@ import { LogindoctorComponent } from './layout/logindoctor/logindoctor.component
 import { RegisterComponent } from './Components/patient/login-patient/register/register.component';
 import { DoctorDashComponent } from './Components/doctor/doctor-dash/doctor-dash.component';
 import { AdminLoginComponent } from './Components/admin/admin-login/admin-login.component';
+import { ChangePasswordComponent } from './Components/patient/change-password/change-password.component';
+import { ProfileComponent } from './Components/patient/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -32,6 +34,8 @@ const routes: Routes = [
         component: SelectedDoctorComponent,
         title: 'Selected Doctor',
       },
+      {path:'changePassword',component:ChangePasswordComponent,title:'Change Password'},
+      {path:'Profile',component:ProfileComponent,title:'Profile'},
       { path: '', pathMatch: 'full', redirectTo: 'home' },
     ],
   },

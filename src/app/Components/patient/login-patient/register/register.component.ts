@@ -1,4 +1,5 @@
 import { Location } from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -52,8 +53,12 @@ export class RegisterComponent implements OnInit {
     let person = data._id;
     let body={"person":person,"allergies":this.registerForm.value['allergies'],"bloodType":this.registerForm.value['bloodType'],
     "height":this.registerForm.value['height'],"weight":this.registerForm.value['weight'],"amount":200}
-    this.servicePatient.registerPatient(body).subscribe(data=>localStorage.setItem('patientToken',data.token));
+    this.servicePatient.registerPatient(body).subscribe(data=>{localStorage.setItem('patientToken',data.token);
     this.router.navigate(['/home']);
+  },
+  
+    (err:HttpErrorResponse)=>console.log(err.error.msg));
+    
 
    }) ;
   }

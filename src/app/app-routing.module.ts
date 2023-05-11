@@ -35,7 +35,7 @@ const routes: Routes = [
         title: 'Selected Doctor',
       },
       {path:'changePassword',component:ChangePasswordComponent,title:'Change Password'},
-      {path:'Profile',component:ProfileComponent,title:'Profile'},
+      {path:'profile',component:ProfileComponent,title:'Profile'},
       { path: '', pathMatch: 'full', redirectTo: 'home' },
     ],
   },

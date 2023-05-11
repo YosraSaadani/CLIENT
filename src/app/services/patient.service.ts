@@ -22,4 +22,8 @@ export class PatientService {
   getPatientById(id:string):Observable<Patient> {
     return this.http.get<Patient>(url+id);
   }
+
+  updatePatient(id:string,{oldPassword,newPassword}):Observable<any> {
+    return this.http.put<any>(url+"changePassword/"+id,{oldPassword,newPassword});
+  }
 }

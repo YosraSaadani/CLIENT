@@ -5,8 +5,6 @@ import { Doctor } from 'src/app/Entities/doctor';
 import { AppointmentService } from 'src/app/services/AppointmentService/appointment.service';
 import { AuthService } from 'src/app/services/AuthService/auth.service';
 import { DoctorService } from 'src/app/services/doctor.service';
-import { NzCalendarModule } from 'ng-zorro-antd/calendar';
-
 @Component({
   selector: 'app-doctor-dash',
   templateUrl: './doctor-dash.component.html',

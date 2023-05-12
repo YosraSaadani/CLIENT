@@ -23,7 +23,7 @@ export class PatientComponent implements OnInit {
       this.showPatientLogo=true;
       this.showSignin=false;
       this.id=this.helper.decodeToken(localStorage.getItem('patientToken'))._id;
-      this.servicePatient.getPatientById(this.id).subscribe(data=>{this.patient=data
+      this.servicePatient.getPatientById(this.id).subscribe(data=>{this.patient=data;
         console.log(this.patient.person.image);
       });
 

@@ -29,4 +29,14 @@ export class DoctorService {
   getMedicalNews(): Observable<any> {
     return this.http.get<any>(NewsURL);
   }
+
+  loginDoctor(doctor:any)
+  {
+    return this.http.post<any>(url+"login",doctor);
+  }
+
+  registerDoctor(doctor:any)
+  {
+    return this.http.post<any>(url+"register",doctor)
+  }
 }

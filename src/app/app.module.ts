@@ -21,6 +21,8 @@ import { LoginPatientModule } from './Components/patient/login-patient/login-pat
 import { AdminLoginComponent } from './Components/admin/admin-login/admin-login.component';
 import { ChangePasswordComponent } from './Components/patient/change-password/change-password.component';
 import { ProfileComponent } from './Components/patient/profile/profile.component';
+import { RegisterDoctorComponent } from './Components/doctor/loginDoctor/register-doctor/register-doctor.component';
+import { LoginDoctorComponent } from './Components/doctor/loginDoctor/login-doctor/login-doctor.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { ProfileComponent } from './Components/patient/profile/profile.component
     AdminLoginComponent,
     ChangePasswordComponent,
     ProfileComponent,
+    RegisterDoctorComponent,
+    LoginDoctorComponent,
   ],
   imports: [
     BrowserModule,

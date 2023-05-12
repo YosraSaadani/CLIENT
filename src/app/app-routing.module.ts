@@ -12,12 +12,13 @@ import { AdminPatientsListComponent } from './Components/admin/admin-patients-li
 import { DashboardComponent } from './Components/admin/dashboard/dashboard.component';
 import { SelectedDoctorComponent } from './Components/patient/selected-doctor/selected-doctor.component';
 import { LoginComponent } from './Components/patient/login-patient/login/login.component';
-import { LogindoctorComponent } from './layout/logindoctor/logindoctor.component';
 import { RegisterComponent } from './Components/patient/login-patient/register/register.component';
 import { DoctorDashComponent } from './Components/doctor/doctor-dash/doctor-dash.component';
 import { AdminLoginComponent } from './Components/admin/admin-login/admin-login.component';
 import { ChangePasswordComponent } from './Components/patient/change-password/change-password.component';
 import { ProfileComponent } from './Components/patient/profile/profile.component';
+import { LoginDoctorComponent } from './Components/doctor/loginDoctor/login-doctor/login-doctor.component';
+import { RegisterDoctorComponent } from './Components/doctor/loginDoctor/register-doctor/register-doctor.component';
 
 const routes: Routes = [
   {
@@ -57,8 +58,13 @@ const routes: Routes = [
   },
   {
     path: 'logindoctor',
-    component: LogindoctorComponent,
+    component: LoginDoctorComponent,
     title: 'Login Doctor',
+  },
+  {
+    path: 'registerdoctor',
+    component: RegisterDoctorComponent,
+    title: 'Register Doctor',
   },
   {
     path:'loginadmin',

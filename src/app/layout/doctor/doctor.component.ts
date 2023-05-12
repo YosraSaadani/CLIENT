@@ -16,6 +16,12 @@ export class DoctorComponent implements OnInit {
     }
   }
 
+  logout()
+  {
+    localStorage.clear();
+    this.router.navigate(['/home']);
+  }
+
   ngOnInit(): void {
     this.auth.getDoctor().subscribe((data) => {
       this.Doct = data;

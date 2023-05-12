@@ -23,7 +23,12 @@ export class PatientService {
     return this.http.get<Patient>(url+id);
   }
 
-  updatePatient(id:string,{oldPassword,newPassword}):Observable<any> {
+updatePatient(id:string,p:Patient):Observable<Patient>
+{
+  return this.http.put<Patient>(url+id,p);
+}
+
+  changePassword(id:string,{oldPassword,newPassword}):Observable<any> {
     return this.http.put<any>(url+"changePassword/"+id,{oldPassword,newPassword});
   }
 }

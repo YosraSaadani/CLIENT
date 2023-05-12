@@ -6,7 +6,7 @@ export class Patient extends Person
         public _id:string,
         public person:Person,
         public allergies: string[],
-        public bloodTtype: string,
+        public bloodType: string,
         public height:number,
         public weight:number,
         public amount:number
@@ -14,7 +14,7 @@ export class Patient extends Person
     {
         super(person.firstName, person.lastName, person.birthDate,person.image, person.gender, person.role, person.email, person.password);
         this.allergies = allergies;
-        this.bloodTtype = bloodTtype;
+        this.bloodType = bloodType;
         this.height = height;
         this.weight = weight;
         this.amount = amount;

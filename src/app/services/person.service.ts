@@ -4,13 +4,15 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 const url = 'http://localhost:5000/api/person/';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PersonService {
-
-  createPerson(person:any):Observable<any> {
-    return this.http.post<any>(url+'register',person);
+  createPerson(person: any): Observable<any> {
+    return this.http.post<any>(url + 'register', person);
   }
-    
-  constructor(private http:HttpClient) { }
+  getPersonById(id: string): Observable<Person> {
+    return this.http.get<Person>(url + id);
+  }
+
+  constructor(private http: HttpClient) {}
 }

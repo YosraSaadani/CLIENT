@@ -20,8 +20,8 @@ export class AppointmentService {
     });
   }
 
-  createAppointment(appointment:Appointment):Observable<Appointment>{
-    return this.http.post<Appointment>(URL+"/addRendezVous",appointment);
+  createAppointment(appointment: Appointment): Observable<Appointment> {
+    return this.http.post<Appointment>(URL + '/addRendezVous', appointment);
   }
 
   getAppointmentsToday(): Observable<Appointment[]> {
@@ -39,6 +39,16 @@ export class AppointmentService {
       Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
     });
     return this.http.get<Appointment[]>(`${URL}/doctor/getAllMyRV`, {
+      headers: reqHeader,
+    });
+  }
+
+  getLatestPersoAppointment(id: string): Observable<Appointment> {
+    var reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
+    });
+    return this.http.get<Appointment>(`${URL}/doctor/getMyLatestRV/${id}`, {
       headers: reqHeader,
     });
   }

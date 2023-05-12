@@ -29,3 +29,31 @@
 .dateee {
   color: rgba(250, 92, 119, 0.904) !important;
 }
+.waywa {
+  border: rgba(250, 92, 119, 0.904) solid 1px;
+  padding: 0.1rem;
+  border-radius: 100%;
+}
+
+.events {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.events .ant-badge-status {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  text-overflow: ellipsis;
+  font-size: 12px;
+}
+
+.notes-month {
+  text-align: center;
+  font-size: 28px;
+}
+
+.notes-month section {
+  font-size: 28px;
+}

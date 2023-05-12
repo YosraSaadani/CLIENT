@@ -19,6 +19,8 @@ import { ChangePasswordComponent } from './Components/patient/change-password/ch
 import { ProfileComponent } from './Components/patient/profile/profile.component';
 import { LoginDoctorComponent } from './Components/doctor/loginDoctor/login-doctor/login-doctor.component';
 import { RegisterDoctorComponent } from './Components/doctor/loginDoctor/register-doctor/register-doctor.component';
+import { ChatComponent } from './Components/doctor/chat/chat.component';
+import { ChatmessagesComponent } from './Components/doctor/chatmessages/chatmessages.component';
 
 const routes: Routes = [
   {
@@ -35,14 +37,17 @@ const routes: Routes = [
         component: SelectedDoctorComponent,
         title: 'Selected Doctor',
       },
-      {path:'changePassword',component:ChangePasswordComponent,title:'Change Password'},
-      {path:'profile',component:ProfileComponent,title:'Profile'},
+      {
+        path: 'changePassword',
+        component: ChangePasswordComponent,
+        title: 'Change Password',
+      },
+      { path: 'profile', component: ProfileComponent, title: 'Profile' },
       { path: '', pathMatch: 'full', redirectTo: 'home' },
     ],
   },
   { path: 'login', component: LoginComponent, title: 'Login' },
   { path: 'register', component: RegisterComponent, title: 'Register' },
-  
 
   {
     path: 'doctor',
@@ -53,6 +58,18 @@ const routes: Routes = [
         path: '',
         component: DoctorDashComponent,
         title: 'Doctor Dashboard',
+      },
+      {
+        path: 'chat',
+        component: ChatComponent,
+        title: 'Chat',
+        children: [
+          {
+            path: ':id',
+            component: ChatmessagesComponent,
+            title: 'Chat Messages',
+          },
+        ],
       },
     ],
   },
@@ -67,9 +84,9 @@ const routes: Routes = [
     title: 'Register Doctor',
   },
   {
-    path:'loginadmin',
-    component:AdminLoginComponent,
-    title :'Login Admin'
+    path: 'loginadmin',
+    component: AdminLoginComponent,
+    title: 'Login Admin',
   },
   {
     path: 'admin',
@@ -86,10 +103,8 @@ const routes: Routes = [
         component: AdminPatientsListComponent,
         title: 'Patients List',
       },
-      { path: 'dashboard', 
-      component: DashboardComponent,
-       title: 'DashBoard' },
-       { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
+      { path: 'dashboard', component: DashboardComponent, title: 'DashBoard' },
+      { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
     ],
   },
 ];

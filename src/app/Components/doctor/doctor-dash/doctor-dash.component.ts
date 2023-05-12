@@ -5,6 +5,7 @@ import { Doctor } from 'src/app/Entities/doctor';
 import { AppointmentService } from 'src/app/services/AppointmentService/appointment.service';
 import { AuthService } from 'src/app/services/AuthService/auth.service';
 import { DoctorService } from 'src/app/services/doctor.service';
+import { NzCalendarModule } from 'ng-zorro-antd/calendar';
 
 @Component({
   selector: 'app-doctor-dash',
@@ -17,6 +18,15 @@ export class DoctorDashComponent implements OnInit {
   RVsToday: Appointment[] = [];
   articles: any[] = [];
   AllApoi: any[] = [];
+
+  onValueChange(value: Date): void {
+    console.log(`Current value: ${value}`);
+  }
+
+  onPanelChange(change: { date: Date; mode: string }): void {
+    console.log(`Current value: ${change.date}`);
+    console.log(`Current mode: ${change.mode}`);
+  }
   constructor(
     private router: Router,
     private auth: AuthService,
@@ -34,7 +44,6 @@ export class DoctorDashComponent implements OnInit {
     this.rvs.getAppointmentsToday().subscribe(
       (data) => {
         this.RVsToday = data;
-        console.log(this.RVsToday);
       },
       (error: ErrorHandler) => {
         console.log(error);

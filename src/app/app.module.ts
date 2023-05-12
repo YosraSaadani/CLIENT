@@ -23,6 +23,14 @@ import { ChangePasswordComponent } from './Components/patient/change-password/ch
 import { ProfileComponent } from './Components/patient/profile/profile.component';
 import { RegisterDoctorComponent } from './Components/doctor/loginDoctor/register-doctor/register-doctor.component';
 import { LoginDoctorComponent } from './Components/doctor/loginDoctor/login-doctor/login-doctor.component';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { en_US } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ChatComponent } from './Components/doctor/chat/chat.component';
+import { PlistComponent } from './Components/doctor/plist/plist.component';
+import { ChatmessagesComponent } from './Components/doctor/chatmessages/chatmessages.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +49,9 @@ import { LoginDoctorComponent } from './Components/doctor/loginDoctor/login-doct
     ProfileComponent,
     RegisterDoctorComponent,
     LoginDoctorComponent,
+    ChatComponent,
+    PlistComponent,
+    ChatmessagesComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,9 +61,10 @@ import { LoginDoctorComponent } from './Components/doctor/loginDoctor/login-doct
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    LoginPatientModule
+    LoginPatientModule,
+    BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

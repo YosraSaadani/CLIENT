@@ -27,14 +27,24 @@
                 <div class="row">
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <input type="text" id="form3Example1" class="form-control" formControlName="firstName" />
                       <label class="form-label" for="form3Example1">First name</label>
+                      <input type="text" id="form3Example1" [class.is-invalid]="firstName.invalid && (firstName.touched || firstName.dirty)" class="form-control" formControlName="firstName" />
+                      <div class="invalid-feedback opa" *ngIf="firstName.errors">
+                        <ng-container *ngIf="firstName.errors['required']">
+                             First Name Is Required
+                        </ng-container>
+                      </div>
                     </div>
                   </div>
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <input type="text" id="form3Example2" class="form-control" formControlName="lastName" />
                       <label class="form-label" for="form3Example2">Last name</label>
+                      <input type="text" id="form3Example2" [class.is-invalid]="lastName.invalid && (lastName.touched || lastName.dirty)"  class="form-control" formControlName="lastName" />
+                      <div class="invalid-feedback opa" *ngIf="lastName.errors">
+                        <ng-container *ngIf="lastName.errors['required']">
+                             Last Name Is Required
+                        </ng-container>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -44,34 +54,60 @@
                 <div class="row">
                     <div class="col-md-6 mb-4">
                       <div class="form-outline">
-                        <input type="date" id="form3Example1" class="form-control" formControlName="birthDate" />
                         <label class="form-label" for="form3Example1">Birthdate</label>
+                        <input type="date" [class.is-invalid]="birthDate.invalid && (birthDate.touched || birthDate.dirty)" id="form3Example1" class="form-control" formControlName="birthDate" />
+                        <div class="invalid-feedback opa" *ngIf="birthDate.errors">
+                          <ng-container *ngIf="birthDate.errors['required']">
+                               Birth Date Is Required
+                          </ng-container>
+                        </div>
                       </div>
                     </div>
                     <div class="col-md-6 mb-4">
                       <div class="form-outline">
-                        <select formControlName="gender" id="form3Example6" class="form-control">
+                        <label class="form-label"  for="form3Example6">Gender</label>
+                        <select formControlName="gender" [class.is-invalid]="gender.invalid && (gender.touched || gender.dirty)" id="form3Example6" class="form-control">
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                         </select>
-                        <label class="form-label" for="form3Example6">Gender</label>
+                        <div  class="invalid-feedback opa" *ngIf="gender.errors">
+                          <ng-container *ngIf="gender.errors['required']">
+                               Gender Is Required
+                          </ng-container>
+                        </div>
                       </div>
                     </div>
                   </div>
-
 
                   <!-- height and weight -->
                  <div class="row">
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <input type="number" id="form3Example1" class="form-control" min="0" formControlName="height" />
-                      <label class="form-label" for="form3Example1">Height (cm)</label>
+                      <label class="form-label"  for="form3Example1">Height (cm)</label>
+
+                      <input type="number" id="form3Example1" class="form-control" [class.is-invalid]="height.invalid && (height.touched || height.dirty)" min="0" formControlName="height" />
+                      <div class="invalid-feedback opa" *ngIf="height.errors">
+                        <ng-container *ngIf="height.errors['required']">
+                          Height Is Required
+                        </ng-container>
+                        <ng-container *ngIf="height.errors['min']">
+                          Height Must Be Greater Than 0
+                      </ng-container>
+                      </div>
                     </div>
                   </div>
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <input type="number" id="form3Example2" min="0" class="form-control" formControlName="weight" />
-                      <label class="form-label" for="form3Example2">Weight</label>
+                      <label class="form-label"  for="form3Example2">Weight</label>
+                      <input type="number" [class.is-invalid]="weight.invalid && (weight.touched || weight.dirty)" id="form3Example2" min="0" class="form-control" formControlName="weight" />
+                      <div class="invalid-feedback opa" *ngIf="weight.errors">
+                        <ng-container *ngIf="weight.errors['required']">
+                            Weight Is Required
+                        </ng-container>
+                        <ng-container *ngIf="weight.errors['min']">
+                          Weight Must Be Greater Than 0
+                      </ng-container>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -81,13 +117,20 @@
                  <div class="row">
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <input type="text" id="form3Example1" class="form-control" formControlName="allergies" />
-                      <label class="form-label" for="form3Example1">Allergies</label>
+                      <label  class="form-label" for="form3Example1">Allergies</label>
+                      <input type="text" [class.is-invalid]="allergies.invalid && (allergies.touched || allergies.dirty)" id="form3Example1" class="form-control" formControlName="allergies" />
+                      <div class="invalid-feedback opa" *ngIf="allergies.errors">
+                        <ng-container *ngIf="allergies.errors['required']">
+                            Allergies Are Required
+                        </ng-container>
+                      </div>
                     </div>
                   </div>
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <select formControlName="bloodType" id="form3Example6" class="form-control">
+                      <label  class="form-label" for="form3Example6">Blood Type</label>
+
+                      <select formControlName="bloodType" [class.is-invalid]="bloodType.invalid && (bloodType.touched || bloodType.dirty)" id="form3Example6" class="form-control">
                           <option value="A+">A+</option>
                           <option value="B+">B+</option>
                           <option value="AB+">AB+</option>
@@ -97,7 +140,11 @@
                           <option value="AB-">AB-</option>
                           <option value="O-">O-</option>
                       </select>
-                      <label class="form-label" for="form3Example6">Blood Type</label>
+                      <div class="invalid-feedback opa" *ngIf="bloodType.errors">
+                        <ng-container *ngIf="bloodType.errors['required']">
+                            BloodType Is Required
+                        </ng-container>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -106,14 +153,34 @@
               <div class="row">
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <input type="email" id="form3Example3" class="form-control" formControlName="email" />
-                  <label class="form-label" for="form3Example3">Email address</label>
+                      <label class="form-label"  for="form3Example3">Email address</label>
+                      <input type="email" [class.is-invalid]="email.invalid && (email.touched || email.dirty)" id="form3Example3" class="form-control" formControlName="email" />
+                      <div class="invalid-feedback opa" *ngIf="email.errors">
+                        <ng-container *ngIf="email.errors['required']">
+                            Email Is Required
+                        </ng-container>
+                        <ng-container *ngIf="email.errors['pattern']">
+                          Invalid Email Format 
+                      </ng-container>
+                      </div>
                     </div>
                   </div>
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <input type="password" id="form3Example4" class="form-control" formControlName="password" />
-                  <label class="form-label" for="form3Example4">Password</label>
+                      <label class="form-label"  for="form3Example4">Password</label>
+                      <input type="password" [class.is-invalid]="password.invalid && (password.touched || password.dirty)" id="form3Example4" class="form-control" formControlName="password" />
+                      <div class="invalid-feedback opa" *ngIf="password.errors">
+                        <ng-container *ngIf="password.errors['required']">
+                            Password Is Required
+                        </ng-container>
+                        <ng-container *ngIf="password.errors['pattern']">
+                          <b>Password Must Contain</b><br>
+                          An UpperCase Letter <br>
+                          A LowerCase Letter<br>
+                          A Special Character <br>
+                          8 Characters Long
+                      </ng-container>
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -1,5 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Patient } from 'src/app/Entities/patient';
 import { PatientService } from 'src/app/services/patient.service';
@@ -15,7 +17,8 @@ export class ChangePasswordComponent implements OnInit {
   patient!:Patient;
   
   
-  constructor(private fb:FormBuilder,private servicePatient:PatientService) { }
+  constructor(private fb:FormBuilder,private servicePatient:PatientService,
+    private route:Router) { }
 
   ngOnInit(): void {
     this.passForm=this.fb.nonNullable.group({
@@ -27,7 +30,15 @@ export class ChangePasswordComponent implements OnInit {
   change()
   { 
     let pass={oldPassword:this.passForm.value.oldPassword,newPassword:this.passForm.value.newPassword}
-    this.servicePatient.changePassword(this.helper.decodeToken(localStorage.getItem('patientToken'))._id,pass).subscribe(data=>console.log(data));
+    try{
+    this.servicePatient.changePassword(this.helper.decodeToken(localStorage.getItem('patientToken'))._id,pass).subscribe(data=> { this.route.navigate(['/home']);
+    });
+   
+    }
+    catch(err)
+    {
+      console.log(err);
+    }
   }
 
 }

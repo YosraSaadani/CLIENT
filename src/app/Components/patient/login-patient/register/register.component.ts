@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Person } from 'src/app/Entities/person';
 import { PatientService } from 'src/app/services/patient.service';
@@ -22,21 +22,16 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.registerForm = this.fb.nonNullable.group({
 
-      firstName:[],
-      lastName:[],
-      birthDate:[],
-      gender:[],
-      email:[],
-      height:[],
-      weight:[],
-      bloodType:[],
-      allergies:[],
-      password:[]
-      
-
-      
-
-
+      firstName:['',[Validators.required]],
+      lastName:['',[Validators.required]],
+      birthDate:['',[Validators.required]],
+      gender:['',[Validators.required]],
+      email:['',[Validators.required,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+      height:['',[Validators.required,Validators.min(1)]],
+      weight:['',[Validators.required,Validators.min(1)]],
+      bloodType:['',[Validators.required]],
+      allergies:['',[Validators.required]],
+      password:['',[Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]]
 
     });
   }

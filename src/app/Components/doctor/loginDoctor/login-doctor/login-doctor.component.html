@@ -25,23 +25,37 @@
               <form [formGroup]="loginForm" (ngSubmit)="login()">
                 <!-- 2 column grid layout with text inputs for the first and last names -->
 
-                  
+
                 <!-- Email input -->
                 <div class="form-outline mb-4">
-                  <input type="email" id="form3Example3" class="form-control" formControlName="email" />
                   <label class="form-label" for="form3Example3">Email address</label>
+                  <input [class.is-invalid]="email.invalid && (email.touched||email.dirty)" type="email" id="form3Example3" class="form-control" formControlName="email" />
+                  <div class="invalid-feedback opa" *ngIf="email.errors" >
+                    <ng-container *ngIf="email.errors['required']">
+                      Email Is Required
+                    </ng-container>
+                    <ng-container *ngIf="email.errors['pattern']">
+                      Invalid Email Format
+                    </ng-container>
+                  </div>
+
                 </div>
   
                 <!-- Password input -->
                 <div class="form-outline mb-4">
-                  <input type="password" id="form3Example4" class="form-control" formControlName="password" />
                   <label class="form-label" for="form3Example4">Password</label>
+                  <input [class.is-invalid]="password.invalid && (password.touched || password.dirty)" type="password" id="form3Example4" class="form-control" formControlName="password" />
+                  <div class="invalid-feedback opa" *ngIf="password.errors" >
+                    <ng-container *ngIf="password.errors['required']">
+                      Password Is Required
+                    </ng-container>
+                  </div>
                 </div>
   
                 
   
                 <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block mb-4">
+                <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary btn-block mb-4">
                   Sign in
                 </button>
   

@@ -40,21 +40,67 @@ export class RegisterDoctorComponent implements OnInit {
         
       })
   }
+
+  get firstName()
+  {
+    return this.registerForm.get('firstName');
+  }
+  get lastName()
+  {
+    return this.registerForm.get('lastName');
+  }
+  get birthDate()
+  {
+    return this.registerForm.get('birthDate');
+  }
+  get gender()
+  {
+    return this.registerForm.get('gender');
+  }
+  get specialty()
+  {
+    return this.registerForm.get('specialty');
+  }
+  get experience()
+  {
+    return this.registerForm.get('experience');
+  }
+  get price()
+  {
+    return this.registerForm.get('price');
+  }
+  get description()
+  {
+    return this.registerForm.get('description');
+  }
+  get location()
+  {
+    return this.registerForm.get('location');
+  }
+  get email()
+  {
+    return this.registerForm.get('email');
+  }
+  get password()
+  {
+    return this.registerForm.get('password');
+  }
+
+
   ngOnInit(): void 
   {
     this.registerForm = this.fb.nonNullable.group({
-
       firstName:['',Validators.required],
       lastName:['',Validators.required],
       birthDate:['',Validators.required],
       gender:['',Validators.required],
-      email:['',Validators.required],
+      email:['',[Validators.required,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
       specialty:['',Validators.required],
       location:['',Validators.required],
-      experience:['',Validators.required],
-      price:['',Validators.required],
+      experience:['',[Validators.required,Validators.min(5)]],
+      price:['',[Validators.required,Validators.min(0)]],
       description:['',Validators.required],
-      password:['',Validators.required]
+      password:['',[Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]]
     });
   }
 

@@ -32,6 +32,7 @@ import { ChatmessagesComponent } from './Components/doctor/chatmessages/chatmess
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
+import { ChatMessagesComponent } from './Components/patient/chat-messages/chat-messages.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +53,7 @@ import { MatCardModule } from '@angular/material/card';
     ChatComponent,
     PlistComponent,
     ChatmessagesComponent,
+    ChatMessagesComponent,
   ],
   imports: [
     BrowserModule,

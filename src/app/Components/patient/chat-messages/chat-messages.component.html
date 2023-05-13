@@ -1,0 +1,87 @@
+<div class="chat col-lg-12">
+    <div class="chat-header clearfix col-lg-11">
+      <div class="row">
+        <div class="col-lg-12">
+          <a
+            href="javascript:void(0);"
+            data-toggle="modal"
+            data-target="#view_info"
+          >
+            <img
+              [src]="
+                person.image ||
+                'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
+              "
+              alt="avatar"
+            />
+          </a>
+          <div class="roww">
+            <div class="chat-about">
+              <h5 class="m-b-0">{{ person.firstName }} {{ person.lastName }}</h5>
+              <p class="text-xxs text-sucess">{{ person.gender | titlecase }}</p>
+            </div>
+            <div class="info">
+              {{ dateRV | date }}
+              {{ HeureRV }}:00
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="chat-history">
+      <ul class="m-b-0">
+        <ng-container *ngFor="let msg of messages">
+          <li class="clearfix" *ngIf="msg['fromSelf']">
+            <div class="message-data text-right fromMe">
+              <img
+                [src]="
+                  person.image ||
+                  'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
+                "
+                alt="avatar"
+              />
+            </div>
+            <div class="message other-message text-dark float-right">
+              {{ msg["message"] }}
+            </div>
+          </li>
+          <li class="clearfix" *ngIf="!msg['fromSelf']">
+            <div class="message-data">
+              <img
+                [src]="
+                  person.image ||
+                  'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
+                "
+                alt="avatar"
+              />
+            </div>
+            <div class="message my-message">{{ msg["message"] }}</div>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+    <div class="chat-message clearfix">
+      <div class="row">
+        <div class="col-md-10">
+          <form [formGroup]="Msgform" (ngSubmit)="sendMessage()">
+            <div class="form-floating">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="message"
+                placeholder="Enter text here..."
+              />
+            </div>
+          </form>
+        </div>
+        <div class="col-md-2">
+          <div class="form-floating">
+            <button class="btn btn-primary w-100 py-3" (click)="sendMessage()">
+              Send
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

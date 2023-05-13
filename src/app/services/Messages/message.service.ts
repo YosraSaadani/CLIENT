@@ -25,5 +25,23 @@ export class MessageService {
     });
   }
 
+  patientSendChatMessage(body: any): Observable<Object> {
+    var reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + localStorage.getItem('patientToken'),
+    });
+    return this.http.post(`${url}/patientSend`, body, { headers: reqHeader });
+  }
+
+  patientGetChatMessages(body: any): Observable<Object> {
+    var reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + localStorage.getItem('patientToken'),
+    });
+    return this.http.post(`${url}/getmessagesPatient`, body, {
+      headers: reqHeader,
+    });
+  }
+
   constructor(private http: HttpClient) {}
 }

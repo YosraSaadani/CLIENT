@@ -60,6 +60,11 @@ const routes: Routes = [
         title: 'Doctor Dashboard',
       },
       {
+        path: 'dashboard',
+        component: DoctorDashComponent,
+        title: 'Doctor Dashboard',
+      },
+      {
         path: 'chat',
         component: ChatComponent,
         title: 'Chat',

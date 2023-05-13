@@ -7,7 +7,13 @@
           data-toggle="modal"
           data-target="#view_info"
         >
-          <img [src]="person.image" alt="avatar" />
+          <img
+            [src]="
+              person.image ||
+              'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
+            "
+            alt="avatar"
+          />
         </a>
         <div class="roww">
           <div class="chat-about">

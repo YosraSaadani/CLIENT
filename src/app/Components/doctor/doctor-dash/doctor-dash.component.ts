@@ -16,15 +16,12 @@ export class DoctorDashComponent implements OnInit {
   RVsToday: Appointment[] = [];
   articles: any[] = [];
   AllApoi: any[] = [];
+  selected: Date | null = new Date();
 
   onValueChange(value: Date): void {
     console.log(`Current value: ${value}`);
   }
 
-  onPanelChange(change: { date: Date; mode: string }): void {
-    console.log(`Current value: ${change.date}`);
-    console.log(`Current mode: ${change.mode}`);
-  }
   constructor(
     private router: Router,
     private auth: AuthService,

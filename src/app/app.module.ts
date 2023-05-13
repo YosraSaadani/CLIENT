@@ -24,12 +24,14 @@ import { ProfileComponent } from './Components/patient/profile/profile.component
 import { RegisterDoctorComponent } from './Components/doctor/loginDoctor/register-doctor/register-doctor.component';
 import { LoginDoctorComponent } from './Components/doctor/loginDoctor/login-doctor/login-doctor.component';
 
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChatComponent } from './Components/doctor/chat/chat.component';
 import { PlistComponent } from './Components/doctor/plist/plist.component';
 import { ChatmessagesComponent } from './Components/doctor/chatmessages/chatmessages.component';
 
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatCardModule } from '@angular/material/card';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,6 +65,9 @@ import { ChatmessagesComponent } from './Components/doctor/chatmessages/chatmess
     LoginPatientModule,
     BrowserAnimationsModule,
     
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

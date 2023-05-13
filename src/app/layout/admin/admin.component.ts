@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-admin',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  constructor(private adminService:AdminService) { }
 
+  weather!:any;
+  getWeather()
+  {
+    this.adminService.weatherapi().subscribe(
+      res=>{
+        this.weather=res;
+        console.log(res);
+        
+      }
+    )
+  }
   ngOnInit(): void {
+    this.getWeather(); 
   }
 
 }

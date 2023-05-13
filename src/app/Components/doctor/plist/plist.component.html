@@ -1,0 +1,21 @@
+<div id="plist" class="people-list" [routerLink]="['/doctor/chat', person._id]">
+  <ul class="list-unstyled chat-list mt-2 mb-0">
+    <li class="clearfix" routerLinkActive="active">
+      <img
+        [src]="
+          person.image ||
+          'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
+        "
+        alt="avatar"
+      />
+      <div class="about">
+        <div class="name text-dark">
+          {{ person.firstName }} {{ person.lastName }}
+        </div>
+        <div class="status">
+          <i class="fa fa-circle online"></i> {{ person.gender | titlecase }}
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

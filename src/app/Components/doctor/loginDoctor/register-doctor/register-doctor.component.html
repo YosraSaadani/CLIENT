@@ -1,0 +1,234 @@
+<!-- Section: Design Block -->
+<section class="text-center text-lg-start">
+    <style>
+      .cascading-right {
+        margin-right: -50px;
+      }
+  
+      @media (max-width: 991.98px) {
+        .cascading-right {
+          margin-right: 0;
+        }
+      }
+    </style>
+  
+    <!-- Jumbotron -->
+    <div class="container py-4">
+      <div class="row g-0 align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <div class="card cascading-right" style="
+              background: hsla(0, 0%, 100%, 0.55);
+              backdrop-filter: blur(30px);
+              ">
+            <div class="card-body p-5 shadow-5 text-center">
+              <h2 class="fw-bold mb-5">Doctors Sign up</h2>
+              <form [formGroup]="registerForm" (ngSubmit)="register()">
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <label class="form-label" for="form3Example1">First name</label>
+                      <input [class.is-invalid]="firstName.invalid && (firstName.touched || firstName.dirty)" type="text" id="form3Example1" class="form-control" formControlName="firstName" />
+                      <div class="invalid-feedback opa" *ngIf="firstName.errors">
+                        <ng-container *ngIf="firstName.errors['required']">
+                             First Name Is Required
+                        </ng-container>
+                      </div>
+                      
+                    </div>
+                    
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <label class="form-label" for="form3Example2">Last name</label>
+
+                      <input type="text" [class.is-invalid]="lastName.invalid && (lastName.touched || lastName.dirty)"   id="form3Example2" class="form-control" formControlName="lastName" />
+                      <div class="invalid-feedback opa" *ngIf="lastName.errors">
+                        <ng-container *ngIf="lastName.errors['required']">
+                             Last Name Is Required
+                        </ng-container>
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+
+
+                  <!-- birthdate  and gender input -->
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <label class="form-label" for="form3Example1">Birthdate</label>
+                        <input [class.is-invalid]="birthDate.invalid && (birthDate.touched || birthDate.dirty)" type="date" id="form3Example1" class="form-control" formControlName="birthDate" />
+                        <div class="invalid-feedback opa" *ngIf="birthDate.errors">
+                          <ng-container *ngIf="birthDate.errors['required']">
+                               Birth Date Is Required
+                          </ng-container>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <label class="form-label" for="form3Example6">Gender</label>
+
+                        <select [class.is-invalid]="gender.invalid && (gender.touched || gender.dirty)" formControlName="gender" id="form3Example6" class="form-control">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                        <div class="invalid-feedback opa" *ngIf="gender.errors">
+                          <ng-container *ngIf="gender.errors['required']">
+                               Gender Is Required
+                          </ng-container>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <!-- Specialty and Experience input -->
+                 <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <label class="form-label" for="form3Example6" >Specialty</label>
+
+                        <select [class.is-invalid]="specialty.invalid && (specialty.touched || specialty.dirty)"  formControlName="specialty" id="form3Example6" class="form-control">
+                            <option value="General Practitioner">General Practitioner</option>
+                            <option value="Pediatrician">Pediatrician</option>
+                            <option value="Psychiatrist">Psychiatrist</option>
+                            <option value="Dermatologist">Dermatologist</option>
+                        </select>
+                        <div class="invalid-feedback opa" *ngIf="specialty.errors">
+                          <ng-container *ngIf="specialty.errors['required']">
+                               Specialty Is Required
+                          </ng-container>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <label class="form-label" for="form3Example2">Experience</label>
+
+                      <input type="number" id="form3Example2" min="0" class="form-control" formControlName="experience" [class.is-invalid]="experience.invalid && (experience.touched || experience.dirty)" />
+                      <div class="invalid-feedback opa" *ngIf="experience.errors">
+                        <ng-container *ngIf="experience.errors['required']">
+                            Experience Is Required
+                        </ng-container>
+                        <ng-container *ngIf="experience.errors['min']">
+                          You Must Have Atleast 5 Years Of Experience
+                      </ng-container>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                 <!--Location Input-->
+                 <div class="col-md-12 mb-4">
+                  <div class="form-outline">
+                    <label class="form-label" for="form3Example2">Location</label>
+
+                    <input type="text" id="form3Example2" min="0" class="form-control" formControlName="location" [class.is-invalid]="location.invalid && (location.touched || location.dirty)" />
+                    <div class="invalid-feedback opa" *ngIf="location.errors">
+                      <ng-container *ngIf="location.errors['required']">
+                          Location Is Required
+                      </ng-container>
+                    </div>
+                  </div>
+                </div>
+
+                 <!-- Price  and Description input -->
+                 <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <label class="form-label" for="form3Example1">Price</label>
+                      <input [class.is-invalid]="price.invalid && (price.touched || price.dirty)" type="text" id="form3Example1" class="form-control" formControlName="price"  />
+                      <div class="invalid-feedback opa" *ngIf="price.errors">
+                        <ng-container *ngIf="price.errors['required']">
+                            Price Is Required
+                        </ng-container>
+                        <ng-container *ngIf="price.errors['min']">
+                          Invalid Price
+                      </ng-container>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <label class="form-label" for="form3Example2">Description</label>
+
+                      <input type="text" id="form3Example2" [class.is-invalid]="description.invalid && (description.touched || description.dirty)" min="0" class="form-control" formControlName="description" />
+                      <div class="invalid-feedback opa" *ngIf="description.errors">
+                        <ng-container *ngIf="description.errors['required']">
+                            Description Is Required
+                        </ng-container>
+                      </div>
+                    </div>
+                  </div>
+                 
+                </div>
+                <!-- email and password  input -->
+              <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <label class="form-label" for="form3Example3">Email address</label>
+
+                      <input type="email" id="form3Example3" [class.is-invalid]="email.invalid && (email.touched || email.dirty)" class="form-control" formControlName="email" />
+                      <div class="invalid-feedback opa" *ngIf="email.errors">
+                        <ng-container *ngIf="email.errors['required']">
+                            Email Is Required
+                        </ng-container>
+                        <ng-container *ngIf="email.errors['pattern']">
+                          Invalid Email Format 
+                      </ng-container>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <label class="form-label" for="form3Example4">Password</label>
+                      <input type="password" id="form3Example4" [class.is-invalid]="password.invalid && (password.touched || password.dirty)" class="form-control" formControlName="password" />
+                      <div class="invalid-feedback opa" *ngIf="password.errors">
+                        <ng-container *ngIf="password.errors['required']">
+                            Password Is Required
+                        </ng-container>
+                        <ng-container *ngIf="password.errors['pattern']">
+                          <b>Password Must Contain</b><br>
+                          An UpperCase Letter <br>
+                          A LowerCase Letter<br>
+                          A Special Character <br>
+                          8 Characters Long
+                      </ng-container>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+  
+                
+  
+               
+  
+                <!-- Submit button -->
+                <button [disabled]="registerForm.invalid" type="submit" class="btn btn-primary btn-block mb-4">
+                  Sign up
+                </button>
+  
+                <!-- Register buttons -->
+                <div class="text-center">
+                  Already have an account?
+                  <a routerLink="/login" style="text-decoration: underline;color:blue;cursor: pointer;"  >Sign in</a>
+                  
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <img src="../../../../../assets/login-photo.png" class="w-100 rounded-4 shadow-4"
+            alt="" />
+        </div>
+      </div>
+    </div>
+    <!-- Jumbotron -->
+  </section>
+  <!-- Section: Design Block -->

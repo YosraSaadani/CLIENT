@@ -8,10 +8,32 @@ import { DoctorsListComponent } from './Components/patient/doctors-list/doctors-
 import { LayoutModule } from './layout/layout.module';
 import { AboutusComponent } from './Components/patient/aboutus/aboutus.component';
 import { ContactComponent } from './Components/patient/contact/contact.component';
-import {HttpClientModule} from "@angular/common/http";
+import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SelectedDoctorComponent } from './Components/patient/selected-doctor/selected-doctor.component';
+import { AdminPatientsListComponent } from './Components/admin/admin-patients-list/admin-patients-list.component';
+import { AdminDoctorsListComponent } from './Components/admin/admin-doctors-list/admin-doctors-list.component';
+import { DashboardComponent } from './Components/admin/dashboard/dashboard.component';
 
+import { DoctorDashComponent } from './Components/doctor/doctor-dash/doctor-dash.component';
+import { LoginPatientModule } from './Components/patient/login-patient/login-patient.module';
+import { AdminLoginComponent } from './Components/admin/admin-login/admin-login.component';
+import { ChangePasswordComponent } from './Components/patient/change-password/change-password.component';
+import { ProfileComponent } from './Components/patient/profile/profile.component';
+import { RegisterDoctorComponent } from './Components/doctor/loginDoctor/register-doctor/register-doctor.component';
+import { LoginDoctorComponent } from './Components/doctor/loginDoctor/login-doctor/login-doctor.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ChatComponent } from './Components/doctor/chat/chat.component';
+import { PlistComponent } from './Components/doctor/plist/plist.component';
+import { ChatmessagesComponent } from './Components/doctor/chatmessages/chatmessages.component';
+
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatCardModule } from '@angular/material/card';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -20,6 +42,19 @@ import { FormsModule } from '@angular/forms';
     DoctorsListComponent,
     AboutusComponent,
     ContactComponent,
+    SelectedDoctorComponent,
+    AdminPatientsListComponent,
+    AdminDoctorsListComponent,
+    DashboardComponent,
+    DoctorDashComponent,
+    AdminLoginComponent,
+    ChangePasswordComponent,
+    ProfileComponent,
+    RegisterDoctorComponent,
+    LoginDoctorComponent,
+    ChatComponent,
+    PlistComponent,
+    ChatmessagesComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,9 +62,17 @@ import { FormsModule } from '@angular/forms';
     LayoutModule,
     HttpClientModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    LoginPatientModule,
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCardModule,
+    MatTooltipModule,
+    MatIconModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

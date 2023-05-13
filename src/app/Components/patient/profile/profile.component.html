@@ -1,0 +1,128 @@
+<div class="formbold-main-wrapper" style="padding-top: 0% !important;" >
+    <div class="formbold-form-wrapper">
+      <form  [formGroup]="formPatient" (ngSubmit)="updatePatientInfos()">
+        <div class="formbold-form-title">
+          <h2 class="">Profile {{currentPatient.person?.firstName!}} {{currentPatient.person?.lastName!}}</h2>
+        </div>
+        <div class="formbold-input-flex">
+          <div>
+            <label for="firstname" class="formbold-form-label">
+              First name
+            </label>
+            <input
+              type="text"
+              name="firstname"
+              id="firstname"
+              class="formbold-form-input"
+              formControlName="firstName"
+            />
+          </div>
+          <div>
+            <label for="lastname" class="formbold-form-label"> Last name </label>
+            <input
+              type="text"
+              name="lastname"
+              id="lastname"
+              class="formbold-form-input"
+              formControlName="lastName"
+            />
+          </div>
+        </div>
+  
+        <div class="formbold-input-flex">
+          
+            <div>
+              <label for="birthDate" class="formbold-form-label"> Birth Date </label>
+              <input
+                type="date"
+                name="birthDate"
+                id="birthDate"
+                formControlName="birthDate"
+  
+                class="formbold-form-input"
+              />
+          </div>
+          <div>
+            <label for="gender" class="formbold-form-label"> Gender</label>
+            <input
+              type="text"
+              name="gender"
+              id="gender"
+              formControlName="gender"
+
+              class="formbold-form-input"
+            />
+          </div>
+        </div>
+  
+
+        <div class="formbold-input-flex">
+          
+          <div>
+            <label for="height" class="formbold-form-label">Height </label>
+            <input
+              type="number"
+              name="height"
+              id="height"
+              formControlName="height"
+
+              class="formbold-form-input"
+            />
+        </div>
+        <div>
+          <label for="weight" class="formbold-form-label"> Weight</label>
+          <input
+            type="number"
+            name="weight"
+            id="weight"
+            formControlName="weight"
+
+            class="formbold-form-input"
+          />
+        </div>
+      </div>
+
+        
+  
+        <div class="formbold-input-flex">
+          <div>
+            <label for="bloodType" class="formbold-form-label">Blood Type</label>
+            <input
+              type="text"
+              name="bloodType"
+              id="bloodType"
+              formControlName="bloodType"
+
+              class="formbold-form-input"
+            />
+          </div>
+          <div>
+            <label for="allergies" class="formbold-form-label"> Allergies </label>
+            <input
+              type="text"
+              name="allergies"
+              id="allergies"
+              formControlName="allergies"
+
+              class="formbold-form-input"
+            />
+          </div>
+        </div>
+  
+        
+        <div class="formbold-mb-3">
+          <label for="email" class="formbold-form-label">
+            Email </label>
+          <input
+            type="text"
+            name="email"
+            id="email"
+            formControlName="email"
+
+            class="formbold-form-input"
+          />
+        </div>
+        <button class="formbold-btn" type="submit">Update</button>
+      </form>
+    </div>
+  </div>

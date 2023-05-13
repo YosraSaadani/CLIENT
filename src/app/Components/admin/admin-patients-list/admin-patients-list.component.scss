@@ -1,0 +1,21 @@
+.bor{
+    border: 1px solid #E7F0F3;
+    background: #FAFAFA;
+}
+
+.colo{
+    font-weight: bold;
+}
+
+table,thead,tbody{
+    width: 100%;
+}
+th,td{
+    width: 5%;
+}
+@keyframes ani {
+    from{opacity: 0;}
+    to{opacity: 1;}
+    
+}
+.opaci{animation: ani 0.5s;}

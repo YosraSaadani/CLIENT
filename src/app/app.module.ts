@@ -35,6 +35,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
 
+import { ChatMessagesComponent } from './Components/patient/chat-messages/chat-messages.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +56,7 @@ import { MatIconModule } from '@angular/material/icon';
     ChatComponent,
     PlistComponent,
     ChatmessagesComponent,
+    ChatMessagesComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,8 +66,10 @@ import { MatIconModule } from '@angular/material/icon';
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
+
     LoginPatientModule,
     BrowserAnimationsModule,
+
     MatDatepickerModule,
     MatNativeDateModule,
     MatCardModule,

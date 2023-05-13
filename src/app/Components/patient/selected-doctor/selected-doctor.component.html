@@ -51,7 +51,7 @@
         border-radius: 10px;
         background-color: black;
         color: white;
-        height: 30px;
+        height: 50px;
         font-size: 17px;
       "
       (click)="RendezVous()"
@@ -153,7 +153,7 @@
       </div>
     </div>
 
-    <div class="col-md-7 ps-md-5">
+    <div class="col-md-7 ps-md-5" >
       <div class="row">
         <!--Partie 3-->
 
@@ -206,24 +206,22 @@
 
 
 <!-- Comment -->
-<div class="formbold-main-wrapper">
+<div class="formbold-main-wrapper" style="margin-top: 0% !important; width: 100% !important;">
   <!-- Author: FormBold Team -->
   <!-- Learn More: https://formbold.com -->
-  <div class="formbold-form-wrapper">
-    
-  
-
-    <form  >
+  <div class="formbold-form-wrapper"  >
+    <form [formGroup]="commentForm"  (ngSubmit)="addComment()">
       <div class="formbold-form-title">
         <h2 class="">Leave a comment</h2>
         
       </div>
 
       <div class="formbold-mb-3">
+        
         <label for="rating" class="formbold-form-label">
           Rating
         </label>
-        <ngb-rating [max]="5" [rate]="" ></ngb-rating>
+        <ngb-rating [max]="5" [rate]="" formControlName="rating" ></ngb-rating>
         <label for="address" class="formbold-form-label">
           Comment
         </label>
@@ -232,15 +230,38 @@
           name="address"
           id="address"
           class="formbold-form-input"
-          formControlName="oldPassword"
+          formControlName="text"
           style="height: 100px;"
         />
       </div>
 
    
 
-      <button class="formbold-btn" style="background-color: rgb(147, 147, 255);">Confirm</button>
+      <button class="formbold-btn" type="submit" style="background-color: rgb(147, 147, 255);">Confirm</button>
     </form>
   </div>
 </div>
 
+
+<div class="formbold-main-wrapper" style="margin-top: 0% !important; width: 100% !important;">
+  
+  <div class="formbold-form-wrapper "  >
+   
+      <div class="formbold-form-title">
+        <h2 class="">Reviews</h2>
+        
+      </div>
+
+      <div class="formbold-mb-3"  style="border: 1px solid rgb(205, 204, 204); padding: 20px; padding-bottom: 0%; margin-bottom: 3%; height: auto!important;" *ngFor="let c of comments">
+        <img [src]="c.patient?.image!"  style="height: 60px; width: 60px; margin-left: 20px;" />
+       <div style="position: relative; left:2px ; top:20px;"> {{c.patient?.firstName!}}     {{c.patient?.lastName!}}</div>
+      <div style="position: relative; top: -80px; left:140px">
+        <ngb-rating [max]="5" [rate]="c.rating"  [readonly]="true"></ngb-rating>
+    <div style="margin-bottom: 0% !important; padding-bottom: 0% !important;">
+        {{c.text}}
+      </div>
+      </div>
+        <i style="float:right; position:relative; margin-top: -150px;">{{c.date | date:'dd-MM-yyyy'}}</i>
+      </div>
+
+</div>

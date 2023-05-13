@@ -59,8 +59,10 @@ import { ChatmessagesComponent } from './Components/doctor/chatmessages/chatmess
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
+    
     LoginPatientModule,
     BrowserAnimationsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

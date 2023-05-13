@@ -4,6 +4,7 @@ import { Appointment } from 'src/app/Entities/appointment';
 import { Doctor } from 'src/app/Entities/doctor';
 import { AppointmentService } from 'src/app/services/AppointmentService/appointment.service';
 import { AuthService } from 'src/app/services/AuthService/auth.service';
+import { CalenderService } from 'src/app/services/calender.service';
 import { DoctorService } from 'src/app/services/doctor.service';
 @Component({
   selector: 'app-doctor-dash',
@@ -17,16 +18,24 @@ export class DoctorDashComponent implements OnInit {
   articles: any[] = [];
   AllApoi: any[] = [];
   selected: Date | null = new Date();
+  availability: any[];
 
   onValueChange(value: Date): void {
     console.log(`Current value: ${value}`);
+    this.calendS
+      .getCalenderByDate({ date: this.selected })
+      .subscribe((data: any) => {
+        this.availability = data[0];
+        console.log(this.availability);
+      });
   }
 
   constructor(
     private router: Router,
     private auth: AuthService,
     private rvs: AppointmentService,
-    private doccS: DoctorService
+    private doccS: DoctorService,
+    private calendS: CalenderService
   ) {}
 
   ngOnInit(): void {
@@ -51,5 +60,11 @@ export class DoctorDashComponent implements OnInit {
       this.AllApoi = data.slice(0, 4);
       console.log(this.AllApoi);
     });
+    this.calendS
+      .getCalenderByDate({ date: this.selected })
+      .subscribe((data: any) => {
+        this.availability = data[0];
+        console.log(this.availability);
+      });
   }
 }

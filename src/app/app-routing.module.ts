@@ -22,6 +22,7 @@ import { RegisterDoctorComponent } from './Components/doctor/loginDoctor/registe
 import { ChatComponent } from './Components/doctor/chat/chat.component';
 import { ChatmessagesComponent } from './Components/doctor/chatmessages/chatmessages.component';
 import { ChatMessagesComponent } from './Components/patient/chat-messages/chat-messages.component';
+import { ChatsComponent } from './Components/patient/chats/chats.component';
 
 const routes: Routes = [
   {
@@ -43,7 +44,11 @@ const routes: Routes = [
         component: ChangePasswordComponent,
         title: 'Change Password',
       },
-      {path:'messages',component:ChatMessagesComponent,title:'Messages'},
+      {path:'messages',component:ChatsComponent,title:'Messages',
+    children:[
+      {path: ':id',component: ChatMessagesComponent,title:''}
+    ]
+    },
       { path: 'profile', component: ProfileComponent, title: 'Profile' },
       { path: '', pathMatch: 'full', redirectTo: 'home' },
     ],

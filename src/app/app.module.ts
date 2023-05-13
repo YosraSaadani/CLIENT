@@ -36,6 +36,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
 
 import { ChatMessagesComponent } from './Components/patient/chat-messages/chat-messages.component';
+import { ChatsComponent } from './Components/patient/chats/chats.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,6 +58,7 @@ import { ChatMessagesComponent } from './Components/patient/chat-messages/chat-m
     PlistComponent,
     ChatmessagesComponent,
     ChatMessagesComponent,
+    ChatsComponent,
   ],
   imports: [
     BrowserModule,

@@ -52,4 +52,12 @@ export class AppointmentService {
       headers: reqHeader,
     });
   }
+
+  getSortedAppointmentsPatient(): Observable<any[]> {
+    
+    return this.http.get<Appointment[]>(`${URL}/patient/getAllMyRV`
+    );
+  }
+
+
 }

@@ -38,7 +38,7 @@ export class PatientComponent implements OnInit {
   disconnect()
   {
     localStorage.removeItem('patientToken');
-    this.router.navigate(['/patient/home']);
+    this.router.navigate(['/home']);
     location.reload();
   }
 

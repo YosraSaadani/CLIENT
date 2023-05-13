@@ -30,8 +30,7 @@ initForm()
   height:[this.currentPatient.height,[Validators.required]],
   weight:[this.currentPatient.weight,[Validators.required]],
   bloodType:[this.currentPatient.bloodType,[Validators.required]],
-  allergies:[this.currentPatient.allergies,[Validators.required]],
-  role:[this.currentPatient.person.role,[Validators.required]]
+  allergies:[this.currentPatient.allergies],
 
 });
 }

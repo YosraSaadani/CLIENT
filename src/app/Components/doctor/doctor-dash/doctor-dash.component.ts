@@ -29,6 +29,26 @@ export class DoctorDashComponent implements OnInit {
         console.log(this.availability);
       });
   }
+  createCalendar(date: Date) {
+    this.calendS.addCalendar({ date }).subscribe((data: any) => {
+      this.availability = data;
+    });
+  }
+  toggleSlot(slot: any) {
+    for (const availabilitySlot of this.availability['availability']) {
+      availabilitySlot.clicked = false;
+    }
+    slot.clicked = !slot.clicked;
+  }
+  updateAvailability(body: any) {
+    this.calendS.updateAvailability(body).subscribe((data: any) => {
+      this.calendS
+        .getCalenderByDate({ date: this.selected })
+        .subscribe((data: any) => {
+          this.availability = data[0];
+        });
+    });
+  }
 
   constructor(
     private router: Router,
@@ -61,8 +81,9 @@ export class DoctorDashComponent implements OnInit {
       console.log(this.AllApoi);
     });
     this.calendS
-      .getCalenderByDate({ date: this.selected })
+      .getCalenderByDate({ date: this.selected.setHours(0, 0, 0, 0) })
       .subscribe((data: any) => {
+        console.log(this.selected);
         this.availability = data[0];
         console.log(this.availability);
       });

@@ -1,121 +1,122 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 * {
-    padding: 0;
-    margin: 0 ;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    font-size: 14px;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
 }
 
 body {
-    background-color: #e2e8f0;
-    padding: 20px;
-    margin-top: 0% !important;
+  background-color: #e2e8f0;
+  padding: 20px;
+  margin-top: 0% !important;
 }
 
 .breadcrumb {
-    background-color: #c5cee4;
-
+  background-color: #c5cee4;
 }
 
 .breadcrumb a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .container {
-    width: 120% !important;
-    padding:20px;
-    margin-left: 5%;
+  width: 120% !important;
+  padding: 20px;
+  margin-left: 5%;
 }
 
-
-
 .d-flex a {
-    text-decoration: none;
-    color: #686868;
+  text-decoration: none;
+  color: #686868;
 }
 
 img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .fab.fa-twitter {
-    color: #8ab7f1;
+  color: #8ab7f1;
 }
 
 .fab.fa-instagram {
-    color: #E1306C;
+  color: #e1306c;
 }
 
 .fab.fa-facebook-f {
-    color: #5999ec;
+  color: #5999ec;
 }
-.boxInfo{
-    background-color: rgba(238, 238, 238, 0.922);
-    border-radius: 10px;
-    padding: 10px;
-    padding-top: 13px;
-    width: 150px;
-    height: 50px;
-    text-align: center;
-    font-size: 15px;
-    font-weight: bold;
-}
-
-.detailNom{
-    font-weight: bold;
-    color: rgb(158, 157, 157);
-    text-align: center;
+.boxInfo {
+  background-color: rgba(238, 238, 238, 0.922);
+  border-radius: 10px;
+  padding: 10px;
+  padding-top: 13px;
+  width: 150px;
+  height: 50px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
 }
 
-.calenderbox{
-    margin-top: 10px;
-    margin-left: 5px;
-
-    font-size: 15px;
-    font-weight: bold;
+.detailNom {
+  font-weight: bold;
+  color: rgb(158, 157, 157);
+  text-align: center;
 }
 
-.av{
-    background-color: white;
-    color:black
+.calenderbox {
+  margin-top: 10px;
+  margin-left: 5px;
+
+  font-size: 15px;
+  font-weight: bold;
 }
 
-.notAv{
-    background-color: rgb(224, 224, 224);
-    color:rgb(179, 178, 178);
-    
+.av {
+  background-color: white;
+  color: black;
 }
 
-.selectedC
-{
-    background-color: rgb(96, 163, 234); color: white !important;
+.notAv {
+  background-color: rgb(224, 224, 224);
+  color: rgb(179, 178, 178);
 }
 
-.sel{
-    background-color: rgb(96, 163, 234); color: white !important;
+.selectedC {
+  background-color: rgb(96, 163, 234);
+  color: white !important;
+}
 
+.sel {
+  background-color: rgb(96, 163, 234);
+  color: white !important;
 }
 
 @keyframes ani {
-    from{opacity: 0;}
-    to{opacity: 1;}
-    
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-.sched{animation: ani 0.5s;}
+.sched {
+  animation: ani 0.5s;
+}
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 .formbold-mb-3 {
   margin-bottom: 15px;
@@ -251,7 +252,8 @@ body {
   box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Nunito:wght@200;400&display=swap');ngb-rating{
-    color:#FFC107;
-    font-size:30px;
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Nunito:wght@200;400&display=swap");
+ngb-rating {
+  color: #ffc107;
+  font-size: 30px;
 }

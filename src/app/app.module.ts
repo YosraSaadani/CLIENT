@@ -32,6 +32,9 @@ import { ChatmessagesComponent } from './Components/doctor/chatmessages/chatmess
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatIconModule } from '@angular/material/icon';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,6 +69,8 @@ import { MatCardModule } from '@angular/material/card';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCardModule,
+    MatTooltipModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

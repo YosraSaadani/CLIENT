@@ -60,6 +60,65 @@
 .waywas {
   padding-bottom: 0.7rem !important;
 }
-// .demo-inline-calendar-card {
-//   width: 95%;
-// }
+.demo-inline-calendar-card {
+  width: 96%;
+
+  margin: 0 auto;
+}
+.slot-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 0.3s;
+}
+
+.is-left {
+  transform: translateX(-50px);
+}
+
+.move-left {
+  transition: opacity 0.3s;
+  opacity: 0;
+}
+
+.slot-button.is-left .move-left {
+  opacity: 1;
+}
+
+.slot-button {
+  display: flex;
+  align-items: center;
+}
+
+.toggle-button {
+  padding: 8px 16px;
+  border: none;
+  width: 70%;
+  border-radius: 4px;
+  margin-right: 8px;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 0.5rem;
+}
+.waywax {
+  padding-bottom: 2rem;
+}
+
+.icon {
+  font-size: 24px;
+  margin-left: 8px;
+}
+
+.yolo {
+  //center
+  margin: 0 auto;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+.btn-sucesss {
+  background-color: rgb(96, 163, 234) !important;
+}

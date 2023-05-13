@@ -29,7 +29,16 @@ export class CalenderService {
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
     });
-    return this.http.put<Calendrier>(url + '/updateAvailability', body, {
+    return this.http.post<Calendrier>(url + '/updateAvailability', body, {
+      headers: reqHeader,
+    });
+  }
+  addCalendar(body: any): Observable<Calendrier> {
+    var reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
+    });
+    return this.http.post<Calendrier>(url + '/addCalender', body, {
       headers: reqHeader,
     });
   }

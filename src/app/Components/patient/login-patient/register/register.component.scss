@@ -4,3 +4,11 @@ section{
 	margin-left: 28%;
     
 }
+
+.opa{
+	animation: opac 0.2s;
+}
+@keyframes opac {
+	from{opacity: 0;}
+	to{opacity: 1;}	
+}

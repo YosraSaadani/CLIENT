@@ -85,13 +85,13 @@
                   </div>
 
 
-                  <!-- height and weight -->
+                  <!-- Specialty and Experience input -->
                  <div class="row">
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <label class="form-label" for="form3Example6" [class.is-invalid]="specialty.invalid && (specialty.touched || specialty.dirty)" >Specialty</label>
+                      <label class="form-label" for="form3Example6" >Specialty</label>
 
-                        <select formControlName="specialty" id="form3Example6" class="form-control">
+                        <select [class.is-invalid]="specialty.invalid && (specialty.touched || specialty.dirty)"  formControlName="specialty" id="form3Example6" class="form-control">
                             <option value="General Practitioner">General Practitioner</option>
                             <option value="Pediatrician">Pediatrician</option>
                             <option value="Psychiatrist">Psychiatrist</option>
@@ -121,8 +121,21 @@
                   </div>
                 </div>
 
+                 <!--Location Input-->
+                 <div class="col-md-12 mb-4">
+                  <div class="form-outline">
+                    <label class="form-label" for="form3Example2">Location</label>
 
-                 <!-- allergies  and bloodtype input -->
+                    <input type="text" id="form3Example2" min="0" class="form-control" formControlName="location" [class.is-invalid]="location.invalid && (location.touched || location.dirty)" />
+                    <div class="invalid-feedback opa" *ngIf="location.errors">
+                      <ng-container *ngIf="location.errors['required']">
+                          Location Is Required
+                      </ng-container>
+                    </div>
+                  </div>
+                </div>
+
+                 <!-- Price  and Description input -->
                  <div class="row">
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
@@ -150,18 +163,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-12 mb-4">
-                    <div class="form-outline">
-                      <label class="form-label" for="form3Example2">Location</label>
-
-                      <input type="text" id="form3Example2" min="0" class="form-control" formControlName="location" [class.is-invalid]="location.invalid && (location.touched || location.dirty)" />
-                      <div class="invalid-feedback opa" *ngIf="location.errors">
-                        <ng-container *ngIf="location.errors['required']">
-                            Location Is Required
-                        </ng-container>
-                      </div>
-                    </div>
-                  </div>
+                 
                 </div>
                 <!-- email and password  input -->
               <div class="row">

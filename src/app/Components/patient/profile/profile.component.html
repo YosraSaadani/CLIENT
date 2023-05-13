@@ -1,8 +1,9 @@
+<br>
 <div class="formbold-main-wrapper" style="padding-top: 0% !important;" >
     <div class="formbold-form-wrapper">
       <form  [formGroup]="formPatient" (ngSubmit)="updatePatientInfos()">
         <div class="formbold-form-title">
-          <h2 class="">Profile {{currentPatient.person?.firstName!}} {{currentPatient.person?.lastName!}}</h2>
+          <h2 style="text-align: center;">Profile {{currentPatient.person?.firstName!}} {{currentPatient.person?.lastName!}}</h2>
         </div>
         <div class="formbold-input-flex">
           <div>
@@ -15,6 +16,7 @@
               id="firstname"
               class="formbold-form-input"
               formControlName="firstName"
+              [class.is-invalid]="firstName.invalid && (firstName.touched || firstName.dirty)"
             />
           </div>
           <div>
@@ -92,7 +94,7 @@
               name="bloodType"
               id="bloodType"
               formControlName="bloodType"
-
+            
               class="formbold-form-input"
             />
           </div>
@@ -122,7 +124,7 @@
             class="formbold-form-input"
           />
         </div>
-        <button class="formbold-btn" type="submit">Update</button>
+        <div style="text-align: center!important;"><button class="formbold-btn" type="submit" [disabled]="formPatient.invalid" >Update</button></div>
       </form>
     </div>
   </div>

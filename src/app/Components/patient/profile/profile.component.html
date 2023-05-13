@@ -3,9 +3,10 @@
     <div class="formbold-form-wrapper">
       <form  [formGroup]="formPatient" (ngSubmit)="updatePatientInfos()">
         <div class="formbold-form-title">
-          <h2 style="text-align: center;">Profile {{currentPatient.person?.firstName!}} {{currentPatient.person?.lastName!}}</h2>
+          <img [src]="currentPatient.person.image" width="70" height="70" style="border-radius: 50%; position: absolute; "/>
+          <h2 style="text-align: center; padding-top: 20px;">Profile {{currentPatient.person?.firstName!}} {{currentPatient.person?.lastName!}}</h2>
         </div>
-        <div class="formbold-input-flex">
+        <div class="formbold-input-flex" style="margin-top: 60px;">
           <div>
             <label for="firstname" class="formbold-form-label">
               First name

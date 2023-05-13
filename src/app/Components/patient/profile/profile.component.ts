@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Patient } from 'src/app/Entities/patient';
 import { PatientService } from 'src/app/services/patient.service';
@@ -20,65 +20,27 @@ export class ProfileComponent implements OnInit {
 
 initForm()
 {
-  this.formPatient=this.fb.nonNullable.group({
+this.formPatient=this.fb.nonNullable.group({
 
-  firstName:[this.currentPatient.person.firstName,[Validators.required]],
-  lastName:[this.currentPatient.person.lastName,[Validators.required]],
-  birthDate:[this.birthDateValid,[Validators.required]],
-  gender:[this.currentPatient.person.gender,[Validators.required]],
-  email:[this.currentPatient.person.email,[Validators.required]],
-  height:[this.currentPatient.height,[Validators.required]],
-  weight:[this.currentPatient.weight,[Validators.required]],
-  bloodType:[this.currentPatient.bloodType,[Validators.required]],
-  allergies:[this.currentPatient.allergies,[Validators.required]],
+  firstName:[this.currentPatient.person.firstName],
+  lastName:[this.currentPatient.person.lastName],
+  birthDate:[this.birthDateValid],
+  gender:[this.currentPatient.person.gender],
+  email:[this.currentPatient.person.email],
+  height:[this.currentPatient.height],
+  weight:[this.currentPatient.weight],
+  bloodType:[this.currentPatient.bloodType],
+  allergies:[this.currentPatient.allergies],
 
-});
 }
 
-get firstName()
-{
-  return this.formPatient.get('firstName');
+)
 }
-get lastName()
-{
-  return this.formPatient.get('lastName');
-}
-get birthDate()
-{
-  return this.formPatient.get('birthDate');
-}
-get gender()
-{
-  return this.formPatient.get('gender');
-}
-get height()
-{
-  return this.formPatient.get('height');
-}
-get weight()
-{
-  return this.formPatient.get('weight');
-}
-get bloodType()
-{
-  return this.formPatient.get('bloodType');
-}
-get allergies()
-{
-  return this.formPatient.get('allergies');
-}
-get email()
-{
-  return this.formPatient.get('email');
-}
-get password()
-{
-  return this.formPatient.get('password');
-}
+
 updatePatientInfos()
 {
 
-  this.servicePatient.updatePatient(this.currentPatient._id,this.formPatient.value).subscribe(data=>this.ngOnInit());
+  this.servicePatient.updatePatient(this.currentPatient._id,this.formPatient.value).subscribe(data=>this.ngOnInit);
 }
 
   ngOnInit(): void {

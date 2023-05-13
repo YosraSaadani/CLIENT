@@ -9,7 +9,11 @@ import { AdminService } from 'src/app/services/admin.service';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private adminService:AdminService) { }
+  constructor(private adminService:AdminService,private router:Router) { 
+    /*if (localStorage.getItem('adminToken') == null) {
+      this.router.navigate(['/loginadmin']);
+    }*/
+  }
 
   weather!:any;
   getWeather()

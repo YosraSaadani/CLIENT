@@ -31,6 +31,7 @@ initForm()
   weight:[this.currentPatient.weight,[Validators.required]],
   bloodType:[this.currentPatient.bloodType,[Validators.required]],
   allergies:[this.currentPatient.allergies,[Validators.required]],
+  role:[this.currentPatient.person.role,[Validators.required]]
 
 });
 }
@@ -78,7 +79,8 @@ get password()
 updatePatientInfos()
 {
 
-  this.servicePatient.updatePatient(this.currentPatient._id,this.formPatient.value).subscribe(data=>this.ngOnInit());
+  this.servicePatient.updatePatient(this.currentPatient._id,this.formPatient.value).subscribe(data=>{this.ngOnInit();
+    console.log(this.formPatient.value)});
 }
 
   ngOnInit(): void {

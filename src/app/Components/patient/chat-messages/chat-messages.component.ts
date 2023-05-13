@@ -47,13 +47,9 @@ export class ChatMessagesComponent implements OnInit {
   ngOnInit(): void {
     this.Activeroute.params.subscribe((params) => {
       this.personSer.getPersonById(params['id']).subscribe((data) => {
+        console.log(data);
         this.person = data;
-        this.AppoiS.getLatestPersoAppointment(this.person._id).subscribe(
-          (data) => {
-            this.dateRV = data[0].dateRV;
-            this.HeureRV = data[0].heureRV;
-          }
-        );
+        
         this.messSer
           .patientGetChatMessages({ to: this.person._id })
           .subscribe((data) => {

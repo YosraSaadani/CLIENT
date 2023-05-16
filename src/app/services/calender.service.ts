@@ -13,6 +13,9 @@ export class CalenderService {
   getCalenderByDoctorId(id: string): Observable<Calendrier[]> {
     return this.http.get<Calendrier[]>(url + '/getByDoctorid/' + id);
   }
+  getCalendarByDoctorIdAfterToday(id: string): Observable<Calendrier[]> {
+    return this.http.get<Calendrier[]>(url + '/getAfterToday/' + id);
+  }
 
   getCalenderByDate(body: any): Observable<Calendrier> {
     var reqHeader = new HttpHeaders({

@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Person } from 'src/app/Entities/person';
 import { DoctorService } from 'src/app/services/doctor.service';
@@ -12,8 +13,16 @@ import { PersonService } from 'src/app/services/person.service';
   styleUrls: ['./register-doctor.component.scss']
 })
 export class RegisterDoctorComponent implements OnInit {
-
-  constructor(private fb:FormBuilder,private doctorService:DoctorService,private personService:PersonService,private router:Router) { }
+private config: MatSnackBarConfig = new MatSnackBarConfig();
+  constructor(private fb:FormBuilder,
+    private doctorService:DoctorService,
+    private personService:PersonService,
+    private _snackBar: MatSnackBar,
+    private router:Router) {
+      this.config.duration = 5000;
+      this.config.horizontalPosition = 'center';
+    this.config.panelClass='success';
+     }
   registerForm:FormGroup;
   person:Person;
   register()
@@ -33,10 +42,12 @@ export class RegisterDoctorComponent implements OnInit {
       this.doctorService.registerDoctor(body).subscribe((res=>{
         localStorage.setItem("doctorToken",res.token)
         this.router.navigate(['/doctor']);
+        this._snackBar.open('Registered successfully','',{duration:5000,panelClass:'success'});
       }))
       }
       ,(err:HttpErrorResponse)=>{
         console.log(err.message);
+        this._snackBar.open(err.error.msg,'',{duration:5000,panelClass:'Error'});
         
       })
   }

@@ -30,13 +30,15 @@ export class DoctorService {
     return this.http.get<any>(NewsURL);
   }
 
-  loginDoctor(doctor:any)
-  {
-    return this.http.post<any>(url+"login",doctor);
+  loginDoctor(doctor: any) {
+    return this.http.post<any>(url + 'login', doctor);
   }
 
-  registerDoctor(doctor:any)
-  {
-    return this.http.post<any>(url+"register",doctor)
+  registerDoctor(doctor: any) {
+    return this.http.post<any>(url + 'register', doctor);
+  }
+
+  getPersonByDoctor(id: string): Observable<any> {
+    return this.http.get<any>(url + 'getPersonId/' + id);
   }
 }

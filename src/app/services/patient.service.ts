@@ -4,31 +4,35 @@ import { Observable } from 'rxjs';
 import { Patient } from '../Entities/patient';
 const url = 'http://localhost:5000/api/patient/';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class PatientService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http:HttpClient) { }
-
-  registerPatient(patient:any):Observable<any> {
-    return this.http.post<any>(url+'register',patient);
+  registerPatient(patient: any): Observable<any> {
+    return this.http.post<any>(url + 'register', patient);
   }
 
-  loginPatient(patient:any):Observable<any> {
-    return this.http.post<any>(url+'login',patient);
+  loginPatient(patient: any): Observable<any> {
+    return this.http.post<any>(url + 'login', patient);
   }
 
-  getPatientById(id:string):Observable<Patient> {
-    return this.http.get<Patient>(url+id);
+  getPatientById(id: string): Observable<Patient> {
+    return this.http.get<Patient>(url + id);
   }
 
-updatePatient(id:string,p:Patient):Observable<Patient>
-{
-  return this.http.put<Patient>(url+id,p);
-}
+  updatePatient(id: string, p: Patient): Observable<Patient> {
+    return this.http.put<Patient>(url + id, p);
+  }
 
-  changePassword(id:string,{oldPassword,newPassword}):Observable<any> {
-    return this.http.put<any>(url+"changePassword/"+id,{oldPassword,newPassword});
+  changePassword(id: string, { oldPassword, newPassword }): Observable<any> {
+    return this.http.put<any>(url + 'changePassword/' + id, {
+      oldPassword,
+      newPassword,
+    });
+  }
+
+  getPersonByPatient(id: string): Observable<any> {
+    return this.http.get<any>(url + 'getPersonId/' + id);
   }
 }

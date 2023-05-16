@@ -40,12 +40,16 @@
                         <div class="mt-auto p-4 " style="margin-top: 15% !important;" >
                             <h3 style="font-family: Comfortaa; font-weight: bold;">{{d.person.firstName | titlecase}} {{d.person.lastName | titlecase}}</h3>
                             <h6 class="fw-normal fst-italic text-primary mb-4">{{d.specialty}}</h6>
+                           
                             <div class="d-flex justify-content-between align-items-center">
                                 
                                 <ngb-rating [max]="5" [rate]="d.rating" [readonly]="true"></ngb-rating>
                                 
                             </div>
+                        <br>
+                            <h5 style="font-family: Comfortaa; font-weight: bold;">Price : {{d.price}} DT</h5>
                         </div>
+                        
                 
                     </div>
                 </div>
@@ -54,9 +58,7 @@
             
             
         
-            <div class="col-12 text-center">
-                <button class="btn btn-primary py-3 px-5">Load More</button>
-            </div>
+           
         </div>
     </div>
 </div>

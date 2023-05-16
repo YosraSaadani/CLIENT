@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { Observable, ReplaySubject } from 'rxjs';
 import { Patient } from 'src/app/Entities/patient';
 import { PatientService } from 'src/app/services/patient.service';
 
@@ -18,8 +17,16 @@ export class ProfileComponent implements OnInit {
   formPatient!:FormGroup;
   birthDateinvalid="";
   birthDateValid="";
+  private config: MatSnackBarConfig = new MatSnackBarConfig();
   dateParts=[]
-  constructor(private servicePatient:PatientService,private fb:FormBuilder ) { }
+  constructor(private servicePatient:PatientService,
+    private _snackBar: MatSnackBar,
+
+    private fb:FormBuilder ) { 
+    this.config.duration = 5000;
+    this.config.horizontalPosition = 'center';
+  this.config.panelClass='success';
+    }
 
 initForm()
 {
@@ -34,7 +41,6 @@ initForm()
   weight:[this.currentPatient.weight,[Validators.required]],
   bloodType:[this.currentPatient.bloodType,[Validators.required]],
   allergies:[this.currentPatient.allergies],
-  image:['']
 
 });
 }
@@ -83,7 +89,15 @@ updatePatientInfos()
 {
 
   this.servicePatient.updatePatient(this.currentPatient._id,this.formPatient.value).subscribe(data=>{this.ngOnInit();
-    console.log(this.formPatient.value)});
+    console.log(this.formPatient.value)
+  this._snackBar.open('Your informations have been updated successfully', '', this.config);
+  },
+    (err:HttpErrorResponse)=>{console.log(err)
+      this.config.panelClass='Error';
+    this._snackBar.open(err.error.msg, '', this.config);
+    }
+    
+    );
 }
 
   ngOnInit(): void {
@@ -95,13 +109,11 @@ this.birthDateinvalid=(new Date(this.currentPatient.person.birthDate)).toLocaleD
 this.dateParts=this.birthDateinvalid.split("/");
 
    this.birthDateValid=this.dateParts[2]+'-'+this.dateParts[1].padStart(2, "0")+'-'+this.dateParts[0].padStart(2, "0");
-this.image=this.currentPatient.person.image;
+console.log(this.birthDateValid)
   this.initForm();
   
   });
 
   }
-
-
 
 }

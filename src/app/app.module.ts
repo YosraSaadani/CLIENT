@@ -37,6 +37,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { ChatMessagesComponent } from './Components/patient/chat-messages/chat-messages.component';
 import { ChatsComponent } from './Components/patient/chats/chats.component';
+import { PlistPatientComponent } from './Components/patient/plist-patient/plist-patient.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +60,7 @@ import { ChatsComponent } from './Components/patient/chats/chats.component';
     ChatmessagesComponent,
     ChatMessagesComponent,
     ChatsComponent,
+    PlistPatientComponent,
   ],
   imports: [
     BrowserModule,

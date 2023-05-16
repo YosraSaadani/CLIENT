@@ -46,7 +46,7 @@ const routes: Routes = [
       },
       {path:'messages',component:ChatsComponent,title:'Messages',
     children:[
-      {path: ':id',component: ChatMessagesComponent,title:''}
+      {path: ':id',component: ChatMessagesComponent,title:'Chat Messages'}
     ]
     },
       { path: 'profile', component: ProfileComponent, title: 'Profile' },

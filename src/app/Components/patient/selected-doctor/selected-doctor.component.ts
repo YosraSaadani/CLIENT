@@ -1,6 +1,8 @@
 import { formatDate } from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { forkJoin } from 'rxjs';
@@ -44,6 +46,8 @@ export class SelectedDoctorComponent implements OnInit {
   comments!: Comment[];
   commentForm!: FormGroup;
   currentPatientPerson!: Person;
+  private config: MatSnackBarConfig = new MatSnackBarConfig();
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private DoctorService: DoctorService,
@@ -53,9 +57,13 @@ export class SelectedDoctorComponent implements OnInit {
     private commentService: CommentService,
     private elementRef: ElementRef,
     private fb: FormBuilder,
-
+     private _snackBar: MatSnackBar,
     private router: Router
-  ) {}
+  ) {
+    this.config.duration = 5000;
+    this.config.panelClass = 'success';
+    this.config.horizontalPosition = 'center';
+  }
 
   ngOnInit(): void {
     if (localStorage.getItem('patientToken')) {
@@ -100,6 +108,7 @@ export class SelectedDoctorComponent implements OnInit {
       console.log(this.comments);
     });
   }
+
   addComment() {
     this.commentForm.patchValue({
       patient: this.idCurrentPatient,
@@ -108,7 +117,17 @@ export class SelectedDoctorComponent implements OnInit {
     console.log(this.commentForm.value);
     this.commentService
       .addComment(this.commentForm.value)
-      .subscribe((data) => this.listerComments());
+      .subscribe((data) =>{ this.listerComments();
+        this._snackBar.open("Comment added", "", this.config)
+      },
+      (error:HttpErrorResponse) => {
+        this.config.panelClass = 'Error';
+        this._snackBar.open(error.error.msg, "", this.config)
+ 
+ 
+       }
+      
+      );
   }
 
   RendezVous() {
@@ -121,9 +140,28 @@ export class SelectedDoctorComponent implements OnInit {
       if (this.appointment.heureRV != undefined) {
         this.appointmentService
           .createAppointment(this.appointment)
-          .subscribe((data) => console.log(data));
+          .subscribe(
+            (data) =>{ 
+              console.log(data)
+              this.config.duration = 5000;
+    this.config.panelClass = 'success';
+    this._snackBar.open("You booked an appointment", "", this.config)
+
+            },
+              (error:HttpErrorResponse) => {
+               this.config.panelClass = 'Error';
+               this._snackBar.open(error.error.msg, "", this.config)
+
+
+              }
+              
+              );
+
+              
       } else {
         console.log('not disp');
+        this.config.panelClass = 'error';
+        this._snackBar.open("Not available", "", this.config)
       }
     } else {
       this.router.navigate(['/login']);

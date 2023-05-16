@@ -34,6 +34,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { ChatMessagesComponent } from './Components/patient/chat-messages/chat-messages.component';
 import { ChatsComponent } from './Components/patient/chats/chats.component';
@@ -79,6 +80,7 @@ import { PlistPatientComponent } from './Components/patient/plist-patient/plist-
     MatCardModule,
     MatTooltipModule,
     MatIconModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent],

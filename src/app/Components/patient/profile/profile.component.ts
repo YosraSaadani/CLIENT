@@ -1,5 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, ReplaySubject } from 'rxjs';
 import { Patient } from 'src/app/Entities/patient';
@@ -16,8 +18,7 @@ export class ProfileComponent implements OnInit {
   formPatient!:FormGroup;
   birthDateinvalid="";
   birthDateValid="";
-  dateParts=[];
-  image!:string;
+  dateParts=[]
   constructor(private servicePatient:PatientService,private fb:FormBuilder ) { }
 
 initForm()
@@ -82,8 +83,7 @@ updatePatientInfos()
 {
 
   this.servicePatient.updatePatient(this.currentPatient._id,this.formPatient.value).subscribe(data=>{this.ngOnInit();
-    console.log(this.formPatient.value)
-  console.log(data.image)});
+    console.log(this.formPatient.value)});
 }
 
   ngOnInit(): void {

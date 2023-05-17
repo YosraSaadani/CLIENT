@@ -36,10 +36,14 @@ export class DoctorsListComponent implements OnInit {
     this.doctorService
       .getDoctors()
       .subscribe((data) => {(this.doctorsList = data);
-        let rate=0;
-        data.forEach(elt=>this.commentService.getCommentsByDoctorId(elt._id).subscribe(data=>{
-          data.forEach(elt=>rate+=elt.rating);
-          elt.rating=rate/data.length;
+        
+        data.forEach(elt=>this.commentService.getCommentsByDoctorId(elt._id).subscribe(data1=>{
+          let rate=0;
+          data1.forEach(elt1=>rate+=elt1.rating);
+          elt.rating=rate/data1.length;
+          console.log(elt.rating);
+          console.log(data1.length);
+         console.log(elt.rating);
           
         }))
         

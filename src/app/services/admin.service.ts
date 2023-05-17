@@ -5,7 +5,7 @@ import { Doctor } from '../Entities/doctor';
 import { Patient } from '../Entities/patient';
 import { Notifs } from '../Entities/notifs';
 
-const url = 'http://localhost:5000/api/doctor/all';
+const url = 'http://localhost:5000/api/doctor/';
 const url2 = 'http://localhost:5000/api/patient/';
 const url3 = 'http://localhost:5000/api/notificationAdmin/';
 @Injectable({
@@ -16,7 +16,7 @@ export class AdminService {
   constructor(private http: HttpClient) { }
 
   getDoctors(): Observable<Doctor[]> {
-    return this.http.get<Doctor[]>(url);
+    return this.http.get<Doctor[]>(url+"all");
   }
 
   deleteDoctorById(id:string):Observable<Doctor>
@@ -42,6 +42,11 @@ export class AdminService {
   deleteNotif(id:string):Observable<Notifs>
   {
     return this.http.delete<Notifs>(url3+id);
+  }
+
+  deleteAllNotif():Observable<Notifs[]>
+  {
+    return this.http.delete<Notifs[]>(url3+"deleteall");
   }
   
   weatherapi()

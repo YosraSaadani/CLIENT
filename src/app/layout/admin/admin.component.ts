@@ -49,6 +49,17 @@ export class AdminComponent implements OnInit {
     })
   }
 
+  deleteAll()
+  {
+    this.adminService.deleteAllNotif().subscribe(()=>{
+      console.log("all deleted");
+      this.getNotifs();
+    },
+    (err:HttpErrorResponse)=>{
+      console.log(err.message);
+    })
+  }
+
   ngOnInit(): void {
     this.getWeather(); 
     this.getNotifs();

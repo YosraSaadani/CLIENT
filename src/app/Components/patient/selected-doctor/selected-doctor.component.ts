@@ -75,6 +75,7 @@ export class SelectedDoctorComponent implements OnInit {
         .getPatientById(this.idCurrentPatient)
         .subscribe((data) => {
           this.currentPatientPerson = data.person;
+          
         });
     }
     this.id = this.activatedRoute.snapshot.params['id'];
@@ -82,6 +83,10 @@ export class SelectedDoctorComponent implements OnInit {
       this.currentDoctor = data;
       console.log(this.currentDoctor);
       this.currentDoctorPerson = data.person;
+      this.commentService.getCommentsByDoctorId(data._id).subscribe(data=>
+        {
+          this.rate=data.length;
+        })
     });
     this.dates = this.generateDates();
     this.serviceCalendrier
@@ -99,6 +104,8 @@ export class SelectedDoctorComponent implements OnInit {
       doctor: [],
       date: [new Date()],
     });
+
+    
   }
 
   listerComments() {
@@ -222,4 +229,6 @@ export class SelectedDoctorComponent implements OnInit {
     console.log(dates);
     return dates;
   }
+  rate:number=0;
+
 }

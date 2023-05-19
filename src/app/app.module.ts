@@ -43,6 +43,7 @@ import { PlistPatientComponent } from './Components/patient/plist-patient/plist-
 import { DialogDeleteConfirmationComponent } from './Components/admin/dialog-delete-confirmation/dialog-delete-confirmation.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
+import { ChangePasswordAdminComponent } from './Components/admin/change-password-admin/change-password-admin.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,6 +68,7 @@ import {MatButtonModule} from '@angular/material/button';
     ChatsComponent,
     PlistPatientComponent,
     DialogDeleteConfirmationComponent,
+    ChangePasswordAdminComponent,
   ],
   imports: [
     BrowserModule,

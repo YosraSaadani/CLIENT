@@ -23,6 +23,7 @@ import { ChatComponent } from './Components/doctor/chat/chat.component';
 import { ChatmessagesComponent } from './Components/doctor/chatmessages/chatmessages.component';
 import { ChatMessagesComponent } from './Components/patient/chat-messages/chat-messages.component';
 import { ChatsComponent } from './Components/patient/chats/chats.component';
+import { ChangePasswordAdminComponent } from './Components/admin/change-password-admin/change-password-admin.component';
 
 const routes: Routes = [
   {
@@ -123,7 +124,7 @@ const routes: Routes = [
       },
       {
         path: 'changePassword',
-        component: ChangePasswordComponent,
+        component: ChangePasswordAdminComponent,
         title: 'Change Password',
       },
       { path: 'dashboard', component: DashboardComponent, title: 'DashBoard' },

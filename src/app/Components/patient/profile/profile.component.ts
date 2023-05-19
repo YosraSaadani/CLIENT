@@ -1,5 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Patient } from 'src/app/Entities/patient';
 import { PatientService } from 'src/app/services/patient.service';
@@ -15,12 +17,20 @@ export class ProfileComponent implements OnInit {
   formPatient!:FormGroup;
   birthDateinvalid="";
   birthDateValid="";
+  private config: MatSnackBarConfig = new MatSnackBarConfig();
   dateParts=[]
-  constructor(private servicePatient:PatientService,private fb:FormBuilder ) { }
+  constructor(private servicePatient:PatientService,
+    private _snackBar: MatSnackBar,
+
+    private fb:FormBuilder ) { 
+    this.config.duration = 5000;
+    this.config.horizontalPosition = 'center';
+  this.config.panelClass='success';
+    }
 
 initForm()
 {
-  this.formPatient=this.fb.nonNullable.group({
+this.formPatient=this.fb.nonNullable.group({
 
   firstName:[this.currentPatient.person.firstName,[Validators.required]],
   lastName:[this.currentPatient.person.lastName,[Validators.required]],
@@ -32,54 +42,24 @@ initForm()
   bloodType:[this.currentPatient.bloodType,[Validators.required]],
   allergies:[this.currentPatient.allergies],
 
-});
 }
 
-get firstName()
-{
-  return this.formPatient.get('firstName');
+)
 }
-get lastName()
-{
-  return this.formPatient.get('lastName');
-}
-get birthDate()
-{
-  return this.formPatient.get('birthDate');
-}
-get gender()
-{
-  return this.formPatient.get('gender');
-}
-get height()
-{
-  return this.formPatient.get('height');
-}
-get weight()
-{
-  return this.formPatient.get('weight');
-}
-get bloodType()
-{
-  return this.formPatient.get('bloodType');
-}
-get allergies()
-{
-  return this.formPatient.get('allergies');
-}
-get email()
-{
-  return this.formPatient.get('email');
-}
-get password()
-{
-  return this.formPatient.get('password');
-}
+
 updatePatientInfos()
 {
 
   this.servicePatient.updatePatient(this.currentPatient._id,this.formPatient.value).subscribe(data=>{this.ngOnInit();
-    console.log(this.formPatient.value)});
+    console.log(this.formPatient.value)
+  this._snackBar.open('Your informations have been updated successfully', '', this.config);
+  },
+    (err:HttpErrorResponse)=>{console.log(err)
+      this.config.panelClass='Error';
+    this._snackBar.open(err.error.msg, '', this.config);
+    }
+    
+    );
 }
 
   ngOnInit(): void {

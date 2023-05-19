@@ -32,11 +32,17 @@ import { ChatmessagesComponent } from './Components/doctor/chatmessages/chatmess
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
+
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { ChatMessagesComponent } from './Components/patient/chat-messages/chat-messages.component';
 import { ChatsComponent } from './Components/patient/chats/chats.component';
+import { PlistPatientComponent } from './Components/patient/plist-patient/plist-patient.component';
+import { DialogDeleteConfirmationComponent } from './Components/admin/dialog-delete-confirmation/dialog-delete-confirmation.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +65,8 @@ import { ChatsComponent } from './Components/patient/chats/chats.component';
     ChatmessagesComponent,
     ChatMessagesComponent,
     ChatsComponent,
+    PlistPatientComponent,
+    DialogDeleteConfirmationComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,6 +85,9 @@ import { ChatsComponent } from './Components/patient/chats/chats.component';
     MatCardModule,
     MatTooltipModule,
     MatIconModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent],

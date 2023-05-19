@@ -46,7 +46,7 @@ const routes: Routes = [
       },
       {path:'messages',component:ChatsComponent,title:'Messages',
     children:[
-      {path: ':id',component: ChatMessagesComponent,title:''}
+      {path: ':id',component: ChatMessagesComponent,title:'Chat Messages'}
     ]
     },
       { path: 'profile', component: ProfileComponent, title: 'Profile' },
@@ -102,14 +102,15 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    component: AdminLoginComponent,
+    component: AdminComponent,
     title: 'Admin',
     children: [
       {
         path: '',
-        component: AdminLoginComponent,
-        title: 'Login',
+        component: DashboardComponent,
+        title: 'Admin',
       },
+
       {
         path: 'doctorsList',
         component: AdminDoctorsListComponent,
@@ -119,6 +120,11 @@ const routes: Routes = [
         path: 'patientsList',
         component: AdminPatientsListComponent,
         title: 'Patients List',
+      },
+      {
+        path: 'changePassword',
+        component: ChangePasswordComponent,
+        title: 'Change Password',
       },
       { path: 'dashboard', component: DashboardComponent, title: 'DashBoard' },
       { path: '', pathMatch: 'full', redirectTo: 'dashboard' },

@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AdminService } from 'src/app/services/admin.service';
 import { PatientService } from 'src/app/services/patient.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class AdminLoginComponent implements OnInit {
 
   loginForm!:FormGroup;
   constructor(private fb:FormBuilder,
-    private servicePatient:PatientService
+    private serviceAdmin:AdminService
     ,private router:Router) { }
 
   ngOnInit(): void {
@@ -35,9 +36,13 @@ export class AdminLoginComponent implements OnInit {
 
 
   login(){
-    this.servicePatient.loginPatient(this.loginForm.value).subscribe(data=>{
-      localStorage.setItem('patientToken', data.token);
-      this.router.navigate(['/home']);
+    console.log("hgug");
+    this.serviceAdmin.loginAdmin(this.loginForm.value).subscribe(data=>{
+      
+      localStorage.setItem('adminToken', data.token);
+      
+      this.router.navigate(['/admin']);
+      console.log("test");
 
     },
     (err:HttpErrorResponse)=>console.log(err.error.msg));

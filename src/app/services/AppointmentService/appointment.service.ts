@@ -54,9 +54,14 @@ export class AppointmentService {
   }
 
   getSortedAppointmentsPatient(): Observable<any[]> {
+    var reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + localStorage.getItem('patientToken'),
+    });
+    return this.http.get<Appointment[]>(`${URL}/patient/getAllMyRV`, {
+      headers: reqHeader,
+    });
     
-    return this.http.get<Appointment[]>(`${URL}/patient/getAllMyRV`
-    );
   }
 
 

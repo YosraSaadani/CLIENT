@@ -1,0 +1,12 @@
+<div style="text-align: center;">
+    <div mat-dialog-title  >
+        Confirm 
+        </div> 
+        <div mat-dialog-content> 
+        Are you sure you want to delete this item ?
+        </div> 
+        <div style="margin-left:32%;" mat-dialog-actions fxLayout="row" fxLayoutAlign="end" >
+          <button mat-raised-button color="warn"  (click)="confirm()" >Yes</button>
+          <button mat-raised-button  color="primary"  (click)="close()" >No</button>  
+    </div>
+    </div>

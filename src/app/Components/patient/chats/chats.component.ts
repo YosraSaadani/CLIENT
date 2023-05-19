@@ -23,7 +23,7 @@ export class ChatsComponent implements OnInit {
 
       if (this.Persons.length > 0) {
         console.log(this.Persons);
-        this.router.navigate(['/messages' + this.Persons[0]._id]);
+        this.router.navigate(['/messages/' + this.Persons[0]._id]);
       }
     });
   }

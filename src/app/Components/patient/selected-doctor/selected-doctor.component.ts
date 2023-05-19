@@ -1,7 +1,9 @@
 import { formatDate } from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { forkJoin } from 'rxjs';
 import { Appointment } from 'src/app/Entities/appointment';
@@ -19,96 +21,158 @@ import { PatientService } from 'src/app/services/patient.service';
 @Component({
   selector: 'app-selected-doctor',
   templateUrl: './selected-doctor.component.html',
-  styleUrls: ['./selected-doctor.component.scss']
+  styleUrls: ['./selected-doctor.component.scss'],
 })
 export class SelectedDoctorComponent implements OnInit {
-id!:string;
-dates!: string[];
-currentDoctor!:Doctor;
-currentDoctorPerson!:Person;
-calenders!:Calendrier[];
-testTime:boolean=false;
-calender!:Calendrier;
-selectedBox: HTMLElement;
-testAvailability:boolean=true;
-chosenDate:Date=new Date();
-chosenTime!:number;
-helper=new JwtHelperService();
-appointment:any={'dateRV':new Date(),'heureRV':0,'doctor':'','Patient':''};
-idCurrentPatient:string='';
-comments!:Comment[];
-commentForm!:FormGroup;
-currentPatientPerson!:Person;
-  constructor(private activatedRoute:ActivatedRoute,
-    private DoctorService:DoctorService,
-    private patientService:PatientService
-    ,private serviceCalendrier:CalenderService,
-    private appointmentService:AppointmentService,
-    private commentService:CommentService,
+  id!: string;
+  dates!: string[];
+  currentDoctor!: Doctor;
+  currentDoctorPerson!: Person;
+  calenders!: Calendrier[];
+  testTime: boolean = false;
+  calender!: Calendrier;
+  selectedBox: HTMLElement;
+  testAvailability: boolean = true;
+  chosenDate: Date = new Date();
+  chosenTime!: number;
+  helper = new JwtHelperService();
+  appointment: any = {
+    dateRV: new Date(),
+    heureRV: 0,
+    doctor: '',
+    Patient: '',
+  };
+  idCurrentPatient: string = '';
+  comments!: Comment[];
+  commentForm!: FormGroup;
+  currentPatientPerson!: Person;
+  private config: MatSnackBarConfig = new MatSnackBarConfig();
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private DoctorService: DoctorService,
+    private patientService: PatientService,
+    private serviceCalendrier: CalenderService,
+    private appointmentService: AppointmentService,
+    private commentService: CommentService,
     private elementRef: ElementRef,
-    private fb:FormBuilder) { }
+    private fb: FormBuilder,
+     private _snackBar: MatSnackBar,
+    private router: Router
+  ) {
+    this.config.duration = 5000;
+    this.config.panelClass = 'success';
+    this.config.horizontalPosition = 'center';
+  }
 
   ngOnInit(): void {
-    if(localStorage.getItem('patientToken'))
-    {
-     
-      this.idCurrentPatient=this.helper.decodeToken(localStorage.getItem('patientToken'))._id;
-     console.log(this.idCurrentPatient)
-     this.patientService.getPatientById(this.idCurrentPatient).subscribe(data=>{
-      this.currentPatientPerson=data.person;
-     })
+    if (localStorage.getItem('patientToken')) {
+      this.idCurrentPatient = this.helper.decodeToken(
+        localStorage.getItem('patientToken')
+      )._id;
+      console.log(this.idCurrentPatient);
+      this.patientService
+        .getPatientById(this.idCurrentPatient)
+        .subscribe((data) => {
+          this.currentPatientPerson = data.person;
+          
+        });
     }
-    this.id=this.activatedRoute.snapshot.params['id'];
-    this.DoctorService.getDoctorById(this.id).subscribe(data=>{this.currentDoctor=data;console.log(this.currentDoctor);
-      this.currentDoctorPerson=data.person;
+    this.id = this.activatedRoute.snapshot.params['id'];
+    this.DoctorService.getDoctorById(this.id).subscribe((data) => {
+      this.currentDoctor = data;
+      console.log(this.currentDoctor);
+      this.currentDoctorPerson = data.person;
+      this.commentService.getCommentsByDoctorId(data._id).subscribe(data=>
+        {
+          this.rate=data.length;
+        })
     });
     this.dates = this.generateDates();
-    this.serviceCalendrier.getCalenderByDoctorId(this.id).subscribe(data=>{this.calenders=data; console.log("calendrier"+data)
-   this.listerComments();
-    })
+    this.serviceCalendrier
+      .getCalendarByDoctorIdAfterToday(this.id)
+      .subscribe((data) => {
+        this.calenders = data;
+        console.log('calendrier' + data);
+        this.listerComments();
+      });
 
+    this.commentForm = this.fb.nonNullable.group({
+      text: [],
+      rating: [],
+      patient: [],
+      doctor: [],
+      date: [new Date()],
+    });
 
-this.commentForm=this.fb.nonNullable.group(
-  {
-text:[],
-rating:[],
-patient:[],
-doctor:[],
-date:[new Date()]
+    
   }
-);
 
-  };
-  
-  listerComments()
-  {
-    this.commentService.getCommentsByDoctorId(this.id).subscribe(data=>{
-      this.comments=data;
+  listerComments() {
+    this.commentService.getCommentsByDoctorId(this.id).subscribe((data) => {
+      this.comments = data;
 
-      console.log(this.comments)
+      console.log(this.comments);
     });
   }
-  addComment()
-  {
 
+  addComment() {
     this.commentForm.patchValue({
       patient: this.idCurrentPatient,
-      doctor:this.id
-    });    console.log(this.commentForm.value)
-    this.commentService.addComment(this.commentForm.value).subscribe(data=>this.listerComments())
+      doctor: this.id,
+    });
+    console.log(this.commentForm.value);
+    this.commentService
+      .addComment(this.commentForm.value)
+      .subscribe((data) =>{ this.listerComments();
+        this._snackBar.open("Comment added", "", this.config)
+      },
+      (error:HttpErrorResponse) => {
+        this.config.panelClass = 'Error';
+        this._snackBar.open(error.error.msg, "", this.config)
+ 
+ 
+       }
+      
+      );
   }
 
-  RendezVous()
-  {
-     this.appointment.dateRV=this.chosenDate;
-     this.appointment.heureRV=this.chosenTime;
-     this.appointment.doctor=this.id;
-     this.appointment.Patient=this.idCurrentPatient;
-     console.log(this.appointment)
-     if(this.appointment.heureRV!=undefined)
-    { this.appointmentService.createAppointment(this.appointment).subscribe(data=>console.log(data));
+  RendezVous() {
+    if (localStorage.getItem('patientToken')) {
+      this.appointment.dateRV = this.chosenDate;
+      this.appointment.heureRV = this.chosenTime;
+      this.appointment.doctor = this.id;
+      this.appointment.Patient = this.idCurrentPatient;
+      console.log(this.appointment);
+      if (this.appointment.heureRV != undefined) {
+        this.appointmentService
+          .createAppointment(this.appointment)
+          .subscribe(
+            (data) =>{ 
+              console.log(data)
+              this.config.duration = 5000;
+    this.config.panelClass = 'success';
+    this._snackBar.open("You booked an appointment", "", this.config)
+
+            },
+              (error:HttpErrorResponse) => {
+               this.config.panelClass = 'Error';
+               this._snackBar.open(error.error.msg, "", this.config)
+
+
+              }
+              
+              );
+
+              
+      } else {
+        console.log('not disp');
+        this.config.panelClass = 'error';
+        this._snackBar.open("Not available", "", this.config)
+      }
+    } else {
+      this.router.navigate(['/login']);
     }
-    else {console.log('not disp')}
   }
   isDateAvailable(date: Calendrier): boolean {
     for (const slot of date.availability) {
@@ -118,57 +182,53 @@ date:[new Date()]
     }
     return false;
   }
-  
-  showTime(c:Calendrier)
-  {
-    this.chosenDate=c.date;
-    console.log(new Date(this.chosenDate))
-    this.calender=c;
-    this.testTime=true;
+
+  showTime(c: Calendrier) {
+    this.chosenDate = c.date;
+    console.log(new Date(this.chosenDate));
+    this.calender = c;
+    this.testTime = true;
   }
-  changeTime(c:number)
-  {
-    this.chosenTime=c
-    console.log(this.chosenTime)
+  changeTime(c: number) {
+    this.chosenTime = c;
+    console.log(this.chosenTime);
   }
   onBoxClick(event: Event) {
     const element = event.target as HTMLElement;
     const boxInfos = document.querySelectorAll('.boxInfo'); // récupère tous les éléments avec la classe 'boxInfo'
-    boxInfos.forEach(box => {
+    boxInfos.forEach((box) => {
       box.classList.remove('selectedC'); // supprime la classe 'selectedC' de tous les éléments 'boxInfo'
     });
 
-
-    
     element.classList.add('selectedC'); // ajoute la classe 'selectedC' à l'élément DOM qui a été cliqué
   }
 
-
   change(event: Event) {
     const element = event.target as HTMLElement;
-   
-     
+
     const boxInfos = document.querySelectorAll('.boxInfo'); // récupère tous les éléments avec la classe 'boxInfo'
-    boxInfos.forEach(box => {
+    boxInfos.forEach((box) => {
       box.classList.remove('sel'); // supprime la classe 'selectedC' de tous les éléments 'boxInfo'
     });
 
-
-    
     element.classList.add('sel'); // ajoute la classe 'selectedC' à l'élément DOM qui a été cliqué
   }
-
 
   generateDates(): string[] {
     const dates: string[] = [];
     const today = new Date();
     for (let i = 0; i < 5; i++) {
-      const date = new Date(today.getFullYear(), today.getMonth(), today.getDate() + i);
+      const date = new Date(
+        today.getFullYear(),
+        today.getMonth(),
+        today.getDate() + i
+      );
       const formattedDate = formatDate(date, 'dd MMM', 'en-US');
       dates.push(formattedDate);
     }
     console.log(dates);
     return dates;
   }
+  rate:number=0;
 
 }

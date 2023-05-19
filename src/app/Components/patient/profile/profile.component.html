@@ -1,7 +1,7 @@
 <br>
 <div class="formbold-main-wrapper" style="padding-top: 0% !important;" >
     <div class="formbold-form-wrapper">
-      <form  [formGroup]="formPatient" (ngSubmit)="updatePatientInfos()">
+      <form  [formGroup]="formPatient" (ngSubmit)="updatePatientInfos()" >
         <div class="formbold-form-title">
           <img [src]="currentPatient.person.image" width="70" height="70" style="border-radius: 50%; position: absolute; "/>
           <h2 style="text-align: center; padding-top: 20px;">Profile {{currentPatient.person?.firstName!}} {{currentPatient.person?.lastName!}}</h2>
@@ -17,7 +17,7 @@
               id="firstname"
               class="formbold-form-input"
               formControlName="firstName"
-              [class.is-invalid]="firstName.invalid && (firstName.touched || firstName.dirty)"
+              
             />
           </div>
           <div>
@@ -125,6 +125,8 @@
             class="formbold-form-input"
           />
         </div>
+
+
       
         <div style="text-align: center!important;"><button class="formbold-btn" type="submit" [disabled]="formPatient.invalid" >Update</button></div>
       </form>

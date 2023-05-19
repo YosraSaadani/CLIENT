@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Doctor } from 'src/app/Entities/doctor';
+import { CommentService } from 'src/app/services/comment.service';
 import { DoctorService } from 'src/app/services/doctor.service';
 
 
@@ -11,7 +12,7 @@ import { DoctorService } from 'src/app/services/doctor.service';
 })
 export class DoctorsListComponent implements OnInit {
   doctorsList!: Doctor[];
-  constructor(private doctorService: DoctorService) {}
+  constructor(private doctorService: DoctorService,private commentService:CommentService) {}
 
   search(name: string)
   {
@@ -34,7 +35,20 @@ export class DoctorsListComponent implements OnInit {
   ngOnInit(): void {
     this.doctorService
       .getDoctors()
-      .subscribe((data) => (this.doctorsList = data));
+      .subscribe((data) => {(this.doctorsList = data);
+        
+        data.forEach(elt=>this.commentService.getCommentsByDoctorId(elt._id).subscribe(data1=>{
+          let rate=0;
+          data1.forEach(elt1=>rate+=elt1.rating);
+          elt.rating=rate/data1.length;
+          console.log(elt.rating);
+          console.log(data1.length);
+         console.log(elt.rating);
+          
+        }))
+        
+        
+  });
       
   }
 }

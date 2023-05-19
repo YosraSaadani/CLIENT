@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Person } from 'src/app/Entities/person';
 import { PatientService } from 'src/app/services/patient.service';
@@ -15,9 +16,19 @@ import { PersonService } from 'src/app/services/person.service';
 export class RegisterComponent implements OnInit {
   person!:Person;
   registerForm!:FormGroup;
-  constructor(private fb:FormBuilder,private servicePatient:PatientService
+  private config: MatSnackBarConfig = new MatSnackBarConfig();
+
+  constructor(private fb:FormBuilder,
+    private servicePatient:PatientService
     ,private personService:PersonService,
-    private router:Router) { }
+    private _snackBar: MatSnackBar,
+
+    private router:Router) { 
+
+      this.config.duration = 5000;
+      this.config.horizontalPosition = 'center';
+    this.config.panelClass='success';
+    }
 
   ngOnInit(): void {
     this.registerForm = this.fb.nonNullable.group({
@@ -89,10 +100,17 @@ export class RegisterComponent implements OnInit {
     let body={"person":person,"allergies":this.registerForm.value['allergies'],"bloodType":this.registerForm.value['bloodType'],
     "height":this.registerForm.value['height'],"weight":this.registerForm.value['weight'],"amount":200}
     this.servicePatient.registerPatient(body).subscribe(data=>{localStorage.setItem('patientToken',data.token);
+    this._snackBar.open('Patient registered successfully', '',this.config);
+
     this.router.navigate(['/home']);
   },
   
-    (err:HttpErrorResponse)=>console.log(err.error.msg));
+    (err:HttpErrorResponse)=>
+    {console.log(err.error.msg);
+      this.config.panelClass='Error';
+      this._snackBar.open(err.error.msg, '',this.config);
+    
+    });
     
 
    }) ;

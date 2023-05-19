@@ -3,11 +3,11 @@
       <div class="card chat-app">
         <div id="plist" class="people-list">
           <ul class="list-unstyled chat-list mt-2 mb-0">
-            <app-plist
+            <app-plist-patient
               class="clearfix"
               *ngFor="let person of Persons"
               [person]="person"
-            ></app-plist>
+            ></app-plist-patient>
           </ul>
         </div>
         <div class="chat">

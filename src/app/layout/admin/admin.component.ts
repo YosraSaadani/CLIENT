@@ -65,4 +65,9 @@ export class AdminComponent implements OnInit {
     this.getNotifs();
   }
 
+  logout()
+  {
+    localStorage.clear();
+    this.router.navigate(['/loginadmin']);
+  }
 }

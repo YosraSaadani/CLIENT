@@ -1,90 +1,80 @@
-<section class="vh-100">
-    <div class="container-fluid h-custom">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-md-9 col-lg-6 col-xl-5">
-          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-            class="img-fluid" alt="Sample image">
-        </div>
-        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-          <form>
-            <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-              <p class="lead fw-normal mb-0 me-3">Sign in with</p>
-              <button type="button" class="btn btn-primary btn-floating mx-1">
-                <i class="fab fa-facebook-f"></i>
-              </button>
-  
-              <button type="button" class="btn btn-primary btn-floating mx-1">
-                <i class="fab fa-twitter"></i>
-              </button>
-  
-              <button type="button" class="btn btn-primary btn-floating mx-1">
-                <i class="fab fa-linkedin-in"></i>
-              </button>
-            </div>
-  
-            <div class="divider d-flex align-items-center my-4">
-              <p class="text-center fw-bold mx-3 mb-0">Or</p>
-            </div>
-  
-            <!-- Email input -->
-            <div class="form-outline mb-4">
-              <input type="email" id="form3Example3" class="form-control form-control-lg"
-                placeholder="Enter a valid email address" />
-              <label class="form-label" for="form3Example3">Email address</label>
-            </div>
-  
-            <!-- Password input -->
-            <div class="form-outline mb-3">
-              <input type="password" id="form3Example4" class="form-control form-control-lg"
-                placeholder="Enter password" />
-              <label class="form-label" for="form3Example4">Password</label>
-            </div>
-  
-            <div class="d-flex justify-content-between align-items-center">
-              <!-- Checkbox -->
-              <div class="form-check mb-0">
-                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-                <label class="form-check-label" for="form2Example3">
-                  Remember me
-                </label>
+<!-- Section: Design Block -->
+<section class="text-center text-lg-start">
+  <style>
+    .cascading-right {
+      margin-right: -50px;
+    }
+
+    @media (max-width: 991.98px) {
+      .cascading-right {
+        margin-right: 0;
+      }
+    }
+  </style>
+
+  <!-- Jumbotron -->
+  <div class="container py-4">
+    <div class="row g-0 align-items-center">
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <div class="card cascading-right" style="
+            background: hsla(0, 0%, 100%, 0.55);
+            backdrop-filter: blur(30px);
+            ">
+          <div class="card-body p-5 shadow-5 text-center">
+            <h2 class="fw-bold mb-5">Sign in</h2>
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+              <!-- 2 column grid layout with text inputs for the first and last names -->
+              
+
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example3">Email address</label>
+                <input type="email" id="form3Example3" [class.is-invalid]="email.invalid && (email.touched||email.dirty)" class="form-control" formControlName="email" />
+                <div class="invalid-feedback opa" *ngIf="email.errors" >
+                  <ng-container *ngIf="email.errors['required']">
+                    Email Is Required
+                  </ng-container>
+                  <ng-container *ngIf="email.errors['pattern']">
+                    Invalid Email Format
+                  </ng-container>
+                </div>
               </div>
-              <a href="#!" class="text-body">Forgot password?</a>
-            </div>
-  
-            <div class="text-center text-lg-start mt-4 pt-2">
-              <button type="button" class="btn btn-primary btn-lg"
-                style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
-              <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!"
-                  class="link-danger">Register</a></p>
-            </div>
-  
-          </form>
+
+              <!-- Password input -->
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example4">Password</label>
+                <input type="password" [class.is-invalid]="password.invalid && (password.touched || password.dirty)" id="form3Example4" class="form-control" formControlName="password" />
+                <div class="invalid-feedback opa" *ngIf="password.errors" >
+                  <ng-container *ngIf="password.errors['required']">
+                    Password Is Required
+                  </ng-container>
+                </div>
+              </div>
+
+              
+
+              <!-- Submit button -->
+              <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary btn-block mb-4">
+                Sign in
+              </button>
+
+              <!-- Register buttons -->
+              <div class="text-center">
+                Dont have an account?
+                <a routerLink="/register" style="text-decoration: underline;color:blue;cursor: pointer;">Sign up</a>
+                
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
-    <div
-      class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
-      <!-- Copyright -->
-      <div class="text-white mb-3 mb-md-0">
-        Copyright © 2020. All rights reserved.
+
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <img src="../../../../../assets/login-photo.png" class="w-100 rounded-4 shadow-4"
+          alt="" />
       </div>
-      <!-- Copyright -->
-  
-      <!-- Right -->
-      <div>
-        <a href="#!" class="text-white me-4">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="#!" class="text-white me-4">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="#!" class="text-white me-4">
-          <i class="fab fa-google"></i>
-        </a>
-        <a href="#!" class="text-white">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-      </div>
-      <!-- Right -->
     </div>
-  </section>
+  </div>
+  <!-- Jumbotron -->
+</section>
+<!-- Section: Design Block -->

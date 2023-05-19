@@ -102,9 +102,14 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    component: AdminComponent,
+    component: AdminLoginComponent,
     title: 'Admin',
     children: [
+      {
+        path: '',
+        component: AdminLoginComponent,
+        title: 'Login',
+      },
       {
         path: 'doctorsList',
         component: AdminDoctorsListComponent,

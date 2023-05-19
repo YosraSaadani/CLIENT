@@ -36,5 +36,11 @@ export class AdminService {
   {
     return this.http.get("http://api.weatherapi.com/v1/current.json?key=113cd87d435b4d4c98e125558230705&q=Tunis");
   }
-
+  loginAdmin(admin:any):Observable<any> {
+    return this.http.post<any>(url+'login',admin);
+  }
+  changePassword(id:string,{oldPassword,newPassword}):Observable<any> {
+    return this.http.put<any>(url+"changePassword/"+id,{oldPassword,newPassword});
+  }
+  
 }

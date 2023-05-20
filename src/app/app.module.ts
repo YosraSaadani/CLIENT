@@ -71,7 +71,7 @@ import { ConsultationComponent } from './Components/doctor/consultation/consulta
     PlistPatientComponent,
     DialogDeleteConfirmationComponent,
     ChangePasswordAdminComponent,
-    ListAppointmentComponent,
+    
     ConsultationComponent
   ],
   imports: [

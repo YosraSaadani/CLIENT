@@ -5,37 +5,48 @@
       
     
   
-      <form  >
+      <form [formGroup]="consultForm" (ngSubmit)="confirm()" >
         <div class="formbold-form-title">
-          <h2 class="">Change Password</h2>
+          <h2 class="">Consultation</h2>
           
         </div>
   
         <div class="formbold-mb-3">
           <label for="address" class="formbold-form-label">
-            Old Password
+            Patient
+          </label>
+            <select formControlName="appoin">
+                <option [ngValue]="p" *ngFor="let p of patients">Patient : {{p.Patient.person.firstName  }} {{p.Patient.person.lastName }} | Date :  {{p.dateRV  |date:'dd/MM/yyyy'}} | Hour :  {{p.heureRV}}:00h </option>
+
+            </select>
+        </div>
+
+
+        <div class="formbold-mb-3">
+          <label for="address" class="formbold-form-label">
+            Marks
           </label>
           <input
-            type="password"
+            type="text"
             name="address"
             id="address"
             class="formbold-form-input"
-            formControlName="oldPassword"
+            formControlName="marks"
           />
         </div>
 
         <div class="formbold-mb-3">
-          <label for="address" class="formbold-form-label">
-            New Password
-          </label>
-          <input
-            type="password"
-            name="address"
-            id="address"
-            class="formbold-form-input"
-            formControlName="newPassword"
-          />
-        </div>
+            <label for="address" class="formbold-form-label">
+              Medecine
+            </label>
+            <input
+              type="text"
+              name="address"
+              id="address"
+              class="formbold-form-input"
+              formControlName="medicine"
+            />
+          </div>
 
   
         

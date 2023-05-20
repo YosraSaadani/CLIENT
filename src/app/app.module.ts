@@ -35,16 +35,15 @@ import { MatCardModule } from '@angular/material/card';
 
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { ChatMessagesComponent } from './Components/patient/chat-messages/chat-messages.component';
 import { ChatsComponent } from './Components/patient/chats/chats.component';
 import { PlistPatientComponent } from './Components/patient/plist-patient/plist-patient.component';
 import { DialogDeleteConfirmationComponent } from './Components/admin/dialog-delete-confirmation/dialog-delete-confirmation.component';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatButtonModule} from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 import { ChangePasswordAdminComponent } from './Components/admin/change-password-admin/change-password-admin.component';
-import { ConsultationComponent } from './Components/doctor/consultation/consultation.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,7 +69,6 @@ import { ConsultationComponent } from './Components/doctor/consultation/consulta
     PlistPatientComponent,
     DialogDeleteConfirmationComponent,
     ChangePasswordAdminComponent,
-    ConsultationComponent,
   ],
   imports: [
     BrowserModule,
@@ -91,7 +89,7 @@ import { ConsultationComponent } from './Components/doctor/consultation/consulta
     MatIconModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

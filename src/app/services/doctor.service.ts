@@ -2,7 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Doctor } from '../Entities/doctor';
+import { Notifs } from '../Entities/notifs';
 const url = 'http://localhost:5000/api/doctor/';
+const url2 = 'http://localhost:5000/api/notification/';
+
 const NewsURL =
   'https://newsapi.org/v2/top-headlines?country=us&category=health&apiKey=2156c2b993eb4b16989dd2d80f5d4a29';
 @Injectable({
@@ -40,5 +43,21 @@ export class DoctorService {
 
   getPersonByDoctor(id: string): Observable<any> {
     return this.http.get<any>(url + 'getPersonId/' + id);
+  }
+  weatherapi()
+  {
+    return this.http.get("http://api.weatherapi.com/v1/current.json?key=113cd87d435b4d4c98e125558230705&q=Tunis");
+  }
+  deleteNotif(id:string):Observable<Notifs>
+  {
+    return this.http.delete<Notifs>(url2+id);
+  }
+  deleteAllNotif():Observable<Notifs[]>
+  {
+    return this.http.delete<Notifs[]>(url2+"deleteall");
+  }
+  getNotification():Observable<Notifs[]>
+  {
+    return this.http.get<Notifs[]>(url2);
   }
 }

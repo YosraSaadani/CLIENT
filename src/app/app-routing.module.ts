@@ -25,7 +25,7 @@ import { ChatMessagesComponent } from './Components/patient/chat-messages/chat-m
 import { ChatsComponent } from './Components/patient/chats/chats.component';
 import { ChangePasswordAdminComponent } from './Components/admin/change-password-admin/change-password-admin.component';
 import { ConsultationComponent } from './Components/doctor/consultation/consultation.component';
-
+import { ListAppointmentComponent } from './list-appointment/list-appointment.component';
 const routes: Routes = [
   {
     path: '',
@@ -77,6 +77,11 @@ const routes: Routes = [
         path:'consultation',
         component:ConsultationComponent,
         title:'Consultation'
+      },
+      {
+        path:'appointments',
+        component:ListAppointmentComponent,
+        title:'Appointments'
       },
       {
         path: 'chat',

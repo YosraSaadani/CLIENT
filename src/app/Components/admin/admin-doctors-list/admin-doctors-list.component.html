@@ -8,7 +8,7 @@
             <table class="table table-bordered table-hover mb-0" >
                 <thead>
                     <tr class="text-dark">
-                        <th scope="col" class="colo">id</th>
+                        <th scope="col" class="colo">Image</th>
                         <th scope="col" class="colo">First Name</th>
                         <th scope="col" class="colo">Last Name</th>
                         <th scope="col" class="colo">Speciality</th>
@@ -21,12 +21,18 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let d of doctors;index as i"  >
-                        <td>{{i+1}}</td>
+                        <td><div class="avatar">
+                            <img
+                              [src]="d.person.image || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'"
+                              alt
+                              class="w-px-40 h-px-40 rounded-circle imgeAvatar"
+                            />
+                          </div></td>
                         <td>{{d.person.firstName}}</td>
                         <td>{{d.person.lastName}}</td>
                         <td>{{d.specialty}}</td>
                         <td>{{d.location}}</td>
-                        <td>{{d.rating}}</td>
+                        <td>{{d.rating | number:'0.3'}}</td>
                         <td>{{d.person.email}}</td>
                         <td>{{d.price}} Dinar</td>
                         <td><a class="btn btn-sm btn-primary" style="color:white !important" (click)="deleteDoctorById(d._id)" >Delete</a></td>

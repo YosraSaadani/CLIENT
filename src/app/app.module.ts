@@ -44,6 +44,7 @@ import { DialogDeleteConfirmationComponent } from './Components/admin/dialog-del
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import { ChangePasswordAdminComponent } from './Components/admin/change-password-admin/change-password-admin.component';
+import { ListAppointmentComponent } from './list-appointment/list-appointment.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,6 +70,7 @@ import { ChangePasswordAdminComponent } from './Components/admin/change-password
     PlistPatientComponent,
     DialogDeleteConfirmationComponent,
     ChangePasswordAdminComponent,
+    ListAppointmentComponent,
   ],
   imports: [
     BrowserModule,

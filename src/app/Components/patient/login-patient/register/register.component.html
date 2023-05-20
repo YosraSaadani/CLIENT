@@ -149,6 +149,17 @@
                   </div>
                 </div>
 
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <label class="form-label" for="form3Example3">Image</label>
+                    <input
+                      type="file"
+                      formControlName="image"
+                      (change)="onImageChange($event)"
+                    />
+                  </div>
+                </div>
+
                 <!-- email and password  input -->
               <div class="row">
                   <div class="col-md-6 mb-4">

@@ -8,7 +8,7 @@
             <table class="table table-bordered table-hover mb-0" >
                 <thead>
                     <tr >
-                        <th scope="col" class="colo">id</th>
+                        <th scope="col" class="colo">Image</th>
                         <th scope="col" class="colo">First Name</th>
                         <th scope="col" class="colo">Last Name</th>
                         <th scope="col" class="colo">Birth Date</th>
@@ -18,7 +18,14 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let p of patients;index as i"  >
-                        <td>{{i+1}}</td>
+                        <td class="text-center"> <div class="avatar " style="margin-left: 55px;">
+
+                            <img
+                              [src]="p.person.image || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'"
+                              alt
+                              class="w-px-40 h-px-40 rounded-circle imgeAvatar"
+                            />
+                          </div></td>
                         <td>{{p.person.firstName}}</td>
                         <td>{{p.person.lastName}}</td>
                         <td>{{p.person.birthDate | date:'dd/MM/yyyy'}}</td>

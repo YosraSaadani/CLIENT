@@ -11,15 +11,20 @@
           
         </div>
   
-        <div class="formbold-mb-3">
-          <label for="address" class="formbold-form-label">
-            Patient
-          </label>
-            <select formControlName="appoin">
-                <option [ngValue]="p" *ngFor="let p of patients">Patient : {{p.Patient.person.firstName  }} {{p.Patient.person.lastName }} | Date :  {{p.dateRV  |date:'dd/MM/yyyy'}} | Hour :  {{p.heureRV}}:00h </option>
+        
+        
 
-            </select>
-        </div>
+        <div class="col-md-6 mb-4">
+            <div class="form-outline">
+              <label  class="form-label" for="form3Example6">Appointement</label>
+
+              <select formControlName="appoin"  class="form-control" style="width:470px;height:50px">
+                <option [ngValue]="p" *ngFor="let p of patients">Patient : {{p.Patient.person.firstName  }} {{p.Patient.person.lastName }} | Date :  {{p.dateRV  |date:'dd/MM/yyyy'}} | Hour :  {{p.heureRV}}:00h </option>
+              </select>
+             
+              
+            </div>
+          </div>
 
 
         <div class="formbold-mb-3">

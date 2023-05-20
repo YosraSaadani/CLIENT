@@ -1,0 +1,41 @@
+
+<div class="container-fluid pt-4 px-4 opaci">
+    <div class="bg-light text-center rounded p-4" style="background-color: #F7F7F7;box-shadow:0 4px 8px 0 rgba(95, 92, 92, 0.2), 0 6px 20px 0 rgba(95, 92, 92, 0.2);">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">Appointments List</h6>
+        </div>
+        <div class="table-responsive rounded">
+            <table class="table table-bordered table-hover mb-0" >
+                <thead>
+                    <tr class="text-dark">
+                        <th scope="col" class="colo">Image</th>
+                        <th scope="col" class="colo">Patient</th>
+                        <th scope="col" class="colo">Date </th>
+                        <th scope="col" class="colo">Hour</th>
+                       
+                    </tr>
+                   
+                </thead>
+                <tbody>
+                   
+                    <tr *ngFor="let a of appoints;index as i"  >
+                        <td><div class="avatar waywa" style="margin: auto;">
+                            <img
+                              [src]="a.Patient.person.image || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'"
+                              alt
+                              class="w-px-40 h-px-40 rounded-circle imgeAvatar"
+                            />
+                          </div>
+                        </td>
+                        <td>{{a.Patient.person.firstName}} {{a.Patient.person.lastName}}</td>
+                        <td scope="col" class="colo">{{a.dateRV | date  }}</td>
+                        <td scope="col" class="colo">{{a.heureRV }}:00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+

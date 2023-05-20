@@ -1,0 +1,30 @@
+@keyframes ani {
+    from{opacity: 0;}
+    to{opacity: 1;}
+    
+}
+.opaci{animation: ani 0.5s;}
+
+table,thead,tbody{
+    width: 100%;
+}
+th,td{
+    width: 5%;
+}
+.bor{
+    border: 1px solid #E7F0F3;
+    background: #FAFAFA;
+}
+
+.colo{
+    font-weight: bold;
+}
+
+.waywa {
+    border: rgba(250, 92, 119, 0.904) solid 1px;
+    height:2.7rem;
+    width:2.8rem;
+    border-radius: 100%;
+  }
+
+

@@ -20,16 +20,7 @@ export class DoctorComponent implements OnInit {
       this.router.navigate(['/logindoctor']);
     }
   }
-  weather!:any;
-  getWeather()
-  {
-    this.serviceDoctor.weatherapi().subscribe(
-      res=>{
-        this.weather=res;
-        console.log(res);
-      }
-    )
-  }
+  
   logout()
   {
     localStorage.clear();
@@ -72,7 +63,7 @@ export class DoctorComponent implements OnInit {
     this.auth.getDoctor().subscribe((data) => {
       this.Doct = data;
     });
-    this.getWeather(); 
+
     this.getNotifs();
   }
 }

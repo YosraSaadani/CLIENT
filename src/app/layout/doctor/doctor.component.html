@@ -92,17 +92,6 @@
           id="navbar-collapse"
         >
           <!-- Search -->
-          <div class="navbar-nav align-items-center">
-            <div class="nav-item d-flex align-items-center">
-              <i class="bx bx-search fs-4 lh-0"></i>
-              <input
-                type="text"
-                class="form-control border-0 shadow-none"
-                placeholder="Search..."
-                aria-label="Search..."
-              />
-            </div>
-          </div>
           <!-- /Search -->
           <ul class="navbar-nav">
             <li class="nav-item d-block d-xl-none">
@@ -121,13 +110,13 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <i class="ti ti-bell-ringing"></i>
+                <i class="ti ti-bell-ringing" style="width: 20px;height:50px"></i>
                 <div class="notification bg-primary rounded-circle"></div>
                 <div
                   class="dropdown-menu dropdown-menu-start dropdown-menu-animate-down opaci"
                   aria-labelledby="drop2"
                 >
-                  <div style="width: 51vh !important" class="message-body">
+                  <div style="width: 95vh !important" class="message-body">
                     <div style="display: flex; justify-content: space-between">
                       <div style="margin-left: 5%">Notifications</div>
                       <div title="clear" style="margin-left: 52%">
@@ -161,7 +150,7 @@
                         <div
                           *ngFor="let m of notifications | slice : 0 : 3"
                           style="
-                            color: #41baf8;
+                            color: #1c4c63;
                             font-size: 11.5px;
                             font-weight: 700;
                           "
@@ -196,16 +185,7 @@
                 </div>
               </a>
             </li>
-            <li class="nav-item" style="margin-left: 380px !important">
-              <span
-                class="nav-link"
-                style="font-size: 15px !important; font-weight: 600 !important"
-              >
-                <img [src]="weather?.current?.condition.icon" />
-                {{ weather?.current?.temp_c }}C
-                {{ weather?.current?.condition.text }}
-              </span>
-            </li>
+      
           </ul>
 
 

@@ -31,9 +31,10 @@ export class ChangePasswordComponent implements OnInit {
 
   change()
   { 
-    let pass={oldPassword:this.passForm.value.oldPassword,newPassword:this.passForm.value.newPassword}
+    let oldPassword=this.passForm.value.oldPassword
+    let newPassword=this.passForm.value.newPassword
    
-    this.servicePatient.changePassword(this.helper.decodeToken(localStorage.getItem('patientToken'))._id,pass)
+    this.servicePatient.changePassword(this.helper.decodeToken(localStorage.getItem('patientToken'))._id,{oldPassword,newPassword})
     .subscribe(data=> { this.route.navigate(['/home']);
       this._snackbar.open('Password changed successfully','',{duration:5000,panelClass:'success'});
     },

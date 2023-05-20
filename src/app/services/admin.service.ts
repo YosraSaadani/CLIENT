@@ -60,7 +60,7 @@ export class AdminService {
   }
 
   changePassword(id:string,{oldPassword,newPassword}):Observable<any> {
-    return this.http.put<any>(url4+"changePassword"+id,{oldPassword,newPassword});
+    return this.http.put<any>(url4+'changePassword/'+id,{oldPassword,newPassword});
   }
   
 }

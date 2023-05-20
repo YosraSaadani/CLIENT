@@ -13,6 +13,10 @@ export class ChatsComponent implements OnInit {
 
   constructor(private apoinS: AppointmentService, private router: Router) {}
   ngOnInit(): void {
+    if(localStorage.getItem('patientToken')==null)
+    {
+      this.router.navigate(['/login']);
+    }
     this.apoinS.getSortedAppointmentsPatient().subscribe((data) => {
       this.Persons = data
         .map((item) => item.doctor.person)

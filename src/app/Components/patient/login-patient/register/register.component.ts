@@ -89,31 +89,72 @@ export class RegisterComponent implements OnInit {
   }
   register()
   {
-    this.person=new Person(this.registerForm.value['firstName'],
-    this.registerForm.value['lastName'],this.registerForm.value['birthDate'],
-    null,this.registerForm.value['gender'],"patient",this.registerForm.value['email'],
-    this.registerForm.value['password']);
-    console.log(this.person);
-   this.personService.createPerson(this.person).subscribe(data=> {
+  //   this.person=new Person(this.registerForm.value['firstName'],
+  //   this.registerForm.value['lastName'],this.registerForm.value['birthDate'],
+  //   null,this.registerForm.value['gender'],"patient",this.registerForm.value['email'],
+  //   this.registerForm.value['password']);
+  //   console.log(this.person);
+  //  this.personService.createPerson(this.person).subscribe(data=> {
     
-    let person = data._id;
-    let body={"person":person,"allergies":this.registerForm.value['allergies'],"bloodType":this.registerForm.value['bloodType'],
-    "height":this.registerForm.value['height'],"weight":this.registerForm.value['weight'],"amount":200}
-    this.servicePatient.registerPatient(body).subscribe(data=>{localStorage.setItem('patientToken',data.token);
-    this._snackBar.open('Patient registered successfully', '',this.config);
+  //   let person = data._id;
+  //   let body={"person":person,"allergies":this.registerForm.value['allergies'],"bloodType":this.registerForm.value['bloodType'],
+  //   "height":this.registerForm.value['height'],"weight":this.registerForm.value['weight'],"amount":200}
+  //   this.servicePatient.registerPatient(body).subscribe(data=>{localStorage.setItem('patientToken',data.token);
+  //   this._snackBar.open('Patient registered successfully', '',this.config);
 
-    this.router.navigate(['/home']);
-  },
+  //   this.router.navigate(['/home']);
+  // },
   
-    (err:HttpErrorResponse)=>
-    {console.log(err.error.msg);
-      this.config.panelClass='Error';
-      this._snackBar.open(err.error.msg, '',this.config);
+  //   (err:HttpErrorResponse)=>
+  //   {console.log(err.error.msg);
+  //     this.config.panelClass='Error';
+  //     this._snackBar.open(err.error.msg, '',this.config);
     
-    });
+  //   });
     
 
-   }) ;
+  //  }) ;
+  const formData = new FormData();
+    formData.append('firstName', this.registerForm.value.firstName);
+    formData.append('lastName', this.registerForm.value.lastName);
+    formData.append('birthDate', this.registerForm.value.birthDate);
+    formData.append('gender', this.registerForm.value.gender);
+    formData.append('email', this.registerForm.value.email);
+    formData.append('role', 'doctor');
+    formData.append('password', this.registerForm.value.password);
+    formData.append('image', this.selectedImage);
+
+    console.log(formData);
+
+    this.personService.createPerson(formData).subscribe(
+      data=> {
+    
+          let person = data._id;
+          let body={"person":person,"allergies":this.registerForm.value['allergies'],"bloodType":this.registerForm.value['bloodType'],
+          "height":this.registerForm.value['height'],"weight":this.registerForm.value['weight'],"amount":200}
+          this.servicePatient.registerPatient(body).subscribe(data=>{localStorage.setItem('patientToken',data.token);
+          this._snackBar.open('Patient registered successfully', '',this.config);
+      
+          this.router.navigate(['/home']);
+        },
+        
+          (err:HttpErrorResponse)=>
+          {console.log(err.error.msg);
+            this.config.panelClass='Error';
+            this._snackBar.open(err.error.msg, '',this.config);
+          
+          });
+          
+      
+         }) ;
+  }
+
+  selectedImage: File;
+  onImageChange(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    if (inputElement.files && inputElement.files.length > 0) {
+      this.selectedImage = inputElement.files[0];
+    }
   }
 
 

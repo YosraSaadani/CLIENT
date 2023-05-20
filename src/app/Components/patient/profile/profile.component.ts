@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Patient } from 'src/app/Entities/patient';
 import { PatientService } from 'src/app/services/patient.service';
@@ -21,6 +22,7 @@ export class ProfileComponent implements OnInit {
   dateParts=[]
   constructor(private servicePatient:PatientService,
     private _snackBar: MatSnackBar,
+    private router:Router,
 
     private fb:FormBuilder ) { 
     this.config.duration = 5000;
@@ -63,6 +65,11 @@ updatePatientInfos()
 }
 
   ngOnInit(): void {
+
+    if(localStorage.getItem('patientToken')==null)
+    {
+      this.router.navigate(['/login']);
+    }
 
     this.servicePatient.getPatientById(this.helper.decodeToken(localStorage.getItem('patientToken'))._id).subscribe(data=>{this.currentPatient=data
     console.log(this.currentPatient);

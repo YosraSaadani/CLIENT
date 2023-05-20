@@ -43,9 +43,7 @@ export class AdminComponent implements OnInit {
       this.getNotifs();
     },
     (err:HttpErrorResponse)=>{
-      console.log(err.message);
-
-      
+      console.log(err.message);      
     })
   }
 

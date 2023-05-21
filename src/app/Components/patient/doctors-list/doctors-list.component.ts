@@ -16,7 +16,14 @@ export class DoctorsListComponent implements OnInit {
 
   search(name: string)
   {
-    this.doctorService.getDoctorByName(name).subscribe(data=>this.doctorsList=data);
+    if(name=='')
+    {
+      this.doctorService
+      .getDoctors()
+      .subscribe(data => this.listerDoc());
+    }
+    this.doctorService.getDoctorByFirstName(name).subscribe(data=>{this.doctorsList=data; });
+    this.doctorService.getDoctorByLastName(name).subscribe(data=>{this.doctorsList=data;});
   }
 
   searchBySpec(name: string)
@@ -31,24 +38,28 @@ export class DoctorsListComponent implements OnInit {
     this.doctorService.getDoctorsBySpeciality(name).subscribe(data=>this.doctorsList=data);
   }
 
+  listerDoc()
+  {
+    this.doctorService
+    .getDoctors()
+    .subscribe((data) => {(this.doctorsList = data);
+      
+      data.forEach(elt=>this.commentService.getCommentsByDoctorId(elt._id).subscribe(data1=>{
+        let rate=0;
+        data1.forEach(elt1=>rate+=elt1.rating);
+        elt.rating=rate/data1.length;
+        console.log(elt.rating);
+        console.log(data1.length);
+       console.log(elt.rating);
+        
+      }))
+      
+      
+});
+  }
 
   ngOnInit(): void {
-    this.doctorService
-      .getDoctors()
-      .subscribe((data) => {(this.doctorsList = data);
-        
-        data.forEach(elt=>this.commentService.getCommentsByDoctorId(elt._id).subscribe(data1=>{
-          let rate=0;
-          data1.forEach(elt1=>rate+=elt1.rating);
-          elt.rating=rate/data1.length;
-          console.log(elt.rating);
-          console.log(data1.length);
-         console.log(elt.rating);
-          
-        }))
-        
-        
-  });
-      
+  
+      this.listerDoc();
   }
 }

@@ -25,10 +25,13 @@ export class DoctorService {
     return this.http.get<Doctor[]>(url + 'getBySpeciality/' + specialty);
   }
 
-  getDoctorByName(name: string): Observable<Doctor[]> {
+  getDoctorByFirstName(name: string): Observable<Doctor[]> {
     return this.http.get<Doctor[]>(url + 'getByFirstName/' + name);
   }
-
+  
+  getDoctorByLastName(name: string): Observable<Doctor[]> {
+    return this.http.get<Doctor[]>(url + 'getByLastName/' + name);
+  }
   getMedicalNews(): Observable<any> {
     return this.http.get<any>(NewsURL);
   }

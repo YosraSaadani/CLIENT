@@ -42,6 +42,10 @@
 <!-- Search Result Start -->
 <div class="container-fluid py-5">
   <div class="container">
+    <div class="row g-5"  *ngIf="doctorsList.length==0">
+      <h1 style="text-align: center; font-size: 50px;  padding: 70px;">No doctors found <br> 
+         <i class='bx bxs-sad'  style='color:rgb(67, 130, 255); font-size: 80px;'  ></i></h1> 
+    </div>
     <div class="row g-5">
       <div class="col-lg-6 team-item" *ngFor="let d of doctorsList">
         <a [routerLink]="['/list', d?._id]">

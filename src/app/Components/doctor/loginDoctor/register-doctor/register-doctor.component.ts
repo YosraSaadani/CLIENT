@@ -139,16 +139,14 @@ export class RegisterDoctorComponent implements OnInit {
       ],
       specialty: ['', Validators.required],
       location: ['', Validators.required],
-      experience: ['', [Validators.required, Validators.min(5)]],
+      experience: ['', [Validators.required, Validators.min(0)]],
       price: ['', [Validators.required, Validators.min(0)]],
       description: ['', Validators.required],
       password: [
         '',
         [
           Validators.required,
-          Validators.pattern(
-            '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}'
-          ),
+          Validators.minLength(8)
         ],
       ],
     });

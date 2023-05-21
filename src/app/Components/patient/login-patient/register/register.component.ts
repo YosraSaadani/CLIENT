@@ -42,7 +42,7 @@ export class RegisterComponent implements OnInit {
       weight:['',[Validators.required,Validators.min(1)]],
       bloodType:['',[Validators.required]],
       allergies:['',[Validators.required]],
-      password:['',[Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]]
+      password:['',[Validators.required,Validators.minLength(8)]]
 
     });
   }

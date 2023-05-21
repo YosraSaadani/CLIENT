@@ -149,12 +149,13 @@
                   </div>
                 </div>
 
-                <div class="col-md-6 mb-4">
+                <div class="col-md-12 mb-4">
                   <div class="form-outline">
                     <label class="form-label" for="form3Example3">Image</label>
                     <input
                       type="file"
                       formControlName="image"
+                      class="form-control"
                       (change)="onImageChange($event)"
                     />
                   </div>
@@ -184,11 +185,8 @@
                         <ng-container *ngIf="password.errors['required']">
                             Password Is Required
                         </ng-container>
-                        <ng-container *ngIf="password.errors['pattern']">
-                          <b>Password Must Contain</b><br>
-                          An UpperCase Letter <br>
-                          A LowerCase Letter<br>
-                          A Special Character <br>
+                        <ng-container *ngIf="password.errors['minlength']">
+                          <b>Password Must be</b><br>
                           8 Characters Long
                       </ng-container>
                       </div>

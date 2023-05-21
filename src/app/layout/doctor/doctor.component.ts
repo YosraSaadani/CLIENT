@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Doctor } from 'src/app/Entities/doctor';
 import { Notifs } from 'src/app/Entities/notifs';
@@ -14,20 +15,26 @@ import { DoctorService } from 'src/app/services/doctor.service';
 export class DoctorComponent implements OnInit {
   Doct!: Doctor;
   notifications: Notifs[];
-
+  private config: MatSnackBarConfig = new MatSnackBarConfig();
   constructor(
     private router: Router,
     private auth: AuthService,
-    private serviceDoctor: DoctorService
+    private serviceDoctor: DoctorService,   
+     private _snackBar: MatSnackBar
   ) {
     if (localStorage.getItem('doctorToken') == null) {
       this.router.navigate(['/logindoctor']);
     }
+    this.config.duration = 5000;
+      this.config.horizontalPosition = 'center';
+    this.config.panelClass='success';
   }
 
   logout() {
     localStorage.clear();
     this.router.navigate(['/home']);
+    this._snackBar.open('Logged Out Successfully','',{duration:5000,panelClass:'success'});
+    
   }
   getNotifs(personId) {
     this.serviceDoctor.getNotification(personId).subscribe(

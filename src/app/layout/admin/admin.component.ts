@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Notifs } from 'src/app/Entities/notifs';
 import { AdminService } from 'src/app/services/admin.service';
@@ -9,11 +10,15 @@ import { AdminService } from 'src/app/services/admin.service';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
+  private config: MatSnackBarConfig = new MatSnackBarConfig();
 
-  constructor(private adminService:AdminService,private router:Router) { 
+  constructor(private adminService:AdminService,private router:Router,private _snackBar: MatSnackBar) { 
     if (localStorage.getItem('adminToken') == null) {
       this.router.navigate(['/loginadmin']);
     }
+    this.config.duration = 5000;
+    this.config.horizontalPosition = 'center';
+  this.config.panelClass='success';
   }
   notifications:Notifs[]
   weather!:any;
@@ -67,5 +72,7 @@ export class AdminComponent implements OnInit {
   {
     localStorage.clear();
     this.router.navigate(['/loginadmin']);
+    this._snackBar.open('Logged Out Successfully','',{duration:5000,panelClass:'success'});
+
   }
 }

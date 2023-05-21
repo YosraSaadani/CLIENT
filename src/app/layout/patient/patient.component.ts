@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Patient } from 'src/app/Entities/patient';
@@ -15,8 +16,14 @@ export class PatientComponent implements OnInit {
   helper=new JwtHelperService();
   id!:string;
   patient!:Patient;
-  constructor(private router:Router,private servicePatient:PatientService) { }
+  private config: MatSnackBarConfig = new MatSnackBarConfig();
 
+  constructor(private router:Router,private servicePatient:PatientService,private _snackBar: MatSnackBar) {
+    this.config.duration = 5000;
+    this.config.horizontalPosition = 'center';
+  this.config.panelClass='success';
+   }
+  
   ngOnInit(): void {
     if(localStorage.getItem('patientToken'))
     {
@@ -38,8 +45,10 @@ export class PatientComponent implements OnInit {
   disconnect()
   {
     localStorage.removeItem('patientToken');
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
     location.reload();
+    this._snackBar.open('Logged Out Successfully','',{duration:5000,panelClass:'success'});
+
   }
 
 }

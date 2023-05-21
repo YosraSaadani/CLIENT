@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
 import { PatientService } from 'src/app/services/patient.service';
@@ -11,11 +12,16 @@ import { PatientService } from 'src/app/services/patient.service';
   styleUrls: ['./admin-login.component.scss']
 })
 export class AdminLoginComponent implements OnInit {
+  private config: MatSnackBarConfig = new MatSnackBarConfig();
 
   loginForm!:FormGroup;
   constructor(private fb:FormBuilder,
     private serviceAdmin:AdminService
-    ,private router:Router) { }
+    ,private router:Router, private _snackBar: MatSnackBar) {
+      this.config.duration = 5000;
+      this.config.horizontalPosition = 'center';
+    this.config.panelClass='success';
+     }
 
   ngOnInit(): void {
     this.loginForm=this.fb.nonNullable.group({
@@ -43,8 +49,14 @@ export class AdminLoginComponent implements OnInit {
       
       this.router.navigate(['/admin']);
       console.log("test");
+      this._snackBar.open('Logged in successfully','',{duration:5000,panelClass:'success'});
+
 
     },
-    (err:HttpErrorResponse)=>console.log(err.error.msg));
+    (err:HttpErrorResponse)=>{
+      console.log(err.error.msg)
+      this._snackBar.open("Invalid login or password",'',{duration:5000,panelClass:'Error'});
+    });
+
   }
 }

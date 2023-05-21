@@ -46,6 +46,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { ChangePasswordAdminComponent } from './Components/admin/change-password-admin/change-password-admin.component';
 import { ListAppointmentComponent } from './Components/doctor/list-appointment/list-appointment.component';
 import { ConsultationComponent } from './Components/doctor/consultation/consultation.component';
+import { ListConsultationsComponent } from './Components/doctor/list-consultations/list-consultations.component';
+import { ProfileDocComponent } from './Components/doctor/profile-doc/profile-doc.component';
+import { ChangePassDocComponent } from './Components/doctor/change-pass-doc/change-pass-doc.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +76,10 @@ import { ConsultationComponent } from './Components/doctor/consultation/consulta
     DialogDeleteConfirmationComponent,
     ChangePasswordAdminComponent,
     ListAppointmentComponent,
-    ConsultationComponent
+    ConsultationComponent,
+    ListConsultationsComponent,
+    ProfileDocComponent,
+    ChangePassDocComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ErrorHandler, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Appointment } from 'src/app/Entities/appointment';
@@ -5,6 +6,7 @@ import { Doctor } from 'src/app/Entities/doctor';
 import { AppointmentService } from 'src/app/services/AppointmentService/appointment.service';
 import { AuthService } from 'src/app/services/AuthService/auth.service';
 import { CalenderService } from 'src/app/services/calender.service';
+import { ConsultationService } from 'src/app/services/consultation.service';
 import { DoctorService } from 'src/app/services/doctor.service';
 @Component({
   selector: 'app-doctor-dash',
@@ -19,6 +21,7 @@ export class DoctorDashComponent implements OnInit {
   AllApoi: any[] = [];
   selected: Date | null = new Date();
   availability: any[];
+  consus: any[];
 
   onValueChange(value: Date): void {
     console.log(`Current value: ${value}`);
@@ -49,13 +52,23 @@ export class DoctorDashComponent implements OnInit {
         });
     });
   }
-
+  getCons() {
+    this.consS.getDoctorConsultation().subscribe(
+      (data) => {
+        this.consus = data.slice(0, 4);
+      },
+      (err: HttpErrorResponse) => {
+        console.log(err.message);
+      }
+    );
+  }
   constructor(
     private router: Router,
     private auth: AuthService,
     private rvs: AppointmentService,
     private doccS: DoctorService,
-    private calendS: CalenderService
+    private calendS: CalenderService,
+    private consS: ConsultationService
   ) {}
 
   ngOnInit(): void {
@@ -87,5 +100,6 @@ export class DoctorDashComponent implements OnInit {
         this.availability = data[0];
         console.log(this.availability);
       });
+    this.getCons();
   }
 }

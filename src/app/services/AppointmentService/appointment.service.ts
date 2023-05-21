@@ -42,6 +42,15 @@ export class AppointmentService {
       headers: reqHeader,
     });
   }
+  getPastAppointments(): Observable<any[]> {
+    var reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
+    });
+    return this.http.get<Appointment[]>(`${URL}/doctor/getAllMyPastRV`, {
+      headers: reqHeader,
+    });
+  }
 
   getLatestPersoAppointment(id: string): Observable<Appointment> {
     var reqHeader = new HttpHeaders({
@@ -61,8 +70,5 @@ export class AppointmentService {
     return this.http.get<Appointment[]>(`${URL}/patient/getAllMyRV`, {
       headers: reqHeader,
     });
-    
   }
-
-
 }

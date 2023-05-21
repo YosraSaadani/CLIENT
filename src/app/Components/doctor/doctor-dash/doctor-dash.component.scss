@@ -122,3 +122,11 @@
 .btn-sucesss {
   background-color: rgb(96, 163, 234) !important;
 }
+.desc {
+  width: 50%;
+  white-space: pre-line;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}

@@ -44,20 +44,28 @@ export class DoctorService {
   getPersonByDoctor(id: string): Observable<any> {
     return this.http.get<any>(url + 'getPersonId/' + id);
   }
-  weatherapi()
-  {
-    return this.http.get("http://api.weatherapi.com/v1/current.json?key=113cd87d435b4d4c98e125558230705&q=Tunis");
+  weatherapi() {
+    return this.http.get(
+      'http://api.weatherapi.com/v1/current.json?key=113cd87d435b4d4c98e125558230705&q=Tunis'
+    );
   }
-  deleteNotif(id:string):Observable<Notifs>
-  {
-    return this.http.delete<Notifs>(url2+id);
+  deleteNotif(id: string): Observable<Notifs> {
+    return this.http.delete<Notifs>(url2 + id);
   }
-  deleteAllNotif():Observable<Notifs[]>
-  {
-    return this.http.delete<Notifs[]>(url2+"deleteall");
+  deleteAllNotif(): Observable<Notifs[]> {
+    return this.http.delete<Notifs[]>(url2 + 'deleteall');
   }
-  getNotification():Observable<Notifs[]>
-  {
-    return this.http.get<Notifs[]>(url2);
+  getNotification(doctorId): Observable<Notifs[]> {
+    return this.http.get<Notifs[]>(url2 + 'doctor/' + doctorId);
+  }
+
+  updateDoctor(id: string, doctor: any): Observable<any> {
+    return this.http.put<any>(url + id, doctor);
+  }
+  changePassword(id: string, { oldPassword, newPassword }): Observable<any> {
+    return this.http.put<any>(url + 'changePassword/' + id, {
+      oldPassword,
+      newPassword,
+    });
   }
 }

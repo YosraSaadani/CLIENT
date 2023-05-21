@@ -26,6 +26,9 @@ import { ChatsComponent } from './Components/patient/chats/chats.component';
 import { ChangePasswordAdminComponent } from './Components/admin/change-password-admin/change-password-admin.component';
 import { ConsultationComponent } from './Components/doctor/consultation/consultation.component';
 import { ListAppointmentComponent } from './Components/doctor/list-appointment/list-appointment.component';
+import { ListConsultationsComponent } from './Components/doctor/list-consultations/list-consultations.component';
+import { ProfileDocComponent } from './Components/doctor/profile-doc/profile-doc.component';
+import { ChangePassDocComponent } from './Components/doctor/change-pass-doc/change-pass-doc.component';
 const routes: Routes = [
   {
     path: '',
@@ -46,11 +49,18 @@ const routes: Routes = [
         component: ChangePasswordComponent,
         title: 'Change Password',
       },
-      {path:'messages',component:ChatsComponent,title:'Messages',
-    children:[
-      {path: ':id',component: ChatMessagesComponent,title:'Chat Messages'}
-    ]
-    },
+      {
+        path: 'messages',
+        component: ChatsComponent,
+        title: 'Messages',
+        children: [
+          {
+            path: ':id',
+            component: ChatMessagesComponent,
+            title: 'Chat Messages',
+          },
+        ],
+      },
       { path: 'profile', component: ProfileComponent, title: 'Profile' },
       { path: '', pathMatch: 'full', redirectTo: 'home' },
     ],
@@ -74,14 +84,29 @@ const routes: Routes = [
         title: 'Doctor Dashboard',
       },
       {
-        path:'consultation',
-        component:ConsultationComponent,
-        title:'Consultation'
+        path: 'consultation',
+        component: ConsultationComponent,
+        title: 'Consultation',
       },
       {
-        path:'appointments',
-        component:ListAppointmentComponent,
-        title:'Appointments'
+        path: 'appointments',
+        component: ListAppointmentComponent,
+        title: 'Appointments',
+      },
+      {
+        path: 'consultations',
+        component: ListConsultationsComponent,
+        title: 'Consultations',
+      },
+      {
+        path: 'profile',
+        component: ProfileDocComponent,
+        title: 'Profile',
+      },
+      {
+        path: 'changePassword',
+        component: ChangePassDocComponent,
+        title: 'Change Password',
       },
       {
         path: 'chat',

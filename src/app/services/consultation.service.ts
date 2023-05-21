@@ -4,24 +4,30 @@ import { Observable } from 'rxjs';
 import { Consultation } from '../Entities/consultation';
 const url = 'http://localhost:5000/api/consultation';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ConsultationService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http:HttpClient) { }
-
-  getConsultations():Observable<Consultation[]>
-  {
-    return this.http.get<Consultation[]>(url+"/");
+  getConsultations(): Observable<Consultation[]> {
+    return this.http.get<Consultation[]>(url + '/');
   }
 
-  addConsultation(consultation:any):Observable<any>
-  {
+  addConsultation(consultation: any): Observable<any> {
     var reqHeader = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
     });
-    return this.http.post<any>(url+"/add",consultation  ,{
+    return this.http.post<any>(url + '/add', consultation, {
+      headers: reqHeader,
+    });
+  }
+  getDoctorConsultation(): Observable<any> {
+    var reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
+    });
+    return this.http.get<any>(url + '/doctor/getMyCons', {
       headers: reqHeader,
     });
   }

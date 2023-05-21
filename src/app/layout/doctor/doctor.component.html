@@ -47,26 +47,36 @@
         </li>
 
         <li
-        class="menu-item pointer"
-        routerLink="/doctor/consultation"
-        routerLinkActive="active"
-      >
-        <a class="menu-link">
-          <i class='menu-icon tf-icons bx bx-book-open'></i>
-          <div data-i18n="Layouts">Consultation</div>
-        </a>
-      </li>
+          class="menu-item pointer"
+          routerLink="/doctor/consultation"
+          routerLinkActive="active"
+        >
+          <a class="menu-link">
+            <i class="menu-icon tf-icons bx bx-add-to-queue"></i>
+            <div data-i18n="Layouts">Add Consultation</div>
+          </a>
+        </li>
+
         <li
-        class="menu-item pointer"
-        routerLink="/doctor/appointments"
-        routerLinkActive="active"
-      >
-        <a class="menu-link">
-          <i class="menu-icon tf-icons bx bx-calendar"></i>
-          <div data-i18n="Layouts">Appointments</div>
-        </a>
-      </li>
-      
+          class="menu-item pointer"
+          routerLink="/doctor/appointments"
+          routerLinkActive="active"
+        >
+          <a class="menu-link">
+            <i class="menu-icon tf-icons bx bx-calendar"></i>
+            <div data-i18n="Layouts">Appointments</div>
+          </a>
+        </li>
+        <li
+          class="menu-item pointer"
+          routerLink="/doctor/consultations"
+          routerLinkActive="active"
+        >
+          <a class="menu-link">
+            <i class="menu-icon tf-icons bx bx-book-open"></i>
+            <div data-i18n="Layouts">Consultations</div>
+          </a>
+        </li>
       </ul>
     </aside>
     <!-- / Menu -->
@@ -110,7 +120,10 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <i class="ti ti-bell-ringing" style="width: 20px;height:50px"></i>
+                <i
+                  class="ti ti-bell-ringing"
+                  style="width: 20px; height: 50px"
+                ></i>
                 <div class="notification bg-primary rounded-circle"></div>
                 <div
                   class="dropdown-menu dropdown-menu-start dropdown-menu-animate-down opaci"
@@ -120,8 +133,18 @@
                     <div style="display: flex; justify-content: space-between">
                       <div style="margin-left: 5%">Notifications</div>
                       <div title="clear" style="margin-left: 52%">
-                        <svg (click)="deleteAll()" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-recycle" viewBox="0 0 16 16">
-                          <path d="M9.302 1.256a1.5 1.5 0 0 0-2.604 0l-1.704 2.98a.5.5 0 0 0 .869.497l1.703-2.981a.5.5 0 0 1 .868 0l2.54 4.444-1.256-.337a.5.5 0 1 0-.26.966l2.415.647a.5.5 0 0 0 .613-.353l.647-2.415a.5.5 0 1 0-.966-.259l-.333 1.242-2.532-4.431zM2.973 7.773l-1.255.337a.5.5 0 1 1-.26-.966l2.416-.647a.5.5 0 0 1 .612.353l.647 2.415a.5.5 0 0 1-.966.259l-.333-1.242-2.545 4.454a.5.5 0 0 0 .434.748H5a.5.5 0 0 1 0 1H1.723A1.5 1.5 0 0 1 .421 12.24l2.552-4.467zm10.89 1.463a.5.5 0 1 0-.868.496l1.716 3.004a.5.5 0 0 1-.434.748h-5.57l.647-.646a.5.5 0 1 0-.708-.707l-1.5 1.5a.498.498 0 0 0 0 .707l1.5 1.5a.5.5 0 1 0 .708-.707l-.647-.647h5.57a1.5 1.5 0 0 0 1.302-2.244l-1.716-3.004z"/>
+                        <svg
+                          (click)="deleteAll()"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="20"
+                          height="20"
+                          fill="currentColor"
+                          class="bi bi-recycle"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            d="M9.302 1.256a1.5 1.5 0 0 0-2.604 0l-1.704 2.98a.5.5 0 0 0 .869.497l1.703-2.981a.5.5 0 0 1 .868 0l2.54 4.444-1.256-.337a.5.5 0 1 0-.26.966l2.415.647a.5.5 0 0 0 .613-.353l.647-2.415a.5.5 0 1 0-.966-.259l-.333 1.242-2.532-4.431zM2.973 7.773l-1.255.337a.5.5 0 1 1-.26-.966l2.416-.647a.5.5 0 0 1 .612.353l.647 2.415a.5.5 0 0 1-.966.259l-.333-1.242-2.545 4.454a.5.5 0 0 0 .434.748H5a.5.5 0 0 1 0 1H1.723A1.5 1.5 0 0 1 .421 12.24l2.552-4.467zm10.89 1.463a.5.5 0 1 0-.868.496l1.716 3.004a.5.5 0 0 1-.434.748h-5.57l.647-.646a.5.5 0 1 0-.708-.707l-1.5 1.5a.498.498 0 0 0 0 .707l1.5 1.5a.5.5 0 1 0 .708-.707l-.647-.647h5.57a1.5 1.5 0 0 0 1.302-2.244l-1.716-3.004z"
+                          />
                         </svg>
                       </div>
                       <hr />
@@ -172,10 +195,20 @@
                               >{{ m.action | uppercase }}
                               {{ m.dateNotification | date : "dd-MM-yyyy" }}
                               &nbsp;
-                              <svg style="color: #f14c4c" xmlns="http://www.w3.org/2000/svg" (click)="deleteNotif(m._id)" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-                              </svg>
-                             </span
+                              <svg
+                                style="color: #f14c4c"
+                                xmlns="http://www.w3.org/2000/svg"
+                                (click)="deleteNotif(m._id)"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                class="bi bi-trash-fill"
+                                viewBox="0 0 16 16"
+                              >
+                                <path
+                                  d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"
+                                />
+                              </svg> </span
                           ></span>
                           <hr />
                         </div>
@@ -185,10 +218,7 @@
                 </div>
               </a>
             </li>
-      
           </ul>
-
-
 
           <ul class="navbar-nav flex-row align-items-center ms-auto">
             <!-- Place this tag where you want the button to render. -->
@@ -235,29 +265,18 @@
                   <div class="dropdown-divider"></div>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">
+                  <a class="dropdown-item" routerLink="/doctor/profile">
                     <i class="bx bx-user me-2"></i>
                     <span class="align-middle">My Profile</span>
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">
+                  <a class="dropdown-item" routerLink="/doctor/changePassword">
                     <i class="bx bx-cog me-2"></i>
-                    <span class="align-middle">Settings</span>
+                    <span class="align-middle">Change Password</span>
                   </a>
                 </li>
-                <li>
-                  <a class="dropdown-item" href="#">
-                    <span class="d-flex align-items-center align-middle">
-                      <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-                      <span class="flex-grow-1 align-middle">Billing</span>
-                      <span
-                        class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20"
-                        >4</span
-                      >
-                    </span>
-                  </a>
-                </li>
+
                 <li>
                   <div class="dropdown-divider"></div>
                 </li>
@@ -295,4 +314,3 @@
   <!-- Overlay -->
   <div class="layout-overlay layout-menu-toggle"></div>
 </div>
-

@@ -13,57 +13,60 @@ import { DoctorService } from 'src/app/services/doctor.service';
 })
 export class DoctorComponent implements OnInit {
   Doct!: Doctor;
-  notifications:Notifs[]
+  notifications: Notifs[];
 
-  constructor(private router: Router, private auth: AuthService, private serviceDoctor:DoctorService) {
+  constructor(
+    private router: Router,
+    private auth: AuthService,
+    private serviceDoctor: DoctorService
+  ) {
     if (localStorage.getItem('doctorToken') == null) {
       this.router.navigate(['/logindoctor']);
     }
   }
-  
-  logout()
-  {
+
+  logout() {
     localStorage.clear();
     this.router.navigate(['/home']);
   }
-  getNotifs()
-  {
-    this.serviceDoctor.getNotification().subscribe((res)=>{
-      this.notifications=res;
-    },
-    (err:HttpErrorResponse)=>{
-      console.log(err.message);
-    })
+  getNotifs(personId) {
+    this.serviceDoctor.getNotification(personId).subscribe(
+      (res) => {
+        this.notifications = res;
+      },
+      (err: HttpErrorResponse) => {
+        console.log(err.message);
+      }
+    );
   }
 
-  deleteNotif(id:string)
-  {
-    this.serviceDoctor.deleteNotif(id).subscribe(()=>{
-      console.log("deleted");
-      this.getNotifs();
-    },
-    (err:HttpErrorResponse)=>{
-      console.log(err.message);
-
-      
-    })
+  deleteNotif(id: string) {
+    this.serviceDoctor.deleteNotif(id).subscribe(
+      () => {
+        console.log('deleted');
+        this.getNotifs(this.Doct.person['_id']);
+      },
+      (err: HttpErrorResponse) => {
+        console.log(err.message);
+      }
+    );
   }
 
-  deleteAll()
-  {
-    this.serviceDoctor.deleteAllNotif().subscribe(()=>{
-      console.log("all deleted");
-      this.getNotifs();
-    },
-    (err:HttpErrorResponse)=>{
-      console.log(err.message);
-    })
+  deleteAll() {
+    this.serviceDoctor.deleteAllNotif().subscribe(
+      () => {
+        console.log('all deleted');
+        this.getNotifs(this.Doct.person['_id']);
+      },
+      (err: HttpErrorResponse) => {
+        console.log(err.message);
+      }
+    );
   }
   ngOnInit(): void {
-    this.auth.getDoctor().subscribe((data) => {
+    this.auth.getDoctor().subscribe((data: any) => {
       this.Doct = data;
+      this.getNotifs(data.person._id);
     });
-
-    this.getNotifs();
   }
 }

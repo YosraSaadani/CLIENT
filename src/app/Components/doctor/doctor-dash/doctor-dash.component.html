@@ -5,11 +5,11 @@
         <div class="col-sm-7">
           <div class="card-body">
             <h5 class="card-title text-primary">
-              Welcome Dr. {{ Doct.person.firstName }}
-              {{ Doct.person.lastName }}! 🎉
+              Welcome Dr. {{ Doct.person?.firstName! }}
+              {{ Doct.person?.lastName! }}! 🎉
             </h5>
             <p class="mb-4">
-              You have <span class="fw-bold">{{ RVs.length }}</span> upcoming
+              You have <span class="fw-bold">{{ RVs.length! }}</span> upcoming
               {{ RVs.length == 1 ? "appointment" : "appointments" }} this month.
             </p>
 
@@ -24,7 +24,7 @@
         <div class="col-sm-5 text-center text-sm-left">
           <div class="card-body pb-0 px-0 px-md-4">
             <img
-              *ngIf="Doct.person.gender === 'male'"
+              *ngIf="Doct.person?.gender! === 'male'"
               src="https://www.drchrono.com/site_media/images/main.5447d221549a.png"
               height="140"
               alt="View Badge User"
@@ -32,7 +32,7 @@
               data-app-light-img="illustrations/man-with-laptop-light.png"
             />
             <img
-              *ngIf="Doct.person.gender === 'female'"
+              *ngIf="Doct.person?.gender! === 'female'"
               src="https://cdni.iconscout.com/illustration/premium/thumb/health-diseases-guide-2245462-1892308.png"
               height="140"
               alt="View Badge User"
@@ -61,7 +61,7 @@
               </div>
             </div>
             <span class="fw-semibold d-block mb-3">Today</span>
-            <h3 class="card-title mb-3">{{ RVsToday.length }} Appointments</h3>
+            <h3 class="card-title mb-3">{{ RVsToday.length! }} Appointments</h3>
           </div>
         </div>
       </div>
@@ -80,7 +80,7 @@
               </div>
             </div>
             <span class="fw-semibold d-block mb-3">Price</span>
-            <h6 class="text-dark mb-3">{{ Doct.price }} DT /Appointment</h6>
+            <h6 class="text-dark mb-3">{{ Doct.price! }} DT /Appointment</h6>
           </div>
         </div>
       </div>
@@ -197,6 +197,17 @@
             </div>
             <div id="orderStatisticsChart"></div>
           </div>
+
+
+          <div  *ngIf="AllApoi.length==0">
+            <h4 _ngcontent-iaw-c205="" class="text-danger mb-4" style="margin-top:80px;text-align: center;"> You Dont Have Any <br>  Upcoming Appointements
+            <br>
+            <br>
+            <i class='bx bx-file text-danger' style=' margin-top: 10px;  font-size: 35px;'  ></i>
+            </h4>
+          </div>
+
+
           <ul class="p-0 m-0">
             <li class="d-flex mb-4 pb-1" *ngFor="let apoi of AllApoi">
               <div class="flex-shrink-0 me-3">
@@ -204,11 +215,11 @@
                   <img
                     class="avatar"
                     [src]="
-                      apoi.Patient.person.image !== null
-                        ? apoi.Patient.person.image
+                      apoi.Patient.person?.image !== null
+                        ? apoi.Patient.person?.image!
                         : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
                     "
-                    [alt]="apoi.Patient.person.firstName"
+                    [alt]="apoi.Patient.person?.firstName!"
                   />
                 </div>
               </div>
@@ -217,8 +228,8 @@
               >
                 <div class="me-2">
                   <h6 class="mb-0">
-                    {{ apoi.Patient.person.firstName }}
-                    {{ apoi.Patient.person.lastName }}
+                    {{ apoi.Patient.person?.firstName! }}
+                    {{ apoi.Patient.person?.lastName! }}
                   </h6>
                   <small class="text-muted dateee">{{
                     apoi.dateRV | date
@@ -244,7 +255,17 @@
             <div class="d-flex flex-column align-items-center gap-1">
               <h5 class="my-4">Consultations</h5>
             </div>
+
+         
+  
             <div id="orderStatisticsChart"></div>
+          </div>
+          <div  *ngIf="consus.length==0">
+            <h4 _ngcontent-iaw-c205="" class="text-danger mb-4" style="margin-top:80px;text-align: center;"> You Dont Have Any <br>   Consultations
+            <br>
+            <br>
+            <i class='bx bxs-capsule text-danger' style=' margin-top: 10px;  font-size: 40px;'></i>
+            </h4>
           </div>
           <ul class="p-0 m-0">
             <li class="d-flex mb-4 pb-1" *ngFor="let cons of consus">
@@ -253,11 +274,11 @@
                   <img
                     class="avatar"
                     [src]="
-                      cons.patientId.person.image !== null
-                        ? cons.patientId.person.image
+                      cons.patientId.person?.image!== null
+                        ? cons.patientId.person?.image!
                         : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
                     "
-                    [alt]="cons.patientId.person.firstName"
+                    [alt]="cons.patientId.person?.firstName!"
                   />
                 </div>
               </div>
@@ -266,9 +287,9 @@
               >
                 <div class="me-2 desc">
                   <h6 class="mb-0">
-                    {{ cons.patientId.person.firstName }}
-                    {{ cons.patientId.person.lastName }}
-                    {{ cons.patientId.bloodType }}
+                    {{ cons.patientId.person?.firstName! }}
+                    {{ cons.patientId.person?.lastName! }}
+                    {{ cons.patientId.bloodType! }}
                   </h6>
                   <small class="text-muted">{{ cons.marks }}</small>
                 </div>

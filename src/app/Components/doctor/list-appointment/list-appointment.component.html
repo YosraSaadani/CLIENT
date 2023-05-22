@@ -1,5 +1,12 @@
+<div  *ngIf="appoints.length==0">
+    <h4 _ngcontent-iaw-c205="" class="text-danger mb-4" style="margin-top:80px;text-align: center;"> You Dont Have Any <br> <br>Appointements
+    <br>
+    <br>
+    <i class='bx bx-file text-danger' style=' margin-top: 10px;  font-size: 35px;'  ></i>
+    </h4>
+  </div>
 
-<div class="container-fluid pt-4 px-4 opaci">
+<div class="container-fluid pt-4 px-4 opaci" *ngIf="appoints.length!=0">
     <div class="bg-light text-center rounded p-4" style="background-color: #F7F7F7;box-shadow:0 4px 8px 0 rgba(95, 92, 92, 0.2), 0 6px 20px 0 rgba(95, 92, 92, 0.2);">
         <div class="d-flex align-items-center justify-content-between mb-4">
             <h6 class="mb-0">Appointments List</h6>

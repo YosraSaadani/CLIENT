@@ -1,4 +1,11 @@
-<div class="container-fluid pt-4 px-4 opaci">
+<div  *ngIf="consus.length==0">
+  <h4 _ngcontent-iaw-c205="" class="text-danger mb-4" style="margin-top:80px;text-align: center;"> You Dont Have Any <br> <br>  Consultations
+  <br>
+  <br>
+  <i class='bx bxs-capsule text-danger' style=' margin-top: 10px;  font-size: 40px;'></i>
+  </h4>
+</div>
+<div class="container-fluid pt-4 px-4 opaci" *ngIf="consus.length!=0" >
   <div
     class="bg-light text-center rounded p-4"
     style="
